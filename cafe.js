@@ -476,9 +476,9 @@ var M = class {
 		return this._refinement((n, r) => e(n) ? !0 : (r.addIssue(typeof t == "function" ? t(n, r) : t), !1));
 	}
 	_refinement(e) {
-		return new Ge({
+		return new We({
 			schema: this,
-			typeName: W.ZodEffects,
+			typeName: G.ZodEffects,
 			effect: {
 				type: "refinement",
 				refinement: e
@@ -496,31 +496,31 @@ var M = class {
 		};
 	}
 	optional() {
-		return Ke.create(this, this._def);
+		return Ge.create(this, this._def);
 	}
 	nullable() {
-		return qe.create(this, this._def);
+		return Ke.create(this, this._def);
 	}
 	nullish() {
 		return this.nullable().optional();
 	}
 	array() {
-		return Ee.create(this);
+		return Te.create(this);
 	}
 	promise() {
-		return We.create(this, this._def);
+		return Ue.create(this, this._def);
 	}
 	or(e) {
-		return ke.create([this, e], this._def);
+		return Oe.create([this, e], this._def);
 	}
 	and(e) {
-		return Ne.create(this, e, this._def);
+		return Me.create(this, e, this._def);
 	}
 	transform(e) {
-		return new Ge({
+		return new We({
 			...j(this._def),
 			schema: this,
-			typeName: W.ZodEffects,
+			typeName: G.ZodEffects,
 			effect: {
 				type: "transform",
 				transform: e
@@ -529,27 +529,27 @@ var M = class {
 	}
 	default(e) {
 		let t = typeof e == "function" ? e : () => e;
-		return new Je({
+		return new qe({
 			...j(this._def),
 			innerType: this,
 			defaultValue: t,
-			typeName: W.ZodDefault
+			typeName: G.ZodDefault
 		});
 	}
 	brand() {
-		return new Ze({
-			typeName: W.ZodBranded,
+		return new Xe({
+			typeName: G.ZodBranded,
 			type: this,
 			...j(this._def)
 		});
 	}
 	catch(e) {
 		let t = typeof e == "function" ? e : () => e;
-		return new Ye({
+		return new Je({
 			...j(this._def),
 			innerType: this,
 			catchValue: t,
-			typeName: W.ZodCatch
+			typeName: G.ZodCatch
 		});
 	}
 	describe(e) {
@@ -560,10 +560,10 @@ var M = class {
 		});
 	}
 	pipe(e) {
-		return Qe.create(this, e);
+		return Ze.create(this, e);
 	}
 	readonly() {
-		return $e.create(this);
+		return Qe.create(this);
 	}
 	isOptional() {
 		return this.safeParse(void 0).success;
@@ -571,25 +571,25 @@ var M = class {
 	isNullable() {
 		return this.safeParse(null).success;
 	}
-}, N = /^c[^\s-]{8,}$/i, P = /^[0-9a-z]+$/, ee = /^[0-9A-HJKMNP-TV-Z]{26}$/i, te = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/i, F = /^[a-z0-9_-]{21}$/i, ne = /^[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+\.[A-Za-z0-9-_]*$/, I = /^[-+]?P(?!$)(?:(?:[-+]?\d+Y)|(?:[-+]?\d+[.,]\d+Y$))?(?:(?:[-+]?\d+M)|(?:[-+]?\d+[.,]\d+M$))?(?:(?:[-+]?\d+W)|(?:[-+]?\d+[.,]\d+W$))?(?:(?:[-+]?\d+D)|(?:[-+]?\d+[.,]\d+D$))?(?:T(?=[\d+-])(?:(?:[-+]?\d+H)|(?:[-+]?\d+[.,]\d+H$))?(?:(?:[-+]?\d+M)|(?:[-+]?\d+[.,]\d+M$))?(?:[-+]?\d+(?:[.,]\d+)?S)?)??$/, L = /^(?!\.)(?!.*\.\.)([A-Z0-9_'+\-\.]*)[A-Z0-9_+-]@([A-Z0-9][A-Z0-9\-]*\.)+[A-Z]{2,}$/i, R = "^(\\p{Extended_Pictographic}|\\p{Emoji_Component})+$", z, re = /^(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$/, ie = /^(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\/(3[0-2]|[12]?[0-9])$/, ae = /^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))$/, B = /^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))\/(12[0-8]|1[01][0-9]|[1-9]?[0-9])$/, oe = /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/, se = /^([0-9a-zA-Z-_]{4})*(([0-9a-zA-Z-_]{2}(==)?)|([0-9a-zA-Z-_]{3}(=)?))?$/, ce = "((\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-((0[13578]|1[02])-(0[1-9]|[12]\\d|3[01])|(0[469]|11)-(0[1-9]|[12]\\d|30)|(02)-(0[1-9]|1\\d|2[0-8])))", le = RegExp(`^${ce}$`);
-function V(e) {
+}, N = /^c[^\s-]{8,}$/i, P = /^[0-9a-z]+$/, F = /^[0-9A-HJKMNP-TV-Z]{26}$/i, ee = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/i, I = /^[a-z0-9_-]{21}$/i, te = /^[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+\.[A-Za-z0-9-_]*$/, L = /^[-+]?P(?!$)(?:(?:[-+]?\d+Y)|(?:[-+]?\d+[.,]\d+Y$))?(?:(?:[-+]?\d+M)|(?:[-+]?\d+[.,]\d+M$))?(?:(?:[-+]?\d+W)|(?:[-+]?\d+[.,]\d+W$))?(?:(?:[-+]?\d+D)|(?:[-+]?\d+[.,]\d+D$))?(?:T(?=[\d+-])(?:(?:[-+]?\d+H)|(?:[-+]?\d+[.,]\d+H$))?(?:(?:[-+]?\d+M)|(?:[-+]?\d+[.,]\d+M$))?(?:[-+]?\d+(?:[.,]\d+)?S)?)??$/, R = /^(?!\.)(?!.*\.\.)([A-Z0-9_'+\-\.]*)[A-Z0-9_+-]@([A-Z0-9][A-Z0-9\-]*\.)+[A-Z]{2,}$/i, z = "^(\\p{Extended_Pictographic}|\\p{Emoji_Component})+$", B, ne = /^(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$/, re = /^(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\/(3[0-2]|[12]?[0-9])$/, ie = /^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))$/, V = /^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))\/(12[0-8]|1[01][0-9]|[1-9]?[0-9])$/, ae = /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/, oe = /^([0-9a-zA-Z-_]{4})*(([0-9a-zA-Z-_]{2}(==)?)|([0-9a-zA-Z-_]{3}(=)?))?$/, se = "((\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-((0[13578]|1[02])-(0[1-9]|[12]\\d|3[01])|(0[469]|11)-(0[1-9]|[12]\\d|30)|(02)-(0[1-9]|1\\d|2[0-8])))", ce = RegExp(`^${se}$`);
+function H(e) {
 	let t = "[0-5]\\d";
 	e.precision ? t = `${t}\\.\\d{${e.precision}}` : e.precision ?? (t = `${t}(\\.\\d+)?`);
 	let n = e.precision ? "+" : "?";
 	return `([01]\\d|2[0-3]):[0-5]\\d(:${t})${n}`;
 }
-function ue(e) {
-	return RegExp(`^${V(e)}$`);
+function le(e) {
+	return RegExp(`^${H(e)}$`);
 }
-function de(e) {
-	let t = `${ce}T${V(e)}`, n = [];
+function ue(e) {
+	let t = `${se}T${H(e)}`, n = [];
 	return n.push(e.local ? "Z?" : "Z"), e.offset && n.push("([+-]\\d{2}:?\\d{2})"), t = `${t}(${n.join("|")})`, RegExp(`^${t}$`);
 }
-function H(e, t) {
-	return !((t !== "v4" && t || !re.test(e)) && (t !== "v6" && t || !ae.test(e)));
+function U(e, t) {
+	return !((t !== "v4" && t || !ne.test(e)) && (t !== "v6" && t || !ie.test(e)));
 }
-function fe(e, t) {
-	if (!ne.test(e)) return !1;
+function de(e, t) {
+	if (!te.test(e)) return !1;
 	try {
 		let [n] = e.split(".");
 		if (!n) return !1;
@@ -599,10 +599,10 @@ function fe(e, t) {
 		return !1;
 	}
 }
-function pe(e, t) {
-	return !((t !== "v4" && t || !ie.test(e)) && (t !== "v6" && t || !B.test(e)));
+function fe(e, t) {
+	return !((t !== "v4" && t || !re.test(e)) && (t !== "v6" && t || !V.test(e)));
 }
-var me = class e extends M {
+var pe = class e extends M {
 	_parse(e) {
 		if (this._def.coerce && (e.data = String(e.data)), this._getType(e) !== d.string) {
 			let t = this._getOrReturnCtx(e);
@@ -646,22 +646,22 @@ var me = class e extends M {
 				exact: !0,
 				message: r.message
 			}), t.dirty());
-		} else if (r.kind === "email") L.test(e.data) || (n = this._getOrReturnCtx(e, n), y(n, {
+		} else if (r.kind === "email") R.test(e.data) || (n = this._getOrReturnCtx(e, n), y(n, {
 			validation: "email",
 			code: p.invalid_string,
 			message: r.message
 		}), t.dirty());
-		else if (r.kind === "emoji") z ||= new RegExp(R, "u"), z.test(e.data) || (n = this._getOrReturnCtx(e, n), y(n, {
+		else if (r.kind === "emoji") B ||= new RegExp(z, "u"), B.test(e.data) || (n = this._getOrReturnCtx(e, n), y(n, {
 			validation: "emoji",
 			code: p.invalid_string,
 			message: r.message
 		}), t.dirty());
-		else if (r.kind === "uuid") te.test(e.data) || (n = this._getOrReturnCtx(e, n), y(n, {
+		else if (r.kind === "uuid") ee.test(e.data) || (n = this._getOrReturnCtx(e, n), y(n, {
 			validation: "uuid",
 			code: p.invalid_string,
 			message: r.message
 		}), t.dirty());
-		else if (r.kind === "nanoid") F.test(e.data) || (n = this._getOrReturnCtx(e, n), y(n, {
+		else if (r.kind === "nanoid") I.test(e.data) || (n = this._getOrReturnCtx(e, n), y(n, {
 			validation: "nanoid",
 			code: p.invalid_string,
 			message: r.message
@@ -676,7 +676,7 @@ var me = class e extends M {
 			code: p.invalid_string,
 			message: r.message
 		}), t.dirty());
-		else if (r.kind === "ulid") ee.test(e.data) || (n = this._getOrReturnCtx(e, n), y(n, {
+		else if (r.kind === "ulid") F.test(e.data) || (n = this._getOrReturnCtx(e, n), y(n, {
 			validation: "ulid",
 			code: p.invalid_string,
 			message: r.message
@@ -709,39 +709,39 @@ var me = class e extends M {
 			code: p.invalid_string,
 			validation: { endsWith: r.value },
 			message: r.message
-		}), t.dirty()) : r.kind === "datetime" ? de(r).test(e.data) || (n = this._getOrReturnCtx(e, n), y(n, {
+		}), t.dirty()) : r.kind === "datetime" ? ue(r).test(e.data) || (n = this._getOrReturnCtx(e, n), y(n, {
 			code: p.invalid_string,
 			validation: "datetime",
 			message: r.message
-		}), t.dirty()) : r.kind === "date" ? le.test(e.data) || (n = this._getOrReturnCtx(e, n), y(n, {
+		}), t.dirty()) : r.kind === "date" ? ce.test(e.data) || (n = this._getOrReturnCtx(e, n), y(n, {
 			code: p.invalid_string,
 			validation: "date",
 			message: r.message
-		}), t.dirty()) : r.kind === "time" ? ue(r).test(e.data) || (n = this._getOrReturnCtx(e, n), y(n, {
+		}), t.dirty()) : r.kind === "time" ? le(r).test(e.data) || (n = this._getOrReturnCtx(e, n), y(n, {
 			code: p.invalid_string,
 			validation: "time",
 			message: r.message
-		}), t.dirty()) : r.kind === "duration" ? I.test(e.data) || (n = this._getOrReturnCtx(e, n), y(n, {
+		}), t.dirty()) : r.kind === "duration" ? L.test(e.data) || (n = this._getOrReturnCtx(e, n), y(n, {
 			validation: "duration",
 			code: p.invalid_string,
 			message: r.message
-		}), t.dirty()) : r.kind === "ip" ? H(e.data, r.version) || (n = this._getOrReturnCtx(e, n), y(n, {
+		}), t.dirty()) : r.kind === "ip" ? U(e.data, r.version) || (n = this._getOrReturnCtx(e, n), y(n, {
 			validation: "ip",
 			code: p.invalid_string,
 			message: r.message
-		}), t.dirty()) : r.kind === "jwt" ? fe(e.data, r.alg) || (n = this._getOrReturnCtx(e, n), y(n, {
+		}), t.dirty()) : r.kind === "jwt" ? de(e.data, r.alg) || (n = this._getOrReturnCtx(e, n), y(n, {
 			validation: "jwt",
 			code: p.invalid_string,
 			message: r.message
-		}), t.dirty()) : r.kind === "cidr" ? pe(e.data, r.version) || (n = this._getOrReturnCtx(e, n), y(n, {
+		}), t.dirty()) : r.kind === "cidr" ? fe(e.data, r.version) || (n = this._getOrReturnCtx(e, n), y(n, {
 			validation: "cidr",
 			code: p.invalid_string,
 			message: r.message
-		}), t.dirty()) : r.kind === "base64" ? oe.test(e.data) || (n = this._getOrReturnCtx(e, n), y(n, {
+		}), t.dirty()) : r.kind === "base64" ? ae.test(e.data) || (n = this._getOrReturnCtx(e, n), y(n, {
 			validation: "base64",
 			code: p.invalid_string,
 			message: r.message
-		}), t.dirty()) : r.kind === "base64url" ? se.test(e.data) || (n = this._getOrReturnCtx(e, n), y(n, {
+		}), t.dirty()) : r.kind === "base64url" ? oe.test(e.data) || (n = this._getOrReturnCtx(e, n), y(n, {
 			validation: "base64url",
 			code: p.invalid_string,
 			message: r.message
@@ -1010,17 +1010,17 @@ var me = class e extends M {
 		return e;
 	}
 };
-me.create = (e) => new me({
+pe.create = (e) => new pe({
 	checks: [],
-	typeName: W.ZodString,
+	typeName: G.ZodString,
 	coerce: e?.coerce ?? !1,
 	...j(e)
 });
-function he(e, t) {
+function me(e, t) {
 	let n = (e.toString().split(".")[1] || "").length, r = (t.toString().split(".")[1] || "").length, i = n > r ? n : r;
 	return Number.parseInt(e.toFixed(i).replace(".", "")) % Number.parseInt(t.toFixed(i).replace(".", "")) / 10 ** i;
 }
-var ge = class e extends M {
+var he = class e extends M {
 	constructor() {
 		super(...arguments), this.min = this.gte, this.max = this.lte, this.step = this.multipleOf;
 	}
@@ -1053,7 +1053,7 @@ var ge = class e extends M {
 			inclusive: r.inclusive,
 			exact: !1,
 			message: r.message
-		}), n.dirty()) : r.kind === "multipleOf" ? he(e.data, r.value) !== 0 && (t = this._getOrReturnCtx(e, t), y(t, {
+		}), n.dirty()) : r.kind === "multipleOf" ? me(e.data, r.value) !== 0 && (t = this._getOrReturnCtx(e, t), y(t, {
 			code: p.not_multiple_of,
 			multipleOf: r.value,
 			message: r.message
@@ -1179,13 +1179,13 @@ var ge = class e extends M {
 		return Number.isFinite(t) && Number.isFinite(e);
 	}
 };
-ge.create = (e) => new ge({
+he.create = (e) => new he({
 	checks: [],
-	typeName: W.ZodNumber,
+	typeName: G.ZodNumber,
 	coerce: e?.coerce || !1,
 	...j(e)
 });
-var _e = class e extends M {
+var ge = class e extends M {
 	constructor() {
 		super(...arguments), this.min = this.gte, this.max = this.lte;
 	}
@@ -1306,13 +1306,13 @@ var _e = class e extends M {
 		return e;
 	}
 };
-_e.create = (e) => new _e({
+ge.create = (e) => new ge({
 	checks: [],
-	typeName: W.ZodBigInt,
+	typeName: G.ZodBigInt,
 	coerce: e?.coerce ?? !1,
 	...j(e)
 });
-var ve = class extends M {
+var _e = class extends M {
 	_parse(e) {
 		if (this._def.coerce && (e.data = !!e.data), this._getType(e) !== d.boolean) {
 			let t = this._getOrReturnCtx(e);
@@ -1325,12 +1325,12 @@ var ve = class extends M {
 		return C(e.data);
 	}
 };
-ve.create = (e) => new ve({
-	typeName: W.ZodBoolean,
+_e.create = (e) => new _e({
+	typeName: G.ZodBoolean,
 	coerce: e?.coerce || !1,
 	...j(e)
 });
-var ye = class e extends M {
+var ve = class e extends M {
 	_parse(e) {
 		if (this._def.coerce && (e.data = new Date(e.data)), this._getType(e) !== d.date) {
 			let t = this._getOrReturnCtx(e);
@@ -1393,13 +1393,13 @@ var ye = class e extends M {
 		return e == null ? null : new Date(e);
 	}
 };
-ye.create = (e) => new ye({
+ve.create = (e) => new ve({
 	checks: [],
 	coerce: e?.coerce || !1,
-	typeName: W.ZodDate,
+	typeName: G.ZodDate,
 	...j(e)
 });
-var be = class extends M {
+var ye = class extends M {
 	_parse(e) {
 		if (this._getType(e) !== d.symbol) {
 			let t = this._getOrReturnCtx(e);
@@ -1412,11 +1412,11 @@ var be = class extends M {
 		return C(e.data);
 	}
 };
-be.create = (e) => new be({
-	typeName: W.ZodSymbol,
+ye.create = (e) => new ye({
+	typeName: G.ZodSymbol,
 	...j(e)
 });
-var xe = class extends M {
+var be = class extends M {
 	_parse(e) {
 		if (this._getType(e) !== d.undefined) {
 			let t = this._getOrReturnCtx(e);
@@ -1429,11 +1429,11 @@ var xe = class extends M {
 		return C(e.data);
 	}
 };
-xe.create = (e) => new xe({
-	typeName: W.ZodUndefined,
+be.create = (e) => new be({
+	typeName: G.ZodUndefined,
 	...j(e)
 });
-var U = class extends M {
+var W = class extends M {
 	_parse(e) {
 		if (this._getType(e) !== d.null) {
 			let t = this._getOrReturnCtx(e);
@@ -1446,11 +1446,11 @@ var U = class extends M {
 		return C(e.data);
 	}
 };
-U.create = (e) => new U({
-	typeName: W.ZodNull,
+W.create = (e) => new W({
+	typeName: G.ZodNull,
 	...j(e)
 });
-var Se = class extends M {
+var xe = class extends M {
 	constructor() {
 		super(...arguments), this._any = !0;
 	}
@@ -1458,11 +1458,11 @@ var Se = class extends M {
 		return C(e.data);
 	}
 };
-Se.create = (e) => new Se({
-	typeName: W.ZodAny,
+xe.create = (e) => new xe({
+	typeName: G.ZodAny,
 	...j(e)
 });
-var Ce = class extends M {
+var Se = class extends M {
 	constructor() {
 		super(...arguments), this._unknown = !0;
 	}
@@ -1470,11 +1470,11 @@ var Ce = class extends M {
 		return C(e.data);
 	}
 };
-Ce.create = (e) => new Ce({
-	typeName: W.ZodUnknown,
+Se.create = (e) => new Se({
+	typeName: G.ZodUnknown,
 	...j(e)
 });
-var we = class extends M {
+var Ce = class extends M {
 	_parse(e) {
 		let t = this._getOrReturnCtx(e);
 		return y(t, {
@@ -1484,11 +1484,11 @@ var we = class extends M {
 		}), x;
 	}
 };
-we.create = (e) => new we({
-	typeName: W.ZodNever,
+Ce.create = (e) => new Ce({
+	typeName: G.ZodNever,
 	...j(e)
 });
-var Te = class extends M {
+var we = class extends M {
 	_parse(e) {
 		if (this._getType(e) !== d.undefined) {
 			let t = this._getOrReturnCtx(e);
@@ -1501,11 +1501,11 @@ var Te = class extends M {
 		return C(e.data);
 	}
 };
-Te.create = (e) => new Te({
-	typeName: W.ZodVoid,
+we.create = (e) => new we({
+	typeName: G.ZodVoid,
 	...j(e)
 });
-var Ee = class e extends M {
+var Te = class e extends M {
 	_parse(e) {
 		let { ctx: t, status: n } = this._processInputParams(e), r = this._def;
 		if (t.parsedType !== d.array) return y(t, {
@@ -1577,32 +1577,32 @@ var Ee = class e extends M {
 		return this.min(1, e);
 	}
 };
-Ee.create = (e, t) => new Ee({
+Te.create = (e, t) => new Te({
 	type: e,
 	minLength: null,
 	maxLength: null,
 	exactLength: null,
-	typeName: W.ZodArray,
+	typeName: G.ZodArray,
 	...j(t)
 });
-function De(e) {
-	if (e instanceof Oe) {
+function Ee(e) {
+	if (e instanceof De) {
 		let t = {};
 		for (let n in e.shape) {
 			let r = e.shape[n];
-			t[n] = Ke.create(De(r));
+			t[n] = Ge.create(Ee(r));
 		}
-		return new Oe({
+		return new De({
 			...e._def,
 			shape: () => t
 		});
 	}
-	return e instanceof Ee ? new Ee({
+	return e instanceof Te ? new Te({
 		...e._def,
-		type: De(e.element)
-	}) : e instanceof Ke ? Ke.create(De(e.unwrap())) : e instanceof qe ? qe.create(De(e.unwrap())) : e instanceof Pe ? Pe.create(e.items.map((e) => De(e))) : e;
+		type: Ee(e.element)
+	}) : e instanceof Ge ? Ge.create(Ee(e.unwrap())) : e instanceof Ke ? Ke.create(Ee(e.unwrap())) : e instanceof Ne ? Ne.create(e.items.map((e) => Ee(e))) : e;
 }
-var Oe = class e extends M {
+var De = class e extends M {
 	constructor() {
 		super(...arguments), this._cached = null, this.nonstrict = this.passthrough, this.augment = this.extend;
 	}
@@ -1624,7 +1624,7 @@ var Oe = class e extends M {
 			}), x;
 		}
 		let { status: t, ctx: n } = this._processInputParams(e), { shape: r, keys: i } = this._getCached(), a = [];
-		if (!(this._def.catchall instanceof we && this._def.unknownKeys === "strip")) for (let e in n.data) i.includes(e) || a.push(e);
+		if (!(this._def.catchall instanceof Ce && this._def.unknownKeys === "strip")) for (let e in n.data) i.includes(e) || a.push(e);
 		let o = [];
 		for (let e of i) {
 			let t = r[e], i = n.data[e];
@@ -1637,7 +1637,7 @@ var Oe = class e extends M {
 				alwaysSet: e in n.data
 			});
 		}
-		if (this._def.catchall instanceof we) {
+		if (this._def.catchall instanceof Ce) {
 			let e = this._def.unknownKeys;
 			if (e === "passthrough") for (let e of a) o.push({
 				key: {
@@ -1723,7 +1723,7 @@ var Oe = class e extends M {
 				...this._def.shape(),
 				...t._def.shape()
 			}),
-			typeName: W.ZodObject
+			typeName: G.ZodObject
 		});
 	}
 	setKey(e, t) {
@@ -1752,7 +1752,7 @@ var Oe = class e extends M {
 		});
 	}
 	deepPartial() {
-		return De(this);
+		return Ee(this);
 	}
 	partial(t) {
 		let n = {};
@@ -1770,7 +1770,7 @@ var Oe = class e extends M {
 		for (let e of l.objectKeys(this.shape)) if (t && !t[e]) n[e] = this.shape[e];
 		else {
 			let t = this.shape[e];
-			for (; t instanceof Ke;) t = t._def.innerType;
+			for (; t instanceof Ge;) t = t._def.innerType;
 			n[e] = t;
 		}
 		return new e({
@@ -1779,29 +1779,29 @@ var Oe = class e extends M {
 		});
 	}
 	keyof() {
-		return Ve(l.objectKeys(this.shape));
+		return Be(l.objectKeys(this.shape));
 	}
 };
-Oe.create = (e, t) => new Oe({
+De.create = (e, t) => new De({
 	shape: () => e,
 	unknownKeys: "strip",
-	catchall: we.create(),
-	typeName: W.ZodObject,
+	catchall: Ce.create(),
+	typeName: G.ZodObject,
 	...j(t)
-}), Oe.strictCreate = (e, t) => new Oe({
+}), De.strictCreate = (e, t) => new De({
 	shape: () => e,
 	unknownKeys: "strict",
-	catchall: we.create(),
-	typeName: W.ZodObject,
+	catchall: Ce.create(),
+	typeName: G.ZodObject,
 	...j(t)
-}), Oe.lazycreate = (e, t) => new Oe({
+}), De.lazycreate = (e, t) => new De({
 	shape: e,
 	unknownKeys: "strip",
-	catchall: we.create(),
-	typeName: W.ZodObject,
+	catchall: Ce.create(),
+	typeName: G.ZodObject,
 	...j(t)
 });
-var ke = class extends M {
+var Oe = class extends M {
 	_parse(e) {
 		let { ctx: t } = this._processInputParams(e), n = this._def.options;
 		function r(e) {
@@ -1864,12 +1864,12 @@ var ke = class extends M {
 		return this._def.options;
 	}
 };
-ke.create = (e, t) => new ke({
+Oe.create = (e, t) => new Oe({
 	options: e,
-	typeName: W.ZodUnion,
+	typeName: G.ZodUnion,
 	...j(t)
 });
-var Ae = (e) => e instanceof ze ? Ae(e.schema) : e instanceof Ge ? Ae(e.innerType()) : e instanceof Be ? [e.value] : e instanceof He ? e.options : e instanceof Ue ? l.objectValues(e.enum) : e instanceof Je ? Ae(e._def.innerType) : e instanceof xe ? [void 0] : e instanceof U ? [null] : e instanceof Ke ? [void 0, ...Ae(e.unwrap())] : e instanceof qe ? [null, ...Ae(e.unwrap())] : e instanceof Ze || e instanceof $e ? Ae(e.unwrap()) : e instanceof Ye ? Ae(e._def.innerType) : [], je = class e extends M {
+var ke = (e) => e instanceof Re ? ke(e.schema) : e instanceof We ? ke(e.innerType()) : e instanceof ze ? [e.value] : e instanceof Ve ? e.options : e instanceof He ? l.objectValues(e.enum) : e instanceof qe ? ke(e._def.innerType) : e instanceof be ? [void 0] : e instanceof W ? [null] : e instanceof Ge ? [void 0, ...ke(e.unwrap())] : e instanceof Ke ? [null, ...ke(e.unwrap())] : e instanceof Xe || e instanceof Qe ? ke(e.unwrap()) : e instanceof Je ? ke(e._def.innerType) : [], Ae = class e extends M {
 	_parse(e) {
 		let { ctx: t } = this._processInputParams(e);
 		if (t.parsedType !== d.object) return y(t, {
@@ -1904,7 +1904,7 @@ var Ae = (e) => e instanceof ze ? Ae(e.schema) : e instanceof Ge ? Ae(e.innerTyp
 	static create(t, n, r) {
 		let i = /* @__PURE__ */ new Map();
 		for (let e of n) {
-			let n = Ae(e.shape[t]);
+			let n = ke(e.shape[t]);
 			if (!n.length) throw Error(`A discriminator value for key \`${t}\` could not be extracted from all schema options`);
 			for (let r of n) {
 				if (i.has(r)) throw Error(`Discriminator property ${String(t)} has duplicate value ${String(r)}`);
@@ -1912,7 +1912,7 @@ var Ae = (e) => e instanceof ze ? Ae(e.schema) : e instanceof Ge ? Ae(e.innerTyp
 			}
 		}
 		return new e({
-			typeName: W.ZodDiscriminatedUnion,
+			typeName: G.ZodDiscriminatedUnion,
 			discriminator: t,
 			options: n,
 			optionsMap: i,
@@ -1920,7 +1920,7 @@ var Ae = (e) => e instanceof ze ? Ae(e.schema) : e instanceof Ge ? Ae(e.innerTyp
 		});
 	}
 };
-function Me(e, t) {
+function je(e, t) {
 	let n = f(e), r = f(t);
 	if (e === t) return {
 		valid: !0,
@@ -1932,7 +1932,7 @@ function Me(e, t) {
 			...t
 		};
 		for (let n of r) {
-			let r = Me(e[n], t[n]);
+			let r = je(e[n], t[n]);
 			if (!r.valid) return { valid: !1 };
 			i[n] = r.data;
 		}
@@ -1945,7 +1945,7 @@ function Me(e, t) {
 		if (e.length !== t.length) return { valid: !1 };
 		let n = [];
 		for (let r = 0; r < e.length; r++) {
-			let i = e[r], a = t[r], o = Me(i, a);
+			let i = e[r], a = t[r], o = je(i, a);
 			if (!o.valid) return { valid: !1 };
 			n.push(o.data);
 		}
@@ -1959,11 +1959,11 @@ function Me(e, t) {
 		data: e
 	} : { valid: !1 };
 }
-var Ne = class extends M {
+var Me = class extends M {
 	_parse(e) {
 		let { status: t, ctx: n } = this._processInputParams(e), r = (e, r) => {
 			if (w(e) || w(r)) return x;
-			let i = Me(e.value, r.value);
+			let i = je(e.value, r.value);
 			return i.valid ? ((T(e) || T(r)) && t.dirty(), {
 				status: t.value,
 				value: i.data
@@ -1988,13 +1988,13 @@ var Ne = class extends M {
 		}));
 	}
 };
-Ne.create = (e, t, n) => new Ne({
+Me.create = (e, t, n) => new Me({
 	left: e,
 	right: t,
-	typeName: W.ZodIntersection,
+	typeName: G.ZodIntersection,
 	...j(n)
 });
-var Pe = class e extends M {
+var Ne = class e extends M {
 	_parse(e) {
 		let { status: t, ctx: n } = this._processInputParams(e);
 		if (n.parsedType !== d.array) return y(n, {
@@ -2032,16 +2032,16 @@ var Pe = class e extends M {
 		});
 	}
 };
-Pe.create = (e, t) => {
+Ne.create = (e, t) => {
 	if (!Array.isArray(e)) throw Error("You must pass an array of schemas to z.tuple([ ... ])");
-	return new Pe({
+	return new Ne({
 		items: e,
-		typeName: W.ZodTuple,
+		typeName: G.ZodTuple,
 		rest: null,
 		...j(t)
 	});
 };
-var Fe = class e extends M {
+var Pe = class e extends M {
 	get keySchema() {
 		return this._def.keyType;
 	}
@@ -2070,16 +2070,16 @@ var Fe = class e extends M {
 		return n instanceof M ? new e({
 			keyType: t,
 			valueType: n,
-			typeName: W.ZodRecord,
+			typeName: G.ZodRecord,
 			...j(r)
 		}) : new e({
-			keyType: me.create(),
+			keyType: pe.create(),
 			valueType: t,
-			typeName: W.ZodRecord,
+			typeName: G.ZodRecord,
 			...j(n)
 		});
 	}
-}, Ie = class extends M {
+}, Fe = class extends M {
 	get keySchema() {
 		return this._def.keyType;
 	}
@@ -2125,13 +2125,13 @@ var Fe = class e extends M {
 		}
 	}
 };
-Ie.create = (e, t, n) => new Ie({
+Fe.create = (e, t, n) => new Fe({
 	valueType: t,
 	keyType: e,
-	typeName: W.ZodMap,
+	typeName: G.ZodMap,
 	...j(n)
 });
-var Le = class e extends M {
+var Ie = class e extends M {
 	_parse(e) {
 		let { status: t, ctx: n } = this._processInputParams(e);
 		if (n.parsedType !== d.set) return y(n, {
@@ -2195,14 +2195,14 @@ var Le = class e extends M {
 		return this.min(1, e);
 	}
 };
-Le.create = (e, t) => new Le({
+Ie.create = (e, t) => new Ie({
 	valueType: e,
 	minSize: null,
 	maxSize: null,
-	typeName: W.ZodSet,
+	typeName: G.ZodSet,
 	...j(t)
 });
-var Re = class e extends M {
+var Le = class e extends M {
 	constructor() {
 		super(...arguments), this.validate = this.implement;
 	}
@@ -2246,7 +2246,7 @@ var Re = class e extends M {
 			});
 		}
 		let i = { errorMap: t.common.contextualErrorMap }, a = t.data;
-		if (this._def.returns instanceof We) {
+		if (this._def.returns instanceof Ue) {
 			let e = this;
 			return C(async function(...t) {
 				let o = new m([]), s = await e._def.args.parseAsync(t, i).catch((e) => {
@@ -2277,7 +2277,7 @@ var Re = class e extends M {
 	args(...t) {
 		return new e({
 			...this._def,
-			args: Pe.create(t).rest(Ce.create())
+			args: Ne.create(t).rest(Se.create())
 		});
 	}
 	returns(t) {
@@ -2294,13 +2294,13 @@ var Re = class e extends M {
 	}
 	static create(t, n, r) {
 		return new e({
-			args: t || Pe.create([]).rest(Ce.create()),
-			returns: n || Ce.create(),
-			typeName: W.ZodFunction,
+			args: t || Ne.create([]).rest(Se.create()),
+			returns: n || Se.create(),
+			typeName: G.ZodFunction,
 			...j(r)
 		});
 	}
-}, ze = class extends M {
+}, Re = class extends M {
 	get schema() {
 		return this._def.getter();
 	}
@@ -2313,12 +2313,12 @@ var Re = class e extends M {
 		});
 	}
 };
-ze.create = (e, t) => new ze({
+Re.create = (e, t) => new Re({
 	getter: e,
-	typeName: W.ZodLazy,
+	typeName: G.ZodLazy,
 	...j(t)
 });
-var Be = class extends M {
+var ze = class extends M {
 	_parse(e) {
 		if (e.data !== this._def.value) {
 			let t = this._getOrReturnCtx(e);
@@ -2337,19 +2337,19 @@ var Be = class extends M {
 		return this._def.value;
 	}
 };
-Be.create = (e, t) => new Be({
+ze.create = (e, t) => new ze({
 	value: e,
-	typeName: W.ZodLiteral,
+	typeName: G.ZodLiteral,
 	...j(t)
 });
-function Ve(e, t) {
-	return new He({
+function Be(e, t) {
+	return new Ve({
 		values: e,
-		typeName: W.ZodEnum,
+		typeName: G.ZodEnum,
 		...j(t)
 	});
 }
-var He = class e extends M {
+var Ve = class e extends M {
 	_parse(e) {
 		if (typeof e.data != "string") {
 			let t = this._getOrReturnCtx(e), n = this._def.values;
@@ -2400,8 +2400,8 @@ var He = class e extends M {
 		});
 	}
 };
-He.create = Ve;
-var Ue = class extends M {
+Ve.create = Be;
+var He = class extends M {
 	_parse(e) {
 		let t = l.getValidEnumValues(this._def.values), n = this._getOrReturnCtx(e);
 		if (n.parsedType !== d.string && n.parsedType !== d.number) {
@@ -2426,12 +2426,12 @@ var Ue = class extends M {
 		return this._def.values;
 	}
 };
-Ue.create = (e, t) => new Ue({
+He.create = (e, t) => new He({
 	values: e,
-	typeName: W.ZodNativeEnum,
+	typeName: G.ZodNativeEnum,
 	...j(t)
 });
-var We = class extends M {
+var Ue = class extends M {
 	unwrap() {
 		return this._def.type;
 	}
@@ -2447,17 +2447,17 @@ var We = class extends M {
 		})));
 	}
 };
-We.create = (e, t) => new We({
+Ue.create = (e, t) => new Ue({
 	type: e,
-	typeName: W.ZodPromise,
+	typeName: G.ZodPromise,
 	...j(t)
 });
-var Ge = class extends M {
+var We = class extends M {
 	innerType() {
 		return this._def.schema;
 	}
 	sourceType() {
-		return this._def.schema._def.typeName === W.ZodEffects ? this._def.schema.sourceType() : this._def.schema;
+		return this._def.schema._def.typeName === G.ZodEffects ? this._def.schema.sourceType() : this._def.schema;
 	}
 	_parse(e) {
 		let { status: t, ctx: n } = this._processInputParams(e), r = this._def.effect || null, i = {
@@ -2543,21 +2543,21 @@ var Ge = class extends M {
 		l.assertNever(r);
 	}
 };
-Ge.create = (e, t, n) => new Ge({
+We.create = (e, t, n) => new We({
 	schema: e,
-	typeName: W.ZodEffects,
+	typeName: G.ZodEffects,
 	effect: t,
 	...j(n)
-}), Ge.createWithPreprocess = (e, t, n) => new Ge({
+}), We.createWithPreprocess = (e, t, n) => new We({
 	schema: t,
 	effect: {
 		type: "preprocess",
 		transform: e
 	},
-	typeName: W.ZodEffects,
+	typeName: G.ZodEffects,
 	...j(n)
 });
-var Ke = class extends M {
+var Ge = class extends M {
 	_parse(e) {
 		return this._getType(e) === d.undefined ? C(void 0) : this._def.innerType._parse(e);
 	}
@@ -2565,12 +2565,12 @@ var Ke = class extends M {
 		return this._def.innerType;
 	}
 };
-Ke.create = (e, t) => new Ke({
+Ge.create = (e, t) => new Ge({
 	innerType: e,
-	typeName: W.ZodOptional,
+	typeName: G.ZodOptional,
 	...j(t)
 });
-var qe = class extends M {
+var Ke = class extends M {
 	_parse(e) {
 		return this._getType(e) === d.null ? C(null) : this._def.innerType._parse(e);
 	}
@@ -2578,12 +2578,12 @@ var qe = class extends M {
 		return this._def.innerType;
 	}
 };
-qe.create = (e, t) => new qe({
+Ke.create = (e, t) => new Ke({
 	innerType: e,
-	typeName: W.ZodNullable,
+	typeName: G.ZodNullable,
 	...j(t)
 });
-var Je = class extends M {
+var qe = class extends M {
 	_parse(e) {
 		let { ctx: t } = this._processInputParams(e), n = t.data;
 		return t.parsedType === d.undefined && (n = this._def.defaultValue()), this._def.innerType._parse({
@@ -2596,13 +2596,13 @@ var Je = class extends M {
 		return this._def.innerType;
 	}
 };
-Je.create = (e, t) => new Je({
+qe.create = (e, t) => new qe({
 	innerType: e,
-	typeName: W.ZodDefault,
+	typeName: G.ZodDefault,
 	defaultValue: typeof t.default == "function" ? t.default : () => t.default,
 	...j(t)
 });
-var Ye = class extends M {
+var Je = class extends M {
 	_parse(e) {
 		let { ctx: t } = this._processInputParams(e), n = {
 			...t,
@@ -2637,13 +2637,13 @@ var Ye = class extends M {
 		return this._def.innerType;
 	}
 };
-Ye.create = (e, t) => new Ye({
+Je.create = (e, t) => new Je({
 	innerType: e,
-	typeName: W.ZodCatch,
+	typeName: G.ZodCatch,
 	catchValue: typeof t.catch == "function" ? t.catch : () => t.catch,
 	...j(t)
 });
-var Xe = class extends M {
+var Ye = class extends M {
 	_parse(e) {
 		if (this._getType(e) !== d.nan) {
 			let t = this._getOrReturnCtx(e);
@@ -2659,11 +2659,11 @@ var Xe = class extends M {
 		};
 	}
 };
-Xe.create = (e) => new Xe({
-	typeName: W.ZodNaN,
+Ye.create = (e) => new Ye({
+	typeName: G.ZodNaN,
 	...j(e)
 });
-var Ze = class extends M {
+var Xe = class extends M {
 	_parse(e) {
 		let { ctx: t } = this._processInputParams(e), n = t.data;
 		return this._def.type._parse({
@@ -2675,7 +2675,7 @@ var Ze = class extends M {
 	unwrap() {
 		return this._def.type;
 	}
-}, Qe = class e extends M {
+}, Ze = class e extends M {
 	_parse(e) {
 		let { status: t, ctx: n } = this._processInputParams(e);
 		if (n.common.async) return (async () => {
@@ -2710,10 +2710,10 @@ var Ze = class extends M {
 		return new e({
 			in: t,
 			out: n,
-			typeName: W.ZodPipeline
+			typeName: G.ZodPipeline
 		});
 	}
-}, $e = class extends M {
+}, Qe = class extends M {
 	_parse(e) {
 		let t = this._def.innerType._parse(e), n = (e) => (E(e) && (e.value = Object.freeze(e.value)), e);
 		return D(t) ? t.then((e) => n(e)) : n(t);
@@ -2722,32 +2722,32 @@ var Ze = class extends M {
 		return this._def.innerType;
 	}
 };
-$e.create = (e, t) => new $e({
+Qe.create = (e, t) => new Qe({
 	innerType: e,
-	typeName: W.ZodReadonly,
+	typeName: G.ZodReadonly,
 	...j(t)
-}), Oe.lazycreate;
-var W;
+}), De.lazycreate;
+var G;
 (function(e) {
 	e.ZodString = "ZodString", e.ZodNumber = "ZodNumber", e.ZodNaN = "ZodNaN", e.ZodBigInt = "ZodBigInt", e.ZodBoolean = "ZodBoolean", e.ZodDate = "ZodDate", e.ZodSymbol = "ZodSymbol", e.ZodUndefined = "ZodUndefined", e.ZodNull = "ZodNull", e.ZodAny = "ZodAny", e.ZodUnknown = "ZodUnknown", e.ZodNever = "ZodNever", e.ZodVoid = "ZodVoid", e.ZodArray = "ZodArray", e.ZodObject = "ZodObject", e.ZodUnion = "ZodUnion", e.ZodDiscriminatedUnion = "ZodDiscriminatedUnion", e.ZodIntersection = "ZodIntersection", e.ZodTuple = "ZodTuple", e.ZodRecord = "ZodRecord", e.ZodMap = "ZodMap", e.ZodSet = "ZodSet", e.ZodFunction = "ZodFunction", e.ZodLazy = "ZodLazy", e.ZodLiteral = "ZodLiteral", e.ZodEnum = "ZodEnum", e.ZodEffects = "ZodEffects", e.ZodNativeEnum = "ZodNativeEnum", e.ZodOptional = "ZodOptional", e.ZodNullable = "ZodNullable", e.ZodDefault = "ZodDefault", e.ZodCatch = "ZodCatch", e.ZodPromise = "ZodPromise", e.ZodBranded = "ZodBranded", e.ZodPipeline = "ZodPipeline", e.ZodReadonly = "ZodReadonly";
-})(W ||= {});
-var G = me.create, K = ge.create;
-Xe.create, _e.create;
-var q = ve.create;
-ye.create, be.create, xe.create, U.create, Se.create;
-var et = Ce.create;
-we.create, Te.create;
-var J = Ee.create, Y = Oe.create;
-Oe.strictCreate, ke.create;
-var tt = je.create;
-Ne.create, Pe.create;
-var nt = Fe.create;
-Ie.create, Le.create, Re.create;
-var rt = ze.create, it = Be.create, X = He.create;
-Ue.create, We.create, Ge.create, Ke.create, qe.create, Ge.createWithPreprocess, Qe.create;
+})(G ||= {});
+var K = pe.create, q = he.create;
+Ye.create, ge.create;
+var J = _e.create;
+ve.create, ye.create, be.create, W.create, xe.create;
+var $e = Se.create;
+Ce.create, we.create;
+var Y = Te.create, X = De.create;
+De.strictCreate, Oe.create;
+var et = Ae.create;
+Me.create, Ne.create;
+var tt = Pe.create;
+Fe.create, Ie.create, Le.create;
+var nt = Re.create, rt = ze.create, Z = Ve.create;
+He.create, Ue.create, We.create, Ge.create, Ke.create, We.createWithPreprocess, Ze.create;
 //#endregion
 //#region node_modules/react/cjs/react.production.js
-var at = /* @__PURE__ */ o(((e) => {
+var it = /* @__PURE__ */ o(((e) => {
 	var t = Symbol.for("react.transitional.element"), n = Symbol.for("react.portal"), r = Symbol.for("react.consumer"), i = Symbol.for("react.context"), a = Symbol.for("react.forward_ref"), o = Symbol.for("react.lazy"), s = Symbol.iterator;
 	function c(e) {
 		return typeof e != "object" || !e ? null : (e = s && e[s] || e["@@iterator"], typeof e == "function" ? e : null);
@@ -2919,9 +2919,9 @@ var at = /* @__PURE__ */ o(((e) => {
 	}, e.useSyncExternalStore = function(e, t, n) {
 		return v.H.useSyncExternalStore(e, t, n);
 	};
-})), ot = /* @__PURE__ */ o(((e, t) => {
-	t.exports = at();
-})), st = (e) => {
+})), at = /* @__PURE__ */ o(((e, t) => {
+	t.exports = it();
+})), ot = (e) => {
 	let t, n = /* @__PURE__ */ new Set(), r = (e, r) => {
 		let i = typeof e == "function" ? e(t) : e;
 		if (!Object.is(i, t)) {
@@ -2935,13 +2935,13 @@ var at = /* @__PURE__ */ o(((e) => {
 		subscribe: (e) => (n.add(e), () => n.delete(e))
 	}, o = t = e(r, i, a);
 	return a;
-}, ct = ((e) => e ? st(e) : st), Z = /* @__PURE__ */ c(ot(), 1), lt = (e) => e;
+}, st = ((e) => e ? ot(e) : ot), ct = /* @__PURE__ */ c(at(), 1), lt = (e) => e;
 function ut(e, t = lt) {
-	let n = Z.useSyncExternalStore(e.subscribe, Z.useCallback(() => t(e.getState()), [e, t]), Z.useCallback(() => t(e.getInitialState()), [e, t]));
-	return Z.useDebugValue(n), n;
+	let n = ct.useSyncExternalStore(e.subscribe, ct.useCallback(() => t(e.getState()), [e, t]), ct.useCallback(() => t(e.getInitialState()), [e, t]));
+	return ct.useDebugValue(n), n;
 }
 var dt = (e) => {
-	let t = ct(e), n = (e) => ut(t, e);
+	let t = st(e), n = (e) => ut(t, e);
 	return Object.assign(n, t), n;
 }, ft = ((e) => e ? dt(e) : dt), pt = /* @__PURE__ */ o(((e) => {
 	var t = Symbol.for("react.transitional.element");
@@ -2969,7 +2969,7 @@ var dt = (e) => {
 	"stack",
 	"grid",
 	"twoColumn"
-], _t = X(gt), vt = {
+], _t = Z(gt), vt = {
 	section: {
 		description: "Container; only sections can parent children.",
 		required: [],
@@ -3029,7 +3029,7 @@ var dt = (e) => {
 		optional: [],
 		actionInput: "none"
 	}
-}, yt = Object.freeze(Object.keys(vt)), bt = X(yt);
+}, yt = Object.freeze(Object.keys(vt)), bt = Z(yt);
 for (let e of Object.values(vt)) Object.freeze(e.required), Object.freeze(e.optional), Object.freeze(e);
 var xt = Object.freeze({
 	id: "webagent:structure/v1",
@@ -3042,48 +3042,48 @@ Object.freeze(gt);
 function St(e) {
 	return xt.components[e];
 }
-var Ct = X(["jev", "clm"]), wt = /<\s*[a-z!\/]|\b(?:javascript|vbscript)\s*:|\b(?:window|document|process)\s*\.|\b(?:eval|Function)\s*\(|\bread_credentials\b|```|(?:https?:\/\/|www\.)/i, Tt = /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f\u061c\u200e\u200f\u202a-\u202e\u2066-\u2069]/, Et = /\b(?:Bearer\s+\S+|(?:sk|nvapi)-[A-Za-z0-9_-]{8,}|AIza[A-Za-z0-9_-]{20,}|AQ\.[A-Za-z0-9_-]{20,}|(?:OPENAI|GEMINI|NVIDIA|GOOGLE|TYPESAFE|JEV|CLM)_API_KEY)\b|\b(?:password|api[_-]?key|authorization|token|secret)\s*[:=]\s*\S+/i;
+var Ct = Z(["jev", "clm"]), wt = /<\s*[a-z!\/]|\b(?:javascript|vbscript)\s*:|\b(?:window|document|process)\s*\.|\b(?:eval|Function)\s*\(|\bread_credentials\b|```|(?:https?:\/\/|www\.)/i, Tt = /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f\u061c\u200e\u200f\u202a-\u202e\u2066-\u2069]/, Et = /\b(?:Bearer\s+\S+|(?:sk|nvapi)-[A-Za-z0-9_-]{8,}|AIza[A-Za-z0-9_-]{20,}|AQ\.[A-Za-z0-9_-]{20,}|(?:OPENAI|GEMINI|NVIDIA|GOOGLE|TYPESAFE|JEV|CLM)_API_KEY)\b|\b(?:password|api[_-]?key|authorization|token|secret)\s*[:=]\s*\S+/i;
 function Dt(e) {
 	return !wt.test(e) && !Tt.test(e) && !Et.test(e);
 }
-var Ot = (e) => G().trim().min(1).max(e).refine(Dt, "Only public plain decision text is allowed."), kt = G().min(1).max(128).regex(/^[A-Za-z0-9][A-Za-z0-9_.:-]*$/).refine(Dt, "Only public decision IDs are allowed.").refine((e) => ![
+var Ot = (e) => K().trim().min(1).max(e).refine(Dt, "Only public plain decision text is allowed."), kt = K().min(1).max(128).regex(/^[A-Za-z0-9][A-Za-z0-9_.:-]*$/).refine(Dt, "Only public decision IDs are allowed.").refine((e) => ![
 	"MISS",
 	"constructor",
 	"prototype",
 	"__proto__"
-].includes(e), "Reserved decision ID."), At = Y({
+].includes(e), "Reserved decision ID."), At = X({
 	id: kt,
 	description: Ot(700),
 	query: Ot(1e3).optional()
-}).strict(), jt = Y({
+}).strict(), jt = X({
 	engine: Ct,
-	purpose: X(["action", "recipe"]),
+	purpose: Z(["action", "recipe"]),
 	query: Ot(1e3),
-	frontendSnapshot: et().optional(),
-	candidates: J(At).min(1).max(96)
+	frontendSnapshot: $e().optional(),
+	candidates: Y(At).min(1).max(96)
 }).strict().superRefine((e, t) => {
 	new Set(e.candidates.map((e) => e.id)).size !== e.candidates.length && t.addIssue({
 		code: p.custom,
 		message: "Decision candidate IDs must be unique."
 	});
-}), Mt = X([
+}), Mt = Z([
 	"absolute",
 	"contextual",
 	"none"
-]), Nt = Y({
+]), Nt = X({
 	engine: Ct,
 	selectedId: kt.nullable(),
-	outcome: X([
+	outcome: Z([
 		"selected",
 		"miss",
 		"uncertain"
 	]),
 	cachePolicy: Mt,
-	confidence: K().finite().min(0).max(1).optional(),
-	probabilities: nt(K().finite().min(0).max(1)).refine((e) => Object.keys(e).length <= 97 && Object.keys(e).every((e) => e === "MISS" || kt.safeParse(e).success), "Only bounded known-shape decision probabilities are allowed.").optional(),
-	trace: Y({
-		model: G().min(1).max(96).regex(/^[A-Za-z0-9][A-Za-z0-9/._:-]*$/).refine(Dt),
-		elapsedMs: K().finite().min(0).max(2e4)
+	confidence: q().finite().min(0).max(1).optional(),
+	probabilities: tt(q().finite().min(0).max(1)).refine((e) => Object.keys(e).length <= 97 && Object.keys(e).every((e) => e === "MISS" || kt.safeParse(e).success), "Only bounded known-shape decision probabilities are allowed.").optional(),
+	trace: X({
+		model: K().min(1).max(96).regex(/^[A-Za-z0-9][A-Za-z0-9/._:-]*$/).refine(Dt),
+		elapsedMs: q().finite().min(0).max(2e4)
 	}).strict().optional()
 }).strict().superRefine((e, t) => {
 	e.outcome === "selected" != (e.selectedId !== null) && t.addIssue({
@@ -3096,7 +3096,7 @@ var Ot = (e) => G().trim().min(1).max(e).refine(Dt, "Only public plain decision 
 		code: p.custom,
 		message: "CLM probabilities are not Jev confidence."
 	});
-}), Q = G().regex(/^(page|component|action|region)\.[a-z0-9_]+(\.[a-z0-9_]+)*$/, "Semantic ID must be in dot notation (e.g., component.finance.profit_chart)"), Pt = X([
+}), Q = K().regex(/^(page|component|action|region)\.[a-z0-9_]+(\.[a-z0-9_]+)*$/, "Semantic ID must be in dot notation (e.g., component.finance.profit_chart)"), Pt = Z([
 	"button",
 	"chart",
 	"table",
@@ -3107,13 +3107,13 @@ var Ot = (e) => G().trim().min(1).max(e).refine(Dt, "Only public plain decision 
 	"region",
 	"text",
 	"link"
-]), Ft = X(/* @__PURE__ */ "RESIZE.MOVE.REORDER.PIN.HIDE.SHOW.COLLAPSE.EXPAND.THEME.TRANSLATE.COMPOSE_UI.CONTRAST.SPACING.HIGHLIGHT.FOCUS.UNDO.REDO.RESET.GROUP.INSERT_SHORTCUT.NAVIGATE.FILTER.SORT.GENERATE_DASHBOARD.EXPLAIN.GUIDE".split(".")), It = Y({
+]), Ft = Z(/* @__PURE__ */ "RESIZE.MOVE.REORDER.PIN.HIDE.SHOW.COLLAPSE.EXPAND.THEME.TRANSLATE.COMPOSE_UI.CONTRAST.SPACING.HIGHLIGHT.FOCUS.UNDO.REDO.RESET.GROUP.INSERT_SHORTCUT.NAVIGATE.FILTER.SORT.GENERATE_DASHBOARD.EXPLAIN.GUIDE".split(".")), It = X({
 	id: Q,
 	role: Pt,
-	label: G(),
-	aliases: J(G()).default([]),
+	label: K(),
+	aliases: Y(K()).default([]),
 	regionId: Q.optional(),
-	allowedOps: J(Ft).default([
+	allowedOps: Y(Ft).default([
 		"RESIZE",
 		"MOVE",
 		"REORDER",
@@ -3124,14 +3124,14 @@ var Ot = (e) => G().trim().min(1).max(e).refine(Dt, "Only public plain decision 
 		"EXPAND",
 		"HIGHLIGHT"
 	]),
-	protected: q().default(!1),
-	sensitive: q().default(!1),
-	source: X(["registry", "dom"]).default("registry"),
-	metadata: nt(et()).default({})
-}), Lt = Y({
+	protected: J().default(!1),
+	sensitive: J().default(!1),
+	source: Z(["registry", "dom"]).default("registry"),
+	metadata: tt($e()).default({})
+}), Lt = X({
 	source: Q,
 	target: Q,
-	type: X([
+	type: Z([
 		"contains",
 		"navigates_to",
 		"depends_on",
@@ -3141,51 +3141,51 @@ var Ot = (e) => G().trim().min(1).max(e).refine(Dt, "Only public plain decision 
 		"related_to"
 	])
 });
-Y({
-	version: G().default("1.0.0"),
-	nodes: J(It),
-	edges: J(Lt),
+X({
+	version: K().default("1.0.0"),
+	nodes: Y(It),
+	edges: Y(Lt),
 	pageId: Q,
-	updatedAt: K().default(() => Date.now())
-}), Y({
-	siteId: G(),
-	version: G().default("1.0.0"),
-	name: G(),
-	allowedOps: J(Ft),
-	protectedComponentIds: J(Q).default([]),
-	themeTokens: Y({
-		light: nt(G()).default({}),
-		dark: nt(G()).default({})
+	updatedAt: q().default(() => Date.now())
+}), X({
+	siteId: K(),
+	version: K().default("1.0.0"),
+	name: K(),
+	allowedOps: Y(Ft),
+	protectedComponentIds: Y(Q).default([]),
+	themeTokens: X({
+		light: tt(K()).default({}),
+		dark: tt(K()).default({})
 	}).default({
 		light: {},
 		dark: {}
 	})
 });
-var Rt = rt(() => tt("kind", [
-	Y({
-		kind: it("id"),
+var Rt = nt(() => et("kind", [
+	X({
+		kind: rt("id"),
 		id: Q
 	}),
-	Y({
-		kind: it("description"),
-		text: G(),
+	X({
+		kind: rt("description"),
+		text: K(),
 		roleHint: Pt.optional()
 	}),
-	Y({
-		kind: it("deictic"),
-		which: X([
+	X({
+		kind: rt("deictic"),
+		which: Z([
 			"this",
 			"selected",
 			"pointer"
 		])
 	}),
-	Y({
-		kind: it("anaphora"),
-		which: X(["last_target", "last_modified"])
+	X({
+		kind: rt("anaphora"),
+		which: Z(["last_target", "last_modified"])
 	}),
-	Y({
-		kind: it("spatial"),
-		relation: X([
+	X({
+		kind: rt("spatial"),
+		relation: Z([
 			"right_of",
 			"left_of",
 			"above",
@@ -3196,72 +3196,72 @@ var Rt = rt(() => tt("kind", [
 		anchor: Rt.optional(),
 		roleHint: Pt.optional()
 	})
-])), zt = Y({
+])), zt = X({
 	type: Ft,
 	target: Rt.optional(),
-	params: nt(et()).default({}),
-	dependsOn: J(K()).default([])
-}), Bt = X([
+	params: tt($e()).default({}),
+	dependsOn: Y(q()).default([])
+}), Bt = Z([
 	"spring",
 	"flip",
 	"fade",
 	"theme",
 	"none"
-]), Vt = Y({
-	thought: G().optional(),
-	operations: J(zt).min(1).max(10),
+]), Vt = X({
+	thought: K().optional(),
+	operations: Y(zt).min(1).max(10),
 	motion: Bt.default("spring"),
-	persist: q().default(!1),
-	clarification: G().optional()
+	persist: J().default(!1),
+	clarification: K().optional()
 });
-Y({
+X({
 	pageId: Q,
 	selectedId: Q.optional(),
 	pointerTargetId: Q.optional(),
 	previousTargetId: Q.optional(),
-	recentInteractions: J(Y({
-		utterance: G(),
+	recentInteractions: Y(X({
+		utterance: K(),
 		targetId: Q.optional(),
 		operationType: Ft,
-		timestamp: K()
+		timestamp: q()
 	})).default([]),
-	visibleNodes: J(It),
-	userPreferences: nt(et()).default({})
+	visibleNodes: Y(It),
+	userPreferences: tt($e()).default({})
 });
-var Ht = Y({
-	scale: K().default(1),
-	order: K().optional(),
-	collapsed: q().default(!1),
-	hidden: q().default(!1),
-	pinned: q().default(!1),
-	highlighted: q().default(!1)
-}), Ut = G().trim().min(2).max(35).regex(/^[a-z]{2,3}(?:-[A-Za-z0-9]{2,8}){0,2}$/).refine((e) => {
+var Ht = X({
+	scale: q().default(1),
+	order: q().optional(),
+	collapsed: J().default(!1),
+	hidden: J().default(!1),
+	pinned: J().default(!1),
+	highlighted: J().default(!1)
+}), Ut = K().trim().min(2).max(35).regex(/^[a-z]{2,3}(?:-[A-Za-z0-9]{2,8}){0,2}$/).refine((e) => {
 	try {
 		return Intl.getCanonicalLocales(e).length === 1;
 	} catch {
 		return !1;
 	}
-}, "Use a valid language tag").transform((e) => Intl.getCanonicalLocales(e)[0]), Wt = G().min(1).max(128).regex(/^[A-Za-z][A-Za-z0-9_.-]*$/), Gt = Y({
-	id: G().min(1).max(128),
-	name: G().min(1).max(240),
-	price: K().finite().nonnegative().max(1e8),
-	currency: it("KRW"),
-	category: G().max(100).optional(),
-	description: G().max(400).optional(),
-	href: G().max(512).optional(),
-	image: G().max(512).optional(),
-	quantity: K().int().min(1).max(99).optional()
-}).strict(), Kt = Y({
-	data: J(Y({
+}, "Use a valid language tag").transform((e) => Intl.getCanonicalLocales(e)[0]), Wt = K().min(1).max(128).regex(/^[A-Za-z][A-Za-z0-9_.-]*$/), Gt = X({
+	id: K().min(1).max(128),
+	name: K().min(1).max(240),
+	price: q().finite().nonnegative().max(1e8),
+	currency: rt("KRW"),
+	category: K().max(100).optional(),
+	description: K().max(400).optional(),
+	href: K().max(512).optional(),
+	image: K().max(512).optional(),
+	quantity: q().int().min(1).max(99).optional()
+}).strict(), Kt = X({
+	data: Y(X({
 		id: Wt,
-		label: G().min(1).max(120),
-		kind: X(["products", "cart"]),
-		items: J(Gt).max(36)
+		label: K().min(1).max(120),
+		kind: Z(["products", "cart"]),
+		items: Y(Gt).max(36)
 	}).strict()).max(6),
-	actions: J(Y({
+	actions: Y(X({
 		id: Wt,
-		label: G().min(1).max(120),
-		input: X(["item", "none"]).optional()
+		label: K().min(1).max(120),
+		input: Z(["item", "none"]).optional()
 	}).strict()).max(16)
 }).strict().superRefine((e, t) => {
 	(new Set(e.data.map((e) => e.id)).size !== e.data.length || new Set(e.actions.map((e) => e.id)).size !== e.actions.length) && t.addIssue({
@@ -3272,24 +3272,24 @@ var Ht = Y({
 		code: p.custom,
 		message: "Duplicate item IDs"
 	});
-}), qt = Y({
+}), qt = X({
 	id: Wt,
 	type: bt,
 	parentId: Wt.optional(),
 	layout: _t.optional(),
-	text: G().trim().min(1).max(ht.maxText).optional(),
+	text: K().trim().min(1).max(ht.maxText).optional(),
 	dataRef: Wt.optional(),
 	actionRef: Wt.optional(),
 	targetId: Q.optional(),
-	itemIds: J(G().min(1).max(128)).min(1).max(ht.maxSelectedItems).optional()
-}).strict(), Jt = Y({
+	itemIds: Y(K().min(1).max(128)).min(1).max(ht.maxSelectedItems).optional()
+}).strict(), Jt = X({
 	layout: _t.optional(),
-	requiredTypes: J(qt.shape.type).max(yt.length).refine((e) => new Set(e).size === e.length, "Duplicate required types").optional()
-}).strict(), Yt = Y({
-	version: it(1),
+	requiredTypes: Y(qt.shape.type).max(yt.length).refine((e) => new Set(e).size === e.length, "Duplicate required types").optional()
+}).strict(), Yt = X({
+	version: rt(1),
 	regionId: Q,
 	rootId: Wt,
-	nodes: J(qt).min(1).max(ht.maxNodes)
+	nodes: Y(qt).min(1).max(ht.maxNodes)
 }).strict().superRefine((e, t) => {
 	let n = (e) => t.addIssue({
 		code: p.custom,
@@ -3328,31 +3328,31 @@ var Ht = Y({
 		let c = /* @__PURE__ */ new Set([...s.required, ...s.optional]);
 		t.layout && !c.has("layout") && n("Layout applies only to sections"), t.targetId && !c.has("targetId") && n("Target applies only to hostNode"), (t.dataRef || t.itemIds) && !c.has("dataRef") && n("Data applies only to data components"), t.actionRef && !c.has("actionRef") && n("Action applies only to action components"), t.itemIds && new Set(t.itemIds).size !== t.itemIds.length && n("Duplicate selected item IDs");
 	}
-}), Xt = Y({
-	theme: X(["light", "dark"]).default("light"),
+}), Xt = X({
+	theme: Z(["light", "dark"]).default("light"),
 	language: Ut.optional(),
 	composition: Yt.optional(),
-	accentColor: G().regex(/^#[0-9a-fA-F]{6}$/).optional(),
-	purpose: Y({
-		routeIds: J(G().max(128)).max(20),
-		focusIds: J(Q).max(5),
-		baselineOverrides: nt(Q, Ht).default({})
+	accentColor: K().regex(/^#[0-9a-fA-F]{6}$/).optional(),
+	purpose: X({
+		routeIds: Y(K().max(128)).max(20),
+		focusIds: Y(Q).max(5),
+		baselineOverrides: tt(Q, Ht).default({})
 	}).optional(),
-	spacing: K().default(1),
-	overrides: nt(Q, Ht).default({}),
-	timestamp: K().default(() => Date.now())
+	spacing: q().default(1),
+	overrides: tt(Q, Ht).default({}),
+	timestamp: q().default(() => Date.now())
 });
-Y({
-	success: q(),
+X({
+	success: J(),
 	plan: Vt,
-	changes: J(G()).default([]),
-	error: G().optional(),
-	rollbackApplied: q().default(!1),
-	latencyMs: K().default(0)
-}), Y({
-	eventId: G(),
-	timestamp: K().default(() => Date.now()),
-	type: X([
+	changes: Y(K()).default([]),
+	error: K().optional(),
+	rollbackApplied: J().default(!1),
+	latencyMs: q().default(0)
+}), X({
+	eventId: K(),
+	timestamp: q().default(() => Date.now()),
+	type: Z([
 		"utterance_received",
 		"intent_inferred",
 		"grounding_completed",
@@ -3362,20 +3362,20 @@ Y({
 		"rollback_triggered",
 		"preferences_saved"
 	]),
-	siteId: G(),
-	payload: nt(et()).default({}),
-	latencyMs: K().optional()
+	siteId: K(),
+	payload: tt($e()).default({}),
+	latencyMs: q().optional()
 });
-var Zt = Y({
-	siteId: G().min(1, "siteId is required"),
-	siteName: G().optional(),
-	version: G().default("1.0.0"),
-	endpoint: G().url().optional(),
-	apiKey: G().optional(),
-	debug: q().default(!1),
-	autoMount: q().default(!1),
-	protectedComponents: J(Q).default([]),
-	allowedOps: J(Ft).default([
+var Zt = X({
+	siteId: K().min(1, "siteId is required"),
+	siteName: K().optional(),
+	version: K().default("1.0.0"),
+	endpoint: K().url().optional(),
+	apiKey: K().optional(),
+	debug: J().default(!1),
+	autoMount: J().default(!1),
+	protectedComponents: Y(Q).default([]),
+	allowedOps: Y(Ft).default([
 		"RESIZE",
 		"MOVE",
 		"REORDER",
@@ -3393,7 +3393,7 @@ var Zt = Y({
 		"REDO",
 		"RESET"
 	]),
-	telemetryEnabled: q().default(!0)
+	telemetryEnabled: J().default(!0)
 });
 function Qt(e) {
 	if (typeof e != "object" || !e) throw Error("SdkConfig must be an object");
@@ -3510,11 +3510,11 @@ var en = class {
 			console.error("Error in ComponentRegistry listener:", e);
 		}
 	}
-}, nn = Y({
-	path: G(),
+}, nn = X({
+	path: K(),
 	pageId: Q,
-	title: G(),
-	metadata: nt(et()).default({})
+	title: K(),
+	metadata: tt($e()).default({})
 }), rn = class {
 	routes = /* @__PURE__ */ new Map();
 	pageIdToRoute = /* @__PURE__ */ new Map();
@@ -3550,13 +3550,13 @@ var en = class {
 	clear() {
 		this.routes.clear(), this.pageIdToRoute.clear(), this.activePageId = null;
 	}
-}, an = Y({
+}, an = X({
 	id: Q,
-	label: G().optional(),
-	name: G().optional(),
-	description: G().optional(),
-	requiresConfirmation: q().default(!1),
-	metadata: nt(et()).default({})
+	label: K().optional(),
+	name: K().optional(),
+	description: K().optional(),
+	requiresConfirmation: J().default(!1),
+	metadata: tt($e()).default({})
 }), on = class {
 	actions = /* @__PURE__ */ new Map();
 	register(e) {
@@ -3587,11 +3587,11 @@ var en = class {
 		this.actions.clear();
 	}
 };
-Y({
+X({
 	componentId: Q.optional(),
-	disallowedOps: J(Ft).default([]),
-	requiresAuth: q().default(!1),
-	requiresConfirmation: q().default(!1)
+	disallowedOps: Y(Ft).default([]),
+	requiresAuth: J().default(!1),
+	requiresConfirmation: J().default(!1)
 });
 var sn = class {
 	protectedComponentIds = /* @__PURE__ */ new Set();
@@ -4679,9 +4679,9 @@ var sn = class {
 	toggleWidget: () => e((e) => ({ isWidgetOpen: !e.isWidgetOpen })),
 	setWidgetOpen: (t) => e({ isWidgetOpen: t }),
 	getOverride: (e) => t().snapshot.overrides[e] ?? pn
-})), hn = (0, Z.createContext)(null);
+})), hn = (0, ct.createContext)(null);
 function gn() {
-	let e = (0, Z.useContext)(hn);
+	let e = (0, ct.useContext)(hn);
 	if (!e) throw Error("useWebAgent must be used within a WebAgentProvider");
 	return e;
 }
@@ -4695,9 +4695,9 @@ var _n = Object.freeze({
 function vn(e) {
 	return mn((t) => t.snapshot.overrides[e] ?? _n);
 }
-var yn = Z.forwardRef(({ id: e, role: t, label: n, aliases: r = [], regionId: i, allowedOps: a, isProtected: o = !1, isSensitive: s = !1, as: c = "div", className: l, style: u, children: d, ...f }, p) => {
-	let { sdk: m } = gn(), h = (0, Z.useRef)(null), g = e, _ = vn(g);
-	(0, Z.useEffect)(() => {
+var yn = ct.forwardRef(({ id: e, role: t, label: n, aliases: r = [], regionId: i, allowedOps: a, isProtected: o = !1, isSensitive: s = !1, as: c = "div", className: l, style: u, children: d, ...f }, p) => {
+	let { sdk: m } = gn(), h = (0, ct.useRef)(null), g = e, _ = vn(g);
+	(0, ct.useEffect)(() => {
 		try {
 			m.componentRegistry.register({
 				id: g,
@@ -4740,7 +4740,7 @@ var yn = Z.forwardRef(({ id: e, role: t, label: n, aliases: r = [], regionId: i,
 	]);
 	let v = (e) => {
 		h.current = e, typeof p == "function" ? p(e) : p && (p.current = e);
-	}, y = _.scale ?? 1, b = _.hidden ?? !1, x = _.collapsed ?? !1, S = _.pinned ?? !1, C = _.highlighted ?? !1, w = (0, Z.useMemo)(() => {
+	}, y = _.scale ?? 1, b = _.hidden ?? !1, x = _.collapsed ?? !1, S = _.pinned ?? !1, C = _.highlighted ?? !1, w = (0, ct.useMemo)(() => {
 		let e = {
 			transition: "transform 260ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 260ms ease, max-height 300ms cubic-bezier(0.16, 1, 0.3, 1), opacity 200ms ease",
 			transformOrigin: "top left",
@@ -4771,9 +4771,9 @@ var yn = Z.forwardRef(({ id: e, role: t, label: n, aliases: r = [], regionId: i,
 	});
 });
 yn.displayName = "Adaptive";
-var bn = Z.forwardRef(({ id: e, label: t, direction: n = "row", gap: r = "1rem", columns: i, align: a, justify: o, wrap: s = !0, as: c = "section", className: l, style: u, children: d, ...f }, p) => {
+var bn = ct.forwardRef(({ id: e, label: t, direction: n = "row", gap: r = "1rem", columns: i, align: a, justify: o, wrap: s = !0, as: c = "section", className: l, style: u, children: d, ...f }, p) => {
 	let { sdk: m } = gn(), h = e, g = mn((e) => e.snapshot.overrides);
-	(0, Z.useEffect)(() => {
+	(0, ct.useEffect)(() => {
 		try {
 			m.componentRegistry.register({
 				id: h,
@@ -4802,12 +4802,12 @@ var bn = Z.forwardRef(({ id: e, label: t, direction: n = "row", gap: r = "1rem",
 		t,
 		n
 	]);
-	let _ = (0, Z.useMemo)(() => {
-		let e = Z.Children.toArray(d);
+	let _ = (0, ct.useMemo)(() => {
+		let e = ct.Children.toArray(d);
 		if (e.length <= 1) return e;
 		let t = e.map((e, t) => {
 			let n;
-			if (Z.isValidElement(e)) {
+			if (ct.isValidElement(e)) {
 				let t = e.props;
 				n = t["data-wa-id"] || t.id || (typeof e.key == "string" ? e.key.replace(/^\.\$/, "") : void 0);
 			}
@@ -4819,7 +4819,7 @@ var bn = Z.forwardRef(({ id: e, label: t, direction: n = "row", gap: r = "1rem",
 			};
 		});
 		return t.sort((e, t) => e.order === t.order ? e.originalIndex - t.originalIndex : e.order - t.order), t.map((e) => e.child);
-	}, [d, g]), v = (0, Z.useMemo)(() => {
+	}, [d, g]), v = (0, ct.useMemo)(() => {
 		let e = {
 			boxSizing: "border-box",
 			gap: typeof r == "number" ? `${r}px` : r,
@@ -5556,7 +5556,7 @@ function sr(e, t = {}) {
 		}
 		for (let e of r.match(/[\p{L}\p{N}_]+/gu) ?? []) e.length >= 2 && k.includes(e) && (a += 5e3);
 		return a;
-	}, M = (e) => /^region\.[a-z0-9_.]*\.goal$/.test(e.id) || e.id === "region.storefront.goal", N = /* @__PURE__ */ new Map(), P = O, ee = (e, t) => {
+	}, M = (e) => /^region\.[a-z0-9_.]*\.goal$/.test(e.id) || e.id === "region.storefront.goal", N = /* @__PURE__ */ new Map(), P = O, F = (e, t) => {
 		let n = x.filter((t) => e.has(t.id)).map((t) => {
 			let n = {
 				...e.get(t.id),
@@ -5579,7 +5579,7 @@ function sr(e, t = {}) {
 				omittedProtectedNodes: T - n.filter((e) => e.protected).length
 			}
 		});
-	}, te = (e) => {
+	}, ee = (e) => {
 		let t = [], i = e;
 		for (; i && !N.has(i.id);) t.push(i), i = i.parentId ? o.get(i.parentId) : void 0;
 		if (N.size + t.length > r) return !1;
@@ -5594,7 +5594,7 @@ function sr(e, t = {}) {
 				};
 				e || !t.text || t.text === t.label ? delete t.text : t.text = t.text.slice(0, 120), r.set(t.id, t);
 			}
-			let i = ee(r, P.availableRoutes);
+			let i = F(r, P.availableRoutes);
 			if (i.budget.bytes <= n) {
 				for (let [e, t] of r) N.set(e, t);
 				return P = i, !0;
@@ -5602,13 +5602,13 @@ function sr(e, t = {}) {
 		}
 		return !1;
 	};
-	for (let e of x.filter(M)) te(e);
-	let F = S.map((e, t) => ({
+	for (let e of x.filter(M)) ee(e);
+	let I = S.map((e, t) => ({
 		route: e,
 		index: t,
 		score: j(e.label, `${e.description ?? ""} ${e.title ?? ""}`, e.aliases) + (e.title || e.actionLabel ? 2e3 : 0)
-	})).sort((e, t) => t.score - e.score || e.index - t.index), ne = P.budget.bytes, I = Math.max(200, Math.floor(n * .35));
-	for (let { route: e } of F) {
+	})).sort((e, t) => t.score - e.score || e.index - t.index), te = P.budget.bytes, L = Math.max(200, Math.floor(n * .35));
+	for (let { route: e } of I) {
 		let t = [
 			e,
 			{
@@ -5623,14 +5623,14 @@ function sr(e, t = {}) {
 			}
 		];
 		for (let e of t) {
-			let t = ee(N, [...P.availableRoutes, e]);
-			if (t.budget.bytes <= n && t.budget.bytes - ne <= I) {
+			let t = F(N, [...P.availableRoutes, e]);
+			if (t.budget.bytes <= n && t.budget.bytes - te <= L) {
 				P = t;
 				break;
 			}
 		}
 	}
-	let L = x.map((e, t) => ({
+	let R = x.map((e, t) => ({
 		node: e,
 		index: t,
 		score: (M(e) ? 1e6 : 0) + j(e.label, e.text ?? "") + (e.protected ? 1800 : 0) + (e.role === "region" ? 120 : 0) - (e.hidden && !e.protected ? 800 : 0)
@@ -5652,27 +5652,27 @@ function sr(e, t = {}) {
 				if (N.has(n.id)) continue;
 				let t = 0, r = n;
 				for (; r && !N.has(r.id);) t++, r = r.parentId ? o.get(r.parentId) : void 0;
-				N.size + t <= e && te(n);
+				N.size + t <= e && ee(n);
 			}
 		}
 	}
-	for (let { node: e } of L) N.has(e.id) || te(e);
-	P = ee(N, P.availableRoutes);
-	let R = tr(e, {
+	for (let { node: e } of R) N.has(e.id) || ee(e);
+	P = F(N, P.availableRoutes);
+	let z = tr(e, {
 		page: C,
 		nodes: x,
 		availableRoutes: S
-	}), z = P.budget.bytes;
+	}), B = P.budget.bytes;
 	return {
 		version: 1,
 		roots: b,
 		nodes: x,
 		modelContext: P,
 		stats: {
-			richBytes: R,
-			compactBytes: z,
+			richBytes: z,
+			compactBytes: B,
 			estimatedTokens: P.budget.estimatedTokens,
-			savedPercent: R > 0 ? Math.round((1 - z / R) * 1e4) / 100 : 0,
+			savedPercent: z > 0 ? Math.round((1 - B / z) * 1e4) / 100 : 0,
 			totalNodes: w,
 			includedNodes: P.nodes.length,
 			totalRoutes: S.length,
@@ -6647,29 +6647,29 @@ function Wr(e) {
 function Gr(e) {
 	return e.normalize("NFKC").toLowerCase().replace(/\s+/gu, " ").trim();
 }
-var Kr = G().trim().min(1).max(Br), qr = G().min(1).max(64).regex(/^[A-Za-z0-9_-]+$/u), Jr = Y({
-	theme: X(["light", "dark"]).optional(),
-	color: G().regex(/^#[0-9a-fA-F]{6}$/u).optional()
-}).strict().refine((e) => e.theme !== void 0 || e.color !== void 0, "A theme or literal color is required"), Yr = Y({
-	operations: J(tt("type", [
-		Y({
-			type: it("THEME"),
+var Kr = K().trim().min(1).max(Br), qr = K().min(1).max(64).regex(/^[A-Za-z0-9_-]+$/u), Jr = X({
+	theme: Z(["light", "dark"]).optional(),
+	color: K().regex(/^#[0-9a-fA-F]{6}$/u).optional()
+}).strict().refine((e) => e.theme !== void 0 || e.color !== void 0, "A theme or literal color is required"), Yr = X({
+	operations: Y(et("type", [
+		X({
+			type: rt("THEME"),
 			params: Jr,
-			dependsOn: J(K()).max(0).default([])
+			dependsOn: Y(q()).max(0).default([])
 		}).strict(),
-		Y({
-			type: it("TRANSLATE"),
-			params: Y({ language: Ut }).strict(),
-			dependsOn: J(K()).max(0).default([])
+		X({
+			type: rt("TRANSLATE"),
+			params: X({ language: Ut }).strict(),
+			dependsOn: Y(q()).max(0).default([])
 		}).strict(),
-		Y({
-			type: it("COMPOSE_UI"),
-			params: Y({ view: Yt }).strict(),
-			dependsOn: J(K()).max(0).default([])
+		X({
+			type: rt("COMPOSE_UI"),
+			params: X({ view: Yt }).strict(),
+			dependsOn: Y(q()).max(0).default([])
 		}).strict()
 	])).min(1).max(10),
 	motion: Bt.default("spring"),
-	persist: q().default(!1)
+	persist: J().default(!1)
 }).strict().superRefine((e, t) => {
 	e.operations.some((e) => e.type === "COMPOSE_UI") && e.operations.length !== 1 && t.addIssue({
 		code: p.custom,
@@ -6678,26 +6678,26 @@ var Kr = G().trim().min(1).max(Br), qr = G().min(1).max(64).regex(/^[A-Za-z0-9_-
 		code: p.custom,
 		message: "At most one page language is allowed"
 	});
-}), Xr = Y({
-	version: it(1),
-	id: G().min(1).max(128).regex(/^[A-Za-z0-9_.-]+$/u),
+}), Xr = X({
+	version: rt(1),
+	id: K().min(1).max(128).regex(/^[A-Za-z0-9_.-]+$/u),
 	query: Kr,
-	plan: et(),
+	plan: $e(),
 	constraints: Jt.optional(),
 	bindingKey: qr.optional(),
-	contextDependent: q().optional(),
-	createdAt: K().int().nonnegative().safe(),
-	lastUsedAt: K().int().nonnegative().safe(),
-	hits: K().int().nonnegative().safe()
+	contextDependent: J().optional(),
+	createdAt: q().int().nonnegative().safe(),
+	lastUsedAt: q().int().nonnegative().safe(),
+	hits: q().int().nonnegative().safe()
 }).strict().refine((e) => e.lastUsedAt >= e.createdAt, "Invalid recipe timestamps");
 function Zr(e) {
 	Wr(e);
-	let t = Y({
-		operations: et(),
-		motion: et().optional(),
-		persist: et().optional(),
-		thought: G().optional(),
-		clarification: G().optional()
+	let t = X({
+		operations: $e(),
+		motion: $e().optional(),
+		persist: $e().optional(),
+		thought: K().optional(),
+		clarification: K().optional()
 	}).strict().parse(e);
 	if (t.clarification !== void 0) throw Error("An unfinished UI request cannot be cached");
 	return Vt.parse(Yr.parse({
@@ -6899,12 +6899,12 @@ function oi(e = {}) {
 		},
 		async remember(e, t) {
 			Wr(t);
-			let n = Y({
+			let n = X({
 				query: Kr,
-				plan: et(),
+				plan: $e(),
 				constraints: Jt.optional(),
 				bindingKey: qr.optional(),
-				contextDependent: q().optional()
+				contextDependent: J().optional()
 			}).strict().parse(t);
 			return g(e, async () => {
 				let t = await m(e), r = c(), i = d(t).find((e) => Gr(e.query) === Gr(n.query)), a = typeof crypto < "u" && typeof crypto.randomUUID == "function" ? crypto.randomUUID() : r.toString(36) + "-" + (++s).toString(36), o = Qr({
@@ -7135,11 +7135,11 @@ function pi(e) {
 	}
 	return n;
 }
-var mi = Y({
-	version: it(1),
+var mi = X({
+	version: rt(1),
 	layout: Xt,
-	shortcutIds: J(G()).max(20),
-	targetSignatures: nt(G()).optional()
+	shortcutIds: Y(K()).max(20),
+	targetSignatures: tt(K()).optional()
 }), hi = class {
 	storage;
 	constructor(e) {
@@ -7228,21 +7228,21 @@ function bi(e, t) {
 }
 function xi(e) {
 	if (!e.aiProvider && !e.gatewayUrl && !e.decision) throw Error("Provide gatewayUrl, aiProvider or decision");
-	let t = e.aiProvider ?? (e.gatewayUrl ? new fn({ gatewayUrl: e.gatewayUrl }) : void 0), n = e.profileStore ?? new hi(), r = Y({
-		userId: G().trim().min(1).max(200),
-		roles: J(G().min(1).max(100)).max(30).optional()
-	}), i = Y({
-		id: G().min(1).max(128).regex(/^[a-zA-Z0-9_.-]+$/),
-		label: G().min(1).max(160),
-		href: G().min(1).max(2048),
-		aliases: J(G().max(160)).max(20).optional(),
-		requiredRoles: J(G().max(100)).max(30).optional(),
-		requiresLogin: q().optional(),
-		requiresVerification: q().optional(),
-		steps: J(G().max(160)).max(12).optional(),
-		title: G().max(160).optional(),
-		actionLabel: G().max(160).optional(),
-		description: G().max(400).optional()
+	let t = e.aiProvider ?? (e.gatewayUrl ? new fn({ gatewayUrl: e.gatewayUrl }) : void 0), n = e.profileStore ?? new hi(), r = X({
+		userId: K().trim().min(1).max(200),
+		roles: Y(K().min(1).max(100)).max(30).optional()
+	}), i = X({
+		id: K().min(1).max(128).regex(/^[a-zA-Z0-9_.-]+$/),
+		label: K().min(1).max(160),
+		href: K().min(1).max(2048),
+		aliases: Y(K().max(160)).max(20).optional(),
+		requiredRoles: Y(K().max(100)).max(30).optional(),
+		requiresLogin: J().optional(),
+		requiresVerification: J().optional(),
+		steps: Y(K().max(160)).max(12).optional(),
+		title: K().max(160).optional(),
+		actionLabel: K().max(160).optional(),
+		description: K().max(400).optional()
 	}), a = (e.routes ?? []).map((e) => i.parse(e));
 	if (new Set(a.map((e) => e.id)).size !== a.length) throw Error("Duplicate route ID");
 	let o = e.session ? r.parse(e.session) : null, s = 0, c = !1, l = null, u = 0, d, f, p = [], m = /* @__PURE__ */ new Map(), h = /* @__PURE__ */ new Map(), g = /* @__PURE__ */ new Set(), _ = e.recipeCache ? oi(e.recipeCache) : void 0, v = /* @__PURE__ */ new Map(), y, b = {
@@ -7285,8 +7285,8 @@ function xi(e) {
 			Sn(t.pathname + "|" + t.hash)
 		]);
 	}
-	function ee() {
-		let e = U.stateManager.getSnapshot(), t = [...p].sort((e, t) => e.element.compareDocumentPosition(t.element) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1).map((e) => [e.descriptor.id, e.element.parentElement?.closest("[data-wa-id]")?.getAttribute("data-wa-id")]);
+	function F() {
+		let e = W.stateManager.getSnapshot(), t = [...p].sort((e, t) => e.element.compareDocumentPosition(t.element) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1).map((e) => [e.descriptor.id, e.element.parentElement?.closest("[data-wa-id]")?.getAttribute("data-wa-id")]);
 		return JSON.stringify({
 			theme: e.theme,
 			accentColor: e.accentColor,
@@ -7298,15 +7298,15 @@ function xi(e) {
 			order: t
 		});
 	}
-	function te(e, t, n, r, i) {
+	function ee(e, t, n, r, i) {
 		let a = [];
 		for (let n of e.operations) {
-			if (!U.config.allowedOps.includes(n.type)) throw Error("저장된 연산 권한이 변경되었습니다.");
-			if (n.type === "TRANSLATE" && !de()) throw Error("번역 연결이 변경되었습니다.");
+			if (!W.config.allowedOps.includes(n.type)) throw Error("저장된 연산 권한이 변경되었습니다.");
+			if (n.type === "TRANSLATE" && !ue()) throw Error("번역 연결이 변경되었습니다.");
 			if (n.type === "COMPOSE_UI") {
-				if (!oe() || re) throw Error("구조 데이터 연결이 변경되었습니다.");
+				if (!ae() || ne) throw Error("구조 데이터 연결이 변경되었습니다.");
 				let e = Yt.parse(n.params.view);
-				if (B.validate(e, z, p), t?.layout && !e.nodes.some((e) => e.type === "section" && e.layout === t.layout)) throw Error("REQUESTED_LAYOUT_MISSING");
+				if (V.validate(e, B, p), t?.layout && !e.nodes.some((e) => e.type === "section" && e.layout === t.layout)) throw Error("REQUESTED_LAYOUT_MISSING");
 				if (t?.requiredTypes?.some((t) => !e.nodes.some((e) => e.type === t))) throw Error("REQUESTED_COMPONENT_MISSING");
 				let r = [.../* @__PURE__ */ new Set([e.regionId, ...e.nodes.flatMap((e) => e.targetId ? [e.targetId] : [])])].sort();
 				a.push(r.map((e) => {
@@ -7321,7 +7321,7 @@ function xi(e) {
 						[...t.allowedOps].sort()
 					];
 				})), a.push(e.nodes.filter((e) => e.dataRef).map((e) => {
-					let t = z.data.find((t) => t.id === e.dataRef);
+					let t = B.data.find((t) => t.id === e.dataRef);
 					if (!t) throw Error("등록 데이터가 없습니다.");
 					let n = e.itemIds ?? t.items.map((e) => e.id);
 					return [
@@ -7331,7 +7331,7 @@ function xi(e) {
 						n.map((e) => [e, t.items.find((t) => t.id === e)?.name])
 					];
 				})), a.push(e.nodes.filter((e) => e.actionRef).map((e) => {
-					let t = z.actions.find((t) => t.id === e.actionRef);
+					let t = B.actions.find((t) => t.id === e.actionRef);
 					return [
 						e.actionRef,
 						t?.label,
@@ -7352,42 +7352,42 @@ function xi(e) {
 			query: Gr(i),
 			declaration: o,
 			dependencies: a,
-			allowedOps: [...U.config.allowedOps].sort(),
+			allowedOps: [...W.config.allowedOps].sort(),
 			constraints: t,
 			...n ? { baseline: r } : {}
 		})));
 	}
-	async function F(e, t = s, n = u) {
+	async function I(e, t = s, n = u) {
 		if (!_) return;
 		let r = await _.list(e);
 		t === s && n === u && e === P() && N({ count: r.length });
 	}
-	let ne = !1, I = 0, L, R, z = {
+	let te = !1, L = 0, R, z, B = {
 		data: [],
 		actions: []
-	}, re, ie, ae = !1, B = Dr({ onAction: (t, n) => {
+	}, ne, re, ie = !1, V = Dr({ onAction: (t, n) => {
 		if (!c && l) {
 			if (!e.onStructureAction) throw Error("호스트 기능이 연결되지 않았습니다.");
 			return e.onStructureAction(t, n);
 		}
-	} }), oe = () => !!(e.decision || e.composeView && e.getStructureCatalog) && (!e.config?.allowedOps || e.config.allowedOps.includes("COMPOSE_UI"));
-	async function se(t = s, n = u) {
+	} }), ae = () => !!(e.decision || e.composeView && e.getStructureCatalog) && (!e.config?.allowedOps || e.config.allowedOps.includes("COMPOSE_UI"));
+	async function oe(t = s, n = u) {
 		if (e.getStructureCatalog) try {
 			let r = Kt.parse(await e.getStructureCatalog());
-			if (H(t, n), r.actions.length && !e.onStructureAction) throw Error("등록된 기능의 호스트 처리기를 연결하세요.");
-			z = r, re = void 0;
+			if (U(t, n), r.actions.length && !e.onStructureAction) throw Error("등록된 기능의 호스트 처리기를 연결하세요.");
+			B = r, ne = void 0;
 		} catch (e) {
-			throw t === s && n === u && (re = e instanceof Error ? e : /* @__PURE__ */ Error("실제 데이터 연결을 확인하지 못했습니다.")), e;
+			throw t === s && n === u && (ne = e instanceof Error ? e : /* @__PURE__ */ Error("실제 데이터 연결을 확인하지 못했습니다.")), e;
 		}
 	}
-	function ce(t) {
-		let n = Ne(), r = new Set(n.nodes.map((e) => e.id)), i = B.getManagedTargets().filter((e) => e.element.isConnected && !e.element.closest("[data-wa-private],[data-wa-sensitive]") && !r.has(e.descriptor.id)).map(({ descriptor: e }) => ({
+	function se(t) {
+		let n = Me(), r = new Set(n.nodes.map((e) => e.id)), i = V.getManagedTargets().filter((e) => e.element.isConnected && !e.element.closest("[data-wa-private],[data-wa-sensitive]") && !r.has(e.descriptor.id)).map(({ descriptor: e }) => ({
 			id: e.id,
 			label: e.label,
 			role: e.role,
 			allowedOps: e.allowedOps,
 			protected: e.protected,
-			parentId: U.stateManager.getSnapshot().composition?.regionId,
+			parentId: W.stateManager.getSnapshot().composition?.regionId,
 			children: []
 		})), a = sr({
 			...n,
@@ -7396,7 +7396,7 @@ function xi(e) {
 			...e.contextBudget,
 			maxBytes: 6e3,
 			utterance: t
-		}).modelContext, o = U.stateManager.getSnapshot().composition;
+		}).modelContext, o = W.stateManager.getSnapshot().composition;
 		if (!o) return a;
 		let s = {
 			regionId: o.regionId,
@@ -7431,42 +7431,42 @@ function xi(e) {
 		for (u(); l() > 8e3 && s.nodes.length;) s.nodes.pop(), c.truncated = !0, u();
 		return c;
 	}
-	function le() {
-		R && clearTimeout(R), R = void 0;
+	function ce() {
+		z && clearTimeout(z), z = void 0;
 	}
-	let V = e.translateBatch ? Cr({
+	let H = e.translateBatch ? Cr({
 		sourceLanguage: e.sourceLanguage,
 		translateBatch: e.translateBatch,
 		onProgress: (e, t) => M({ message: `화면 문구를 번역하고 있습니다. ${e}/${t}` })
 	}) : void 0;
-	function ue() {
+	function le() {
 		if (!l) throw Error("화면이 연결되지 않았습니다.");
 		let e = l instanceof Document ? l : l.ownerDocument;
 		return l === e.body ? e : l;
 	}
-	function de() {
-		return !!V && (!e.config?.allowedOps || e.config.allowedOps.includes("TRANSLATE"));
+	function ue() {
+		return !!H && (!e.config?.allowedOps || e.config.allowedOps.includes("TRANSLATE"));
 	}
-	function H(e, t) {
+	function U(e, t) {
 		if (c || !l || s !== e || u !== t) throw Error("사용자 또는 화면이 변경되어 이전 요청을 취소했습니다.");
 	}
-	async function fe(e, t = s, n = u) {
-		if (V && e) {
-			if (!de()) throw Error("이 사이트에서는 언어 변경을 허용하지 않습니다.");
-			ne = !0;
+	async function de(e, t = s, n = u) {
+		if (H && e) {
+			if (!ue()) throw Error("이 사이트에서는 언어 변경을 허용하지 않습니다.");
+			te = !0;
 			try {
 				let r = Date.now() + 18e4;
-				for (let i = 0; i < 12 && Date.now() < r; i++) if (H(t, n), await V.prepare(ue(), e), H(t, n), !V.hasPending(ue(), e)) {
-					De();
+				for (let i = 0; i < 12 && Date.now() < r; i++) if (U(t, n), await H.prepare(le(), e), U(t, n), !H.hasPending(le(), e)) {
+					Ee();
 					return;
 				}
 				throw Error("번역 중 화면이 계속 변경되었습니다. 화면이 안정된 뒤 다시 요청해 주세요.");
 			} finally {
-				t === s && n === u && (ne = !1);
+				t === s && n === u && (te = !1);
 			}
 		}
 	}
-	function pe() {
+	function fe() {
 		d && l && !c && d.observe(l instanceof Document ? l.body : l, {
 			childList: !0,
 			subtree: !0,
@@ -7482,31 +7482,31 @@ function xi(e) {
 			]
 		});
 	}
-	function me(e) {
-		if (V && l && !ne) {
-			d?.disconnect(), L = void 0;
+	function pe(e) {
+		if (H && l && !te) {
+			d?.disconnect(), R = void 0;
 			try {
-				let t = V.apply(ue(), e);
-				I = t.pending, t.pending || M({ language: e ?? V.getSourceLanguage() });
+				let t = H.apply(le(), e);
+				L = t.pending, t.pending || M({ language: e ?? H.getSourceLanguage() });
 			} catch (e) {
-				L = e instanceof Error ? e : Error(String(e)), I = 0;
+				R = e instanceof Error ? e : Error(String(e)), L = 0;
 			} finally {
-				pe();
+				fe();
 			}
 		}
 	}
-	function he() {
-		let e = U.stateManager.getSnapshot().language;
-		if (!V || !e || !I || w.busy || R || !de()) return;
+	function me() {
+		let e = W.stateManager.getSnapshot().language;
+		if (!H || !e || !L || w.busy || z || !ue()) return;
 		let t = s, n = u;
-		R = setTimeout(() => {
-			R = void 0, (async () => {
-				if (!(c || !l || t !== s || n !== u || w.busy || U.stateManager.getSnapshot().language !== e)) {
+		z = setTimeout(() => {
+			z = void 0, (async () => {
+				if (!(c || !l || t !== s || n !== u || w.busy || W.stateManager.getSnapshot().language !== e)) {
 					M({ busy: !0 });
 					try {
-						if (await fe(e, t, n), U.stateManager.getSnapshot().language !== e) return;
-						if (me(e), L) throw L;
-						if (I) throw Error("새 문구를 모두 번역하지 못했습니다.");
+						if (await de(e, t, n), W.stateManager.getSnapshot().language !== e) return;
+						if (pe(e), R) throw R;
+						if (L) throw Error("새 문구를 모두 번역하지 못했습니다.");
 						M({
 							message: `새 화면에도 ${e} 언어를 적용했습니다.`,
 							persistenceWarning: void 0
@@ -7520,13 +7520,13 @@ function xi(e) {
 			})();
 		}, 100);
 	}
-	function ge(e, t) {
+	function he(e, t) {
 		for (let [n, r] of t) r === null ? e.removeAttribute(n) : e.setAttribute(n, r);
 	}
-	function _e(e) {
+	function ge(e) {
 		return (e.requiresLogin || e.requiredRoles?.length) && !o ? !1 : !e.requiredRoles?.length || e.requiredRoles.every((e) => o?.roles?.includes(e));
 	}
-	function ve() {
+	function _e() {
 		if (!l) return [];
 		let t = (l instanceof Document ? l : l.ownerDocument).location?.href ?? "http://localhost/", n = [...a], r = new Set(n.map((e) => bi(e.href, t)).filter(Boolean));
 		for (let i of e.discoverRoutes === !1 ? [] : Array.from(l.querySelectorAll("a[href]"))) {
@@ -7541,7 +7541,7 @@ function xi(e) {
 		let i = /* @__PURE__ */ new Set();
 		return n.filter((e) => {
 			let n = bi(e.href, t);
-			return !n || !_e(e) || i.has(e.id) ? !1 : (i.add(e.id), e = {
+			return !n || !ge(e) || i.has(e.id) ? !1 : (i.add(e.id), e = {
 				...e,
 				href: n
 			}, !0);
@@ -7550,8 +7550,8 @@ function xi(e) {
 			href: bi(e.href, t)
 		}));
 	}
-	function ye(t, n) {
-		if (t.purpose && !t.purpose.routeIds.some((e) => T.some((t) => t.id === e))) return ye({
+	function ve(t, n) {
+		if (t.purpose && !t.purpose.routeIds.some((e) => T.some((t) => t.id === e))) return ve({
 			...t,
 			purpose: void 0,
 			overrides: t.purpose.baselineOverrides
@@ -7568,29 +7568,29 @@ function xi(e) {
 		let i = t.purpose ? {
 			routeIds: t.purpose.routeIds.filter((e) => T.some((t) => t.id === e)),
 			focusIds: t.purpose.focusIds.filter((e) => p.some((t) => t.descriptor.id === e) && (!n || n[e] === JSON.stringify([p.find((t) => t.descriptor.id === e).descriptor.role, p.find((t) => t.descriptor.id === e).descriptor.label]))),
-			baselineOverrides: ye({
+			baselineOverrides: ve({
 				...t,
 				purpose: void 0,
 				overrides: t.purpose.baselineOverrides
 			}, n).overrides
-		} : void 0, a = oe() ? t.composition : void 0;
+		} : void 0, a = ae() ? t.composition : void 0;
 		if (a) try {
-			if (B.validate(a, z, p), n && a.nodes.some((e) => e.targetId && n[e.targetId] !== JSON.stringify([p.find((t) => t.descriptor.id === e.targetId)?.descriptor.role, p.find((t) => t.descriptor.id === e.targetId)?.descriptor.label]))) throw Error("저장된 요소가 변경되었습니다.");
+			if (V.validate(a, B, p), n && a.nodes.some((e) => e.targetId && n[e.targetId] !== JSON.stringify([p.find((t) => t.descriptor.id === e.targetId)?.descriptor.role, p.find((t) => t.descriptor.id === e.targetId)?.descriptor.label]))) throw Error("저장된 요소가 변경되었습니다.");
 		} catch (e) {
 			a = void 0, M({ persistenceWarning: e instanceof Error ? e.message : "저장된 구조를 이 화면에 적용하지 못했습니다." });
 		}
 		return {
 			...t,
 			composition: a,
-			language: de() ? t.language : void 0,
+			language: ue() ? t.language : void 0,
 			purpose: a ? void 0 : i?.routeIds.length ? i : void 0,
 			theme: e.config?.allowedOps && !e.config.allowedOps.includes("THEME") ? "light" : t.theme,
 			accentColor: e.config?.allowedOps && !e.config.allowedOps.includes("THEME") ? void 0 : yi(t.accentColor),
 			overrides: r
 		};
 	}
-	function be(t) {
-		ie = void 0, !t.composition && !ae && B.clear();
+	function ye(t) {
+		re = void 0, !t.composition && !ie && V.clear();
 		let n = new Set(t.purpose?.focusIds ?? []);
 		if (l) {
 			let n = l instanceof Document ? l : l.ownerDocument;
@@ -7632,41 +7632,41 @@ function xi(e) {
 				t && getComputedStyle(t).display === "grid" && (e.style.gridColumn = "1 / -1");
 			}
 		}
-		if (k.reflect(l, t, T, p, e.purposeHost), l && !ae) {
+		if (k.reflect(l, t, T, p, e.purposeHost), l && !ie) {
 			d?.disconnect();
 			try {
-				B.reflect(l, t.composition, z, p);
+				V.reflect(l, t.composition, B, p);
 			} catch (e) {
-				ie = e instanceof Error ? e : Error(String(e));
+				re = e instanceof Error ? e : Error(String(e));
 			} finally {
-				pe();
+				fe();
 			}
 		}
-		me(t.language), M({ shortcuts: t.purpose ? T.filter((e) => t.purpose.routeIds.includes(e.id)) : [] });
+		pe(t.language), M({ shortcuts: t.purpose ? T.filter((e) => t.purpose.routeIds.includes(e.id)) : [] });
 	}
-	let xe = {
+	let be = {
 		name: "adaptive:" + (e.decision?.engine ?? t.name),
 		async planTransformation(n) {
 			let r = s, i = u, a = l ? (l instanceof Document ? l : l.ownerDocument).location.href : "", o = () => {
-				if (H(r, i), (l instanceof Document ? l : l.ownerDocument).location.href !== a) throw Error("화면 경로가 변경되어 이전 결정을 취소했습니다.");
-			}, c = () => sr(Ne(), {
+				if (U(r, i), (l instanceof Document ? l : l.ownerDocument).location.href !== a) throw Error("화면 경로가 변경되어 이전 결정을 취소했습니다.");
+			}, c = () => sr(Me(), {
 				...e.contextBudget,
 				maxBytes: 8e3,
 				maxNodes: 32,
 				utterance: n.utterance
 			}).modelContext, d = () => pi({
 				targets: p,
-				allowedOps: U.config.allowedOps,
-				theme: U.stateManager.getSnapshot().theme,
-				accentColor: U.stateManager.getSnapshot().accentColor,
-				languageEnabled: de(),
-				structureEnabled: oe() && !re,
-				canUndo: U.stateManager.canUndo(),
-				canRedo: U.stateManager.canRedo(),
+				allowedOps: W.config.allowedOps,
+				theme: W.stateManager.getSnapshot().theme,
+				accentColor: W.stateManager.getSnapshot().accentColor,
+				languageEnabled: ue(),
+				structureEnabled: ae() && !ne,
+				canUndo: W.stateManager.canUndo(),
+				canRedo: W.stateManager.canRedo(),
 				query: n.utterance,
 				includedIds: new Set(c().nodes.map((e) => e.id)),
-				managedTargetIds: new Set(B.getManagedTargets().map((e) => e.descriptor.id)),
-				validateComposition: (e) => B.validate(e, z, p)
+				managedTargetIds: new Set(V.getManagedTargets().map((e) => e.descriptor.id)),
+				validateComposition: (e) => V.validate(e, B, p)
 			}), f = async (t, r) => {
 				let i = jt.parse({
 					engine: e.decision.engine,
@@ -7689,16 +7689,16 @@ function xi(e) {
 					...a.selectedId ? { selectedId: a.selectedId } : {}
 				} }), a;
 			};
-			if (S = void 0, C = void 0, oe()) try {
-				await se(r, i);
+			if (S = void 0, C = void 0, ae()) try {
+				await oe(r, i);
 			} catch (e) {
 				M({ persistenceWarning: e instanceof Error ? e.message : "실제 데이터 연결을 확인하지 못했습니다." });
 			}
-			H(r, i);
-			let m = Ne(n.context.selectedId ?? n.context.pointerTargetId), h = P(), g = ee(), y = O === "compact" ? sr(m, {
+			U(r, i);
+			let m = Me(n.context.selectedId ?? n.context.pointerTargetId), h = P(), g = F(), y = O === "compact" ? sr(m, {
 				...e.contextBudget,
 				utterance: n.utterance
-			}).modelContext : m, b = new Set(y.nodes.map((e) => e.id)), w = O === "compact", k = U.stateManager.getSnapshot(), A = {
+			}).modelContext : m, b = new Set(y.nodes.map((e) => e.id)), w = O === "compact", k = W.stateManager.getSnapshot(), A = {
 				...n.context,
 				visibleNodes: w ? n.context.visibleNodes.filter((e) => b.has(e.id)) : n.context.visibleNodes,
 				recentInteractions: n.context.recentInteractions.slice(w ? -3 : -6),
@@ -7719,13 +7719,13 @@ function xi(e) {
 							focusIds: k.purpose.focusIds
 						} : void 0
 					} : k,
-					structuralCapabilities: oe() ? {
-						data: z.data.map(({ id: e, label: t, kind: n }) => ({
+					structuralCapabilities: ae() ? {
+						data: B.data.map(({ id: e, label: t, kind: n }) => ({
 							id: e,
 							label: t,
 							kind: n
 						})),
-						actions: z.actions,
+						actions: B.actions,
 						components: [
 							"section",
 							"heading",
@@ -7738,33 +7738,33 @@ function xi(e) {
 						]
 					} : void 0,
 					adaptiveAssistance: !0,
-					siteAllowedOps: U.config.allowedOps,
+					siteAllowedOps: W.config.allowedOps,
 					recipeReuse: h ? {
 						enabled: !0,
 						cachePolicy: "absolute for explicit fixed requirements; contextual for relative requests; none to avoid remembering"
 					} : void 0,
-					currentTheme: U.stateManager.getSnapshot().theme,
-					currentAccentColor: U.stateManager.getSnapshot().accentColor,
-					currentLanguage: k.language ?? V?.getSourceLanguage() ?? "ko"
+					currentTheme: W.stateManager.getSnapshot().theme,
+					currentAccentColor: W.stateManager.getSnapshot().accentColor,
+					currentLanguage: k.language ?? H?.getSourceLanguage() ?? "ko"
 				}
 			}, j = w ? {
 				...n.siteGraph,
 				nodes: n.siteGraph.nodes.filter((e) => b.has(e.id)),
 				edges: n.siteGraph.edges.filter((e) => b.has(e.source) && b.has(e.target))
-			} : n.siteGraph, F, ne, I;
+			} : n.siteGraph, I, te, L;
 			if (h && _ && !x) {
 				let t = async (e) => {
 					if (e) try {
 						let t = Sn(h + "|" + e.id + "|" + JSON.stringify(e.plan)), n = v.get(t);
 						n || (n = ei(e), v.set(t, n), v.size > 24 && v.delete(v.keys().next().value));
 						let r = n();
-						if (!e.bindingKey || e.bindingKey !== te(r, e.constraints, e.contextDependent !== !1, g, e.query)) throw Error("레시피의 화면 기준이 변경되었습니다.");
+						if (!e.bindingKey || e.bindingKey !== ee(r, e.constraints, e.contextDependent !== !1, g, e.query)) throw Error("레시피의 화면 기준이 변경되었습니다.");
 						return {
 							recipe: e,
 							plan: r
 						};
 					} catch {
-						await _.remove(h, e.id), H(r, i), N({
+						await _.remove(h, e.id), U(r, i), N({
 							source: "invalid",
 							recipeId: void 0
 						});
@@ -7773,7 +7773,7 @@ function xi(e) {
 				}, a = !1;
 				try {
 					let o = await t(await _.findExact(h, n.utterance));
-					if (H(r, i), o) F = o.plan, S = {
+					if (U(r, i), o) I = o.plan, S = {
 						scope: h,
 						recipe: o.recipe,
 						source: "exact"
@@ -7781,7 +7781,7 @@ function xi(e) {
 					else if (e.decision || e.recipeCache && e.recipeCache.match) {
 						let o = await _.candidates(h, n.utterance, 3), s = [];
 						for (let e of o) await t(await _.get(h, e.id)) && s.push(e);
-						if (H(r, i), s.length) {
+						if (U(r, i), s.length) {
 							M({ message: "저장된 화면 요구와 같은 목적의 요청인지 확인하고 있습니다." });
 							let o;
 							if (e.decision) {
@@ -7791,14 +7791,14 @@ function xi(e) {
 									description: e.summary,
 									query: e.query
 								})));
-								a = !1, o = e.selectedId, I = e.cachePolicy;
+								a = !1, o = e.selectedId, L = e.cachePolicy;
 							} else o = e.recipeCache && e.recipeCache.match ? await e.recipeCache.match({
 								query: n.utterance,
 								candidates: s
 							}) : null;
-							if (H(r, i), o && s.some((e) => e.id === o)) {
+							if (U(r, i), o && s.some((e) => e.id === o)) {
 								let e = await t(await _.get(h, o));
-								H(r, i), e && (F = e.plan, S = {
+								U(r, i), e && (I = e.plan, S = {
 									scope: h,
 									recipe: e.recipe,
 									source: "semantic"
@@ -7807,35 +7807,35 @@ function xi(e) {
 						}
 					}
 				} catch (e) {
-					if (H(r, i), a) throw e;
-					F = void 0, S = void 0, N({
+					if (U(r, i), a) throw e;
+					I = void 0, S = void 0, N({
 						source: "miss",
 						recipeId: void 0
 					});
 				}
 			}
-			let L = F;
-			if (F && I && (L = {
-				...F,
-				operations: F.operations.map((e) => ({
+			let R = I;
+			if (I && L && (R = {
+				...I,
+				operations: I.operations.map((e) => ({
 					...e,
 					params: {
 						...e.params,
-						cachePolicy: I
+						cachePolicy: L
 					}
 				}))
-			}), !L && e.decision) {
+			}), !R && e.decision) {
 				let n = d(), r = n.length ? await f("action", n.map(({ id: e, description: t }) => ({
 					id: e,
 					description: t
 				}))) : void 0;
 				if (r?.selectedId) {
-					De(), o();
+					Ee(), o();
 					let e = n.find((e) => e.id === r.selectedId), t = d().find((t) => t.id === e.id && t.description === e.description && JSON.stringify(t.plan) === JSON.stringify(e.plan));
 					if (!t) throw Error("결정 중 화면 요소 또는 권한이 바뀌어 적용하지 않았습니다.");
-					ne = t;
+					te = t;
 					let i = t.contextDependent && r.cachePolicy === "absolute" ? "contextual" : r.cachePolicy;
-					L = {
+					R = {
 						...t.plan,
 						operations: t.plan.operations.map((e) => ({
 							...e,
@@ -7849,7 +7849,7 @@ function xi(e) {
 				} else (!e.decision.fallbackToGenerator || !t) && (r || M({ decisionInfo: {
 					engine: e.decision.engine,
 					outcome: "miss"
-				} }), L = {
+				} }), R = {
 					operations: [{
 						type: "FOCUS",
 						params: {},
@@ -7860,15 +7860,15 @@ function xi(e) {
 					clarification: "현재 등록된 화면 변경 후보에서 요청을 확실히 선택하지 못했습니다. 원하는 색상·언어·순서·배치를 구체적으로 말씀해 주세요."
 				});
 			}
-			let R = Vt.parse(L ?? await t.planTransformation({
+			let z = Vt.parse(R ?? await t.planTransformation({
 				...n,
 				context: A,
 				siteGraph: j
 			}));
 			e.decision && o();
-			let ie = R.operations.map((e) => e.params.cachePolicy), le = ie.some((e) => e !== "absolute"), ue = !(!h || S || ie.includes("none")), pe = {
-				...R,
-				operations: R.operations.map((e) => {
+			let re = z.operations.map((e) => e.params.cachePolicy), ce = re.some((e) => e !== "absolute"), le = !(!h || S || re.includes("none")), fe = {
+				...z,
+				operations: z.operations.map((e) => {
 					let t = { ...e.params };
 					return delete t.cachePolicy, {
 						...e,
@@ -7876,16 +7876,16 @@ function xi(e) {
 					};
 				})
 			};
-			if (H(r, i), E = [], D = void 0, pe.clarification) return {
-				...pe,
+			if (U(r, i), E = [], D = void 0, fe.clarification) return {
+				...fe,
 				operations: [{
 					type: "FOCUS",
 					params: {},
 					dependsOn: []
 				}]
 			};
-			let me = [], he = [], ge;
-			for (let t of pe.operations) if (_i.has(t.type)) {
+			let pe = [], me = [], he;
+			for (let t of fe.operations) if (_i.has(t.type)) {
 				if (t.params.href || t.params.url) throw Error("모델이 생성한 URL은 사용할 수 없습니다. 등록된 routeId를 사용하세요.");
 				let e = t.params.routeId;
 				if (e !== void 0) {
@@ -7896,7 +7896,7 @@ function xi(e) {
 				let n = t.params.focusIds;
 				if (n !== void 0) {
 					if (!Array.isArray(n) || !n.every((e) => typeof e == "string" && p.some((t) => t.descriptor.id === e) && (!w || b.has(e)))) throw Error("화면 대상이 유효하지 않습니다. 더 자세한 구조를 전달하거나 대상을 다시 선택해 주세요.");
-					for (let e of n.slice(0, 5)) he.push({
+					for (let e of n.slice(0, 5)) me.push({
 						type: "HIGHLIGHT",
 						target: {
 							kind: "id",
@@ -7906,11 +7906,11 @@ function xi(e) {
 						dependsOn: []
 					});
 					if (t.type === "GENERATE_DASHBOARD" && t.params.simplify === !0 && n.length) {
-						me = n.slice(0, 5);
+						pe = n.slice(0, 5);
 						let e = p.filter((e) => n.includes(e.descriptor.id));
 						for (let t of p) {
 							let n = p.some((e) => e.descriptor.protected && t.element.contains(e.element)), r = e.some((e) => t.element.contains(e.element) || e.element.contains(t.element));
-							!n && !r && t.descriptor.allowedOps.includes("HIDE") && !t.descriptor.protected && he.length < 10 && he.push({
+							!n && !r && t.descriptor.allowedOps.includes("HIDE") && !t.descriptor.protected && me.length < 10 && me.push({
 								type: "HIDE",
 								target: {
 									kind: "id",
@@ -7924,22 +7924,22 @@ function xi(e) {
 				}
 			} else {
 				if (t.type === "COMPOSE_UI") {
-					if (!oe()) throw Error("이 사이트에서는 구조 설계를 연결하지 않았습니다.");
-					if (re) throw re;
-					if (t.target || pe.operations.length !== 1) throw Error("구조 설계는 독립된 한 연산으로 요청하세요.");
-					if (S || ne) {
-						let e = Y({
+					if (!ae()) throw Error("이 사이트에서는 구조 설계를 연결하지 않았습니다.");
+					if (ne) throw ne;
+					if (t.target || fe.operations.length !== 1) throw Error("구조 설계는 독립된 한 연산으로 요청하세요.");
+					if (S || te) {
+						let e = X({
 							view: Yt,
 							constraints: Jt.optional()
 						}).strict().parse(t.params).view;
-						B.validate(e, z, p), t.params = { view: e };
+						V.validate(e, B, p), t.params = { view: e };
 					} else {
 						if (!e.composeView) throw Error("새 구조를 생성하는 모델이 연결되지 않았습니다. 등록된 구조 후보를 선택해 주세요.");
-						let a = Y({
-							goal: G().trim().min(1).max(1e3),
+						let a = X({
+							goal: K().trim().min(1).max(1e3),
 							constraints: Jt.optional()
-						}).strict().parse(t.params), o = G().trim().min(1).max(1e3).parse(n.utterance);
-						M({ message: "화면 구조와 실제 데이터를 조회해 새 구성을 설계하고 있습니다." }), ae = !0;
+						}).strict().parse(t.params), o = K().trim().min(1).max(1e3).parse(n.utterance);
+						M({ message: "화면 구조와 실제 데이터를 조회해 새 구성을 설계하고 있습니다." }), ie = !0;
 						try {
 							let n;
 							for (let s = 0; s < 2; s++) {
@@ -7947,7 +7947,7 @@ function xi(e) {
 									stage: "observing",
 									attempt: s + 1
 								} });
-								let c = Or(Ne(), p, z);
+								let c = Or(Me(), p, B);
 								M({ compositionRun: {
 									stage: "designing",
 									attempt: s + 1,
@@ -7955,20 +7955,20 @@ function xi(e) {
 								} });
 								let l = Yt.parse(await e.composeView({
 									goal: o,
-									frontendSnapshot: ce(o),
-									catalog: structuredClone(z),
+									frontendSnapshot: se(o),
+									catalog: structuredClone(B),
 									...a.constraints ? { constraints: a.constraints } : {},
 									...n ? { validationFeedback: n } : {}
 								}));
-								H(r, i), De();
+								U(r, i), Ee();
 								try {
 									if (M({ compositionRun: {
 										stage: "validating",
 										attempt: s + 1,
 										observationRevision: c.revision
-									} }), c.assertCurrent(l, Ne(), p, z), a.constraints?.layout && !l.nodes.some((e) => e.type === "section" && e.layout === a.constraints.layout)) throw Error("REQUESTED_LAYOUT_MISSING:" + a.constraints.layout);
+									} }), c.assertCurrent(l, Me(), p, B), a.constraints?.layout && !l.nodes.some((e) => e.type === "section" && e.layout === a.constraints.layout)) throw Error("REQUESTED_LAYOUT_MISSING:" + a.constraints.layout);
 									if (a.constraints?.requiredTypes?.some((e) => !l.nodes.some((t) => t.type === e))) throw Error("REQUESTED_COMPONENT_MISSING");
-									B.validate(l, z, p), t.params = { view: l }, n = void 0;
+									V.validate(l, B, p), t.params = { view: l }, n = void 0;
 									break;
 								} catch (e) {
 									if (s === 1) throw e;
@@ -7983,14 +7983,14 @@ function xi(e) {
 								}
 							}
 						} finally {
-							r === s && i === u && (ae = !1);
+							r === s && i === u && (ie = !1);
 						}
 					}
 				}
 				if (t.type === "TRANSLATE") {
-					if (!de()) throw Error("이 사이트에서는 언어 변경을 허용하지 않습니다.");
-					if (t.target || ge) throw Error("언어 변경은 화면 전체에 한 번만 적용할 수 있습니다.");
-					ge = Ut.parse(t.params.language), t.params = { language: ge };
+					if (!ue()) throw Error("이 사이트에서는 언어 변경을 허용하지 않습니다.");
+					if (t.target || he) throw Error("언어 변경은 화면 전체에 한 번만 적용할 수 있습니다.");
+					he = Ut.parse(t.params.language), t.params = { language: he };
 				}
 				if (t.type === "THEME") {
 					let e = yi(t.params.color ?? t.params.accentColor);
@@ -8001,7 +8001,7 @@ function xi(e) {
 					else if (t.params.color !== void 0 || t.params.accentColor !== void 0) throw Error("지원하지 않는 색상입니다.");
 				}
 				if (t.target) {
-					let e = U.pipeline.resolveTarget(t.target, A);
+					let e = W.pipeline.resolveTarget(t.target, A);
 					if (!e.targetId || !p.some((t) => t.descriptor.id === e.targetId)) throw Error("변경할 화면을 정확히 찾지 못했습니다.");
 					if (w && !b.has(e.targetId)) throw Error("압축 맥락에 없는 대상입니다. 자세한 구조 모드에서 다시 요청해 주세요.");
 					t.target = {
@@ -8011,53 +8011,53 @@ function xi(e) {
 					let n = p.find((t) => t.descriptor.id === e.targetId);
 					if (["HIDE", "COLLAPSE"].includes(t.type) && p.some((e) => e.descriptor.protected && n.element.contains(e.element))) throw Error("필수 기능이 포함된 영역은 숨길 수 없습니다.");
 				}
-				he.push(t);
+				me.push(t);
 			}
-			if (ge) {
+			if (he) {
 				if (E.length) throw Error("언어 변경과 새 업무 화면 생성은 각각 요청해 주세요.");
-				await fe(ge, r, i);
+				await de(he, r, i);
 			}
 			if (E.length) {
-				let e = ye(U.stateManager.getSnapshot()), t = e.purpose?.baselineOverrides ?? e.overrides;
+				let e = ve(W.stateManager.getSnapshot()), t = e.purpose?.baselineOverrides ?? e.overrides;
 				D = {
 					routeIds: E.map((e) => e.id),
-					focusIds: me,
+					focusIds: pe,
 					baselineOverrides: structuredClone(t)
-				}, U.stateManager.stageSnapshot({
+				}, W.stateManager.stageSnapshot({
 					...e,
 					composition: void 0,
 					purpose: void 0,
 					overrides: t
 				});
 			}
-			let _e = {
-				...pe,
-				operations: he.length ? he.slice(0, 10) : [{
+			let ge = {
+				...fe,
+				operations: me.length ? me.slice(0, 10) : [{
 					type: "FOCUS",
 					params: {},
 					dependsOn: []
 				}]
 			};
-			if (ue && h) try {
-				let e = Jt.optional().parse(R.operations.find((e) => e.type === "COMPOSE_UI")?.params.constraints);
+			if (le && h) try {
+				let e = Jt.optional().parse(z.operations.find((e) => e.type === "COMPOSE_UI")?.params.constraints);
 				C = {
 					scope: h,
 					query: n.utterance,
 					constraints: e,
-					contextDependent: le,
-					bindingKey: te(_e, e, le, g, n.utterance)
+					contextDependent: ce,
+					bindingKey: ee(ge, e, ce, g, n.utterance)
 				};
 			} catch {
 				C = void 0;
 			}
-			else if (h && S?.source === "semantic" && !ie.includes("none")) {
-				let e = S.recipe, t = e.contextDependent !== !1 || le;
+			else if (h && S?.source === "semantic" && !re.includes("none")) {
+				let e = S.recipe, t = e.contextDependent !== !1 || ce;
 				C = {
 					scope: h,
 					query: n.utterance,
 					constraints: e.constraints,
 					contextDependent: t,
-					bindingKey: te(_e, e.constraints, t, g, n.utterance)
+					bindingKey: ee(ge, e.constraints, t, g, n.utterance)
 				};
 			}
 			if (N({
@@ -8065,12 +8065,12 @@ function xi(e) {
 				source: S?.source ?? (h ? "miss" : "none"),
 				recipeId: S?.recipe.id
 			}), S && h !== P()) throw Error("화면 경로가 변경되어 저장된 요청을 다시 확인합니다.");
-			return e.decision && o(), _e;
+			return e.decision && o(), ge;
 		}
-	}, U = new dn($t(e.siteId, {
+	}, W = new dn($t(e.siteId, {
 		...e.config,
 		autoMount: !1,
-		aiProvider: xe,
+		aiProvider: be,
 		preferenceStore: void 0,
 		allowedOps: e.config?.allowedOps ?? [
 			"RESIZE",
@@ -8087,17 +8087,17 @@ function xi(e) {
 			"UNDO",
 			"REDO",
 			"RESET",
-			...V ? ["TRANSLATE"] : [],
-			...oe() ? ["COMPOSE_UI"] : []
+			...H ? ["TRANSLATE"] : [],
+			...ae() ? ["COMPOSE_UI"] : []
 		]
 	}));
-	U.routeRegistry.setActivePageId("page." + e.siteId.toLowerCase().replace(/[^a-z0-9_]+/g, "_"));
-	let Se = U.stateManager.subscribe((e) => be(e));
-	async function Ce() {
+	W.routeRegistry.setActivePageId("page." + e.siteId.toLowerCase().replace(/[^a-z0-9_]+/g, "_"));
+	let xe = W.stateManager.subscribe((e) => ye(e));
+	async function Se() {
 		if (!(!o || c || j)) try {
 			await n.save(o.userId, e.siteId, {
 				version: 1,
-				layout: ye(U.stateManager.getSnapshot()),
+				layout: ve(W.stateManager.getSnapshot()),
 				shortcutIds: w.shortcuts.map((e) => e.id),
 				targetSignatures: Object.fromEntries(p.map((e) => [e.descriptor.id, JSON.stringify([e.descriptor.role, e.descriptor.label])]))
 			});
@@ -8105,7 +8105,7 @@ function xi(e) {
 			M({ persistenceWarning: "설정을 저장하지 못했습니다. 현재 화면에서는 계속 사용할 수 있습니다." });
 		}
 	}
-	function we(e) {
+	function Ce(e) {
 		let t = e.ownerDocument, n = t.defaultView;
 		if (!e.isConnected || !n || typeof t.elementFromPoint != "function") return !1;
 		let r = e.getBoundingClientRect(), i = r.left + r.width / 2, a = r.top + r.height / 2;
@@ -8113,7 +8113,7 @@ function xi(e) {
 		let o = t.elementFromPoint(i, a);
 		return o !== null && (o === e || e.contains(o));
 	}
-	async function Te() {
+	async function we() {
 		let t = s, r = u, i = o;
 		if (A = null, i) {
 			try {
@@ -8126,11 +8126,11 @@ function xi(e) {
 		if (A && l) {
 			let e = mi.safeParse(A);
 			if (!e.success) return;
-			let n = ye(e.data.layout, e.data.targetSignatures ?? {});
+			let n = ve(e.data.layout, e.data.targetSignatures ?? {});
 			if (n.language) {
 				M({ busy: !0 });
 				try {
-					await fe(n.language, t, r);
+					await de(n.language, t, r);
 				} catch (e) {
 					if (t !== s || r !== u || c) return;
 					n = {
@@ -8142,28 +8142,28 @@ function xi(e) {
 				}
 			}
 			if (t !== s || r !== u || c) return;
-			let i = U.stateManager.checkpoint(), a = p.filter((e) => e.descriptor.protected && e.element.matches("button, a, input, select, textarea, [role=\"button\"]") && we(e.element));
-			if (j = !0, U.stateManager.loadSnapshot(n), a.length && typeof requestAnimationFrame == "function" && await new Promise((e) => requestAnimationFrame(() => e())), j = !1, t !== s || r !== u || c) return;
-			if (a.some((e) => !we(e.element))) {
-				U.stateManager.restoreCheckpoint(i), M({ persistenceWarning: "이전 구성이 필수 기능을 가려 원래 화면을 유지했습니다." });
+			let i = W.stateManager.checkpoint(), a = p.filter((e) => e.descriptor.protected && e.element.matches("button, a, input, select, textarea, [role=\"button\"]") && Ce(e.element));
+			if (j = !0, W.stateManager.loadSnapshot(n), a.length && typeof requestAnimationFrame == "function" && await new Promise((e) => requestAnimationFrame(() => e())), j = !1, t !== s || r !== u || c) return;
+			if (a.some((e) => !Ce(e.element))) {
+				W.stateManager.restoreCheckpoint(i), M({ persistenceWarning: "이전 구성이 필수 기능을 가려 원래 화면을 유지했습니다." });
 				return;
 			}
-			if (!U.stateManager.getSnapshot().purpose && e.data.shortcutIds.length && U.stateManager.stageSnapshot({
-				...U.stateManager.getSnapshot(),
+			if (!W.stateManager.getSnapshot().purpose && e.data.shortcutIds.length && W.stateManager.stageSnapshot({
+				...W.stateManager.getSnapshot(),
 				purpose: {
 					routeIds: T.filter((t) => e.data.shortcutIds.includes(t.id)).map((e) => e.id),
 					focusIds: [],
 					baselineOverrides: {}
 				}
-			}), (I || L) && n.language) {
+			}), (L || R) && n.language) {
 				M({ busy: !0 });
 				try {
-					if (await fe(n.language, t, r), me(n.language), L) throw L;
-					if (I) throw Error("저장된 화면 문구를 모두 번역하지 못했습니다.");
+					if (await de(n.language, t, r), pe(n.language), R) throw R;
+					if (L) throw Error("저장된 화면 문구를 모두 번역하지 못했습니다.");
 				} catch (e) {
 					if (t !== s || r !== u || c) return;
-					U.stateManager.loadSnapshot({
-						...U.stateManager.getSnapshot(),
+					W.stateManager.loadSnapshot({
+						...W.stateManager.getSnapshot(),
 						language: void 0
 					}), M({ persistenceWarning: e instanceof Error ? e.message : "저장된 화면 언어를 복원하지 못했습니다." });
 				} finally {
@@ -8172,16 +8172,16 @@ function xi(e) {
 			}
 			if (a.length) {
 				if (typeof requestAnimationFrame == "function" && await new Promise((e) => requestAnimationFrame(() => e())), t !== s || r !== u || c) return;
-				a.some((e) => !we(e.element)) && (U.stateManager.restoreCheckpoint(i), M({ persistenceWarning: "번역된 구성이 필수 기능을 가려 원래 화면을 유지했습니다." }));
+				a.some((e) => !Ce(e.element)) && (W.stateManager.restoreCheckpoint(i), M({ persistenceWarning: "번역된 구성이 필수 기능을 가려 원래 화면을 유지했습니다." }));
 			}
 		}
 	}
-	let Ee = U.process.bind(U);
-	U.process = async (e, t) => {
+	let Te = W.process.bind(W);
+	W.process = async (e, t) => {
 		if (c || !l) throw Error("먼저 화면에 SDK를 연결하세요.");
 		if (w.busy) throw Error("앞선 요청을 처리하고 있습니다.");
-		De(), le();
-		let n = s, r = u, i = U.stateManager.checkpoint();
+		Ee(), ce();
+		let n = s, r = u, i = W.stateManager.checkpoint();
 		x = !1, M({
 			busy: !0,
 			decisionInfo: void 0,
@@ -8190,26 +8190,26 @@ function xi(e) {
 		});
 		try {
 			for (let a = 0; a < 2; a++) {
-				let o = await Ee(e, t);
+				let o = await Te(e, t);
 				if (n !== s || r !== u || c) return {
 					...o,
 					success: !1,
 					error: "사용자 또는 화면이 변경되었습니다."
 				};
 				if (o.success && !o.plan.clarification) {
-					D && U.stateManager.stageSnapshot({
-						...U.stateManager.getSnapshot(),
+					D && W.stateManager.stageSnapshot({
+						...W.stateManager.getSnapshot(),
 						purpose: D
 					}), o.plan.operations.some((e) => e.type === "COMPOSE_UI") && M({ compositionRun: {
 						...w.compositionRun,
 						stage: "applying",
 						attempt: w.compositionRun?.attempt ?? 0
-					} }), be(ye(U.stateManager.getSnapshot()));
+					} }), ye(ve(W.stateManager.getSnapshot()));
 					try {
-						if (I && U.stateManager.getSnapshot().language && (await fe(U.stateManager.getSnapshot().language, n, r), me(U.stateManager.getSnapshot().language)), H(n, r), ie) throw ie;
-						if (o.plan.operations.some((e) => e.type === "COMPOSE_UI") && JSON.stringify(U.stateManager.getSnapshot().composition) !== JSON.stringify(B.getCurrentView())) throw Error("설계한 구조가 적용되지 않았습니다.");
+						if (L && W.stateManager.getSnapshot().language && (await de(W.stateManager.getSnapshot().language, n, r), pe(W.stateManager.getSnapshot().language)), U(n, r), re) throw re;
+						if (o.plan.operations.some((e) => e.type === "COMPOSE_UI") && JSON.stringify(W.stateManager.getSnapshot().composition) !== JSON.stringify(V.getCurrentView())) throw Error("설계한 구조가 적용되지 않았습니다.");
 						if (o.plan.operations.some((e) => e.type === "COMPOSE_UI")) {
-							let e = B.verifyCurrent();
+							let e = V.verifyCurrent();
 							if (!e) throw Error("COMPOSITION_READBACK_MISSING");
 							M({ compositionRun: {
 								...w.compositionRun,
@@ -8218,15 +8218,15 @@ function xi(e) {
 								verification: e
 							} });
 						}
-						if (L) throw L;
-						if (I) throw Error("화면 문구를 모두 번역하지 못했습니다.");
+						if (R) throw R;
+						if (L) throw Error("화면 문구를 모두 번역하지 못했습니다.");
 					} catch (e) {
 						if (n !== s || r !== u || c) return {
 							...o,
 							success: !1,
 							error: "사용자 또는 화면이 변경되었습니다."
 						};
-						U.stateManager.restoreCheckpoint(i), o = {
+						W.stateManager.restoreCheckpoint(i), o = {
 							...o,
 							success: !1,
 							changes: [],
@@ -8244,7 +8244,7 @@ function xi(e) {
 				}
 				if (!o.success && S && a === 0 && _) {
 					let e = S;
-					await _.remove(e.scope, e.recipe.id), H(n, r), U.stateManager.restoreCheckpoint(i), S = void 0, C = void 0, x = !0, E = [], D = void 0, N({
+					await _.remove(e.scope, e.recipe.id), U(n, r), W.stateManager.restoreCheckpoint(i), S = void 0, C = void 0, x = !0, E = [], D = void 0, N({
 						source: "invalid",
 						recipeId: void 0
 					}), M({ message: "저장된 구성이 현재 화면과 맞지 않아 새로 설계하고 있습니다." });
@@ -8254,38 +8254,38 @@ function xi(e) {
 							"UNDO",
 							"REDO",
 							"RESET"
-						].includes(e.type)) || U.stateManager.commitRequest(i);
+						].includes(e.type)) || W.stateManager.commitRequest(i);
 						let e = S, t = C;
 						if (M({
 							persistenceWarning: void 0,
 							message: e ? "저장된 화면 레시피를 현재 데이터와 기능에 연결해 적용했습니다." : o.plan.operations.some((e) => e.type === "COMPOSE_UI") ? "새 컴포넌트 구조를 실제 데이터와 기능에 연결했습니다." : o.plan.operations.some((e) => e.type === "TRANSLATE") ? `화면 문구를 ${w.language} 언어로 바꿨습니다.` : E.length ? "업무 화면으로 바꿨습니다. 중앙의 버튼에서 시작하세요." : o.plan.operations.some((e) => e.type === "THEME") ? o.plan.operations.some((e) => e.type === "THEME" && e.params.color) ? "화면 색상을 바꿨습니다." : w.theme === "dark" ? "어두운 화면으로 바꿨습니다." : "밝은 화면으로 바꿨습니다." : o.changes.length ? "필요한 화면을 보기 쉽게 정리했습니다." : "목적이나 필요한 기능을 조금 더 구체적으로 말씀해 주세요."
-						}), await Ce(), H(n, r), _) try {
-							e ? (await _.touch(e.scope, e.recipe.id), H(n, r), N({
+						}), await Se(), U(n, r), _) try {
+							e ? (await _.touch(e.scope, e.recipe.id), U(n, r), N({
 								source: e.source,
 								recipeId: e.recipe.id,
 								hits: b.hits + 1,
 								exactHits: b.exactHits + +(e.source === "exact"),
 								semanticHits: b.semanticHits + +(e.source === "semantic")
-							}), await F(e.scope, n, r), e.source === "semantic" && t && t.scope === P() && o.plan.persist && (await _.remember(t.scope, {
+							}), await I(e.scope, n, r), e.source === "semantic" && t && t.scope === P() && o.plan.persist && (await _.remember(t.scope, {
 								query: t.query,
 								plan: o.plan,
 								constraints: t.constraints,
 								contextDependent: t.contextDependent,
 								bindingKey: t.bindingKey
-							}), H(n, r), await F(t.scope, n, r))) : t && t.scope === P() && o.plan.persist && (await _.remember(t.scope, {
+							}), U(n, r), await I(t.scope, n, r))) : t && t.scope === P() && o.plan.persist && (await _.remember(t.scope, {
 								query: t.query,
 								plan: o.plan,
 								constraints: t.constraints,
 								contextDependent: t.contextDependent,
 								bindingKey: t.bindingKey
-							}), H(n, r), N({
+							}), U(n, r), N({
 								source: "fresh",
 								recipeId: void 0
-							}), await F(t.scope, n, r));
+							}), await I(t.scope, n, r));
 						} catch {
-							H(n, r);
+							U(n, r);
 						}
-					} else U.stateManager.restoreCheckpoint(i), M({
+					} else W.stateManager.restoreCheckpoint(i), M({
 						message: o.plan.clarification ?? o.error ?? "화면을 변경하지 못했습니다.",
 						...w.compositionRun ? { compositionRun: {
 							...w.compositionRun,
@@ -8298,7 +8298,7 @@ function xi(e) {
 			}
 			throw Error("화면 요청을 완료하지 못했습니다.");
 		} finally {
-			n === s && r === u && (M({ busy: !1 }), E = [], D = void 0, S = void 0, C = void 0, x = !1, he());
+			n === s && r === u && (M({ busy: !1 }), E = [], D = void 0, S = void 0, C = void 0, x = !1, me());
 		}
 	};
 	for (let e of [
@@ -8306,29 +8306,29 @@ function xi(e) {
 		"redo",
 		"reset"
 	]) {
-		let t = U[e].bind(U);
-		U[e] = async () => {
+		let t = W[e].bind(W);
+		W[e] = async () => {
 			if (w.busy) return !1;
-			le();
-			let e = s, n = u, r = U.stateManager.checkpoint();
+			ce();
+			let e = s, n = u, r = W.stateManager.checkpoint();
 			M({ busy: !0 });
 			try {
 				let r = await t();
-				if (H(e, n), be(ye(U.stateManager.getSnapshot())), ie) throw ie;
-				if (JSON.stringify(U.stateManager.getSnapshot().composition) !== JSON.stringify(B.getCurrentView())) throw Error("이 화면에서는 저장된 구조를 복원할 수 없습니다.");
-				if (I && (await fe(U.stateManager.getSnapshot().language, e, n), me(U.stateManager.getSnapshot().language)), L) throw L;
-				if (I) throw Error("화면 문구를 모두 복원하지 못했습니다.");
-				return await Ce(), r;
+				if (U(e, n), ye(ve(W.stateManager.getSnapshot())), re) throw re;
+				if (JSON.stringify(W.stateManager.getSnapshot().composition) !== JSON.stringify(V.getCurrentView())) throw Error("이 화면에서는 저장된 구조를 복원할 수 없습니다.");
+				if (L && (await de(W.stateManager.getSnapshot().language, e, n), pe(W.stateManager.getSnapshot().language)), R) throw R;
+				if (L) throw Error("화면 문구를 모두 복원하지 못했습니다.");
+				return await Se(), r;
 			} catch (t) {
-				return e === s && n === u && (U.stateManager.restoreCheckpoint(r), M({ message: t instanceof Error ? t.message : "화면을 복원하지 못했습니다." })), !1;
+				return e === s && n === u && (W.stateManager.restoreCheckpoint(r), M({ message: t instanceof Error ? t.message : "화면을 복원하지 못했습니다." })), !1;
 			} finally {
 				e === s && n === u && M({ busy: !1 });
 			}
 		};
 	}
-	function De() {
+	function Ee() {
 		if (!l || c) throw Error("화면이 연결되지 않았습니다.");
-		let t = new Map(p.map((e) => [e.element, String(e.descriptor.protected)])), n = Rn(l, { includeHidden: !0 }), r = new Set(n.map((e) => e.descriptor.id)), i = B.getManagedTargets().filter((e) => e.element.isConnected && l.contains(e.element) && !r.has(e.descriptor.id)).map((e) => {
+		let t = new Map(p.map((e) => [e.element, String(e.descriptor.protected)])), n = Rn(l, { includeHidden: !0 }), r = new Set(n.map((e) => e.descriptor.id)), i = V.getManagedTargets().filter((e) => e.element.isConnected && l.contains(e.element) && !r.has(e.descriptor.id)).map((e) => {
 			let t = On(e.element), n = An(e.element, t), r = Nn(e.element, t, n);
 			return e.descriptor = {
 				...e.descriptor,
@@ -8348,25 +8348,25 @@ function xi(e) {
 			protected: !0
 		}), m.has(n.element) || m.set(n.element, new Map(gi.map((e) => [e, n.element.getAttribute(e)])));
 		let o = new Set(a.map((e) => e.element));
-		for (let [e, t] of m) o.has(e) || (ge(e, t), m.delete(e));
-		U.componentRegistry.clear(), U.permissionRegistry.clear(), p = a;
-		for (let { element: t, descriptor: n } of p) t.setAttribute("data-wa-id", n.id), t.setAttribute("data-wa-label", n.label), t.setAttribute("data-wa-role", n.role), t.setAttribute("data-wa-protected", String(n.protected)), U.componentRegistry.register(n), (n.protected || e.config?.protectedComponents?.includes(n.id)) && U.permissionRegistry.protect(n.id);
-		T = ve();
+		for (let [e, t] of m) o.has(e) || (he(e, t), m.delete(e));
+		W.componentRegistry.clear(), W.permissionRegistry.clear(), p = a;
+		for (let { element: t, descriptor: n } of p) t.setAttribute("data-wa-id", n.id), t.setAttribute("data-wa-label", n.label), t.setAttribute("data-wa-role", n.role), t.setAttribute("data-wa-protected", String(n.protected)), W.componentRegistry.register(n), (n.protected || e.config?.protectedComponents?.includes(n.id)) && W.permissionRegistry.protect(n.id);
+		T = _e();
 		let s = P();
 		s !== y && (y = s, N({
 			enabled: !!s,
 			count: 0,
 			source: "none",
 			recipeId: void 0
-		}), s && F(s).catch(() => {}));
-		let u = U.stateManager.getSnapshot(), d = ye(u);
-		return u.composition && !d.composition ? U.stateManager.stageSnapshot(d) : be(d), M({
+		}), s && I(s).catch(() => {}));
+		let u = W.stateManager.getSnapshot(), d = ve(u);
+		return u.composition && !d.composition ? W.stateManager.stageSnapshot(d) : ye(d), M({
 			targetCount: p.length,
 			routeCount: T.length,
 			shortcuts: w.shortcuts.filter((e) => T.some((t) => t.id === e.id))
-		}), L && M({ persistenceWarning: L.message }), he(), p.map((e) => e.descriptor.id);
+		}), R && M({ persistenceWarning: R.message }), me(), p.map((e) => e.descriptor.id);
 	}
-	async function Oe(e) {
+	async function De(e) {
 		if (c) throw Error("SDK가 종료되었습니다.");
 		if (l && l !== e) throw Error("다른 화면에 이미 연결되어 있습니다.");
 		let t = e instanceof Document ? e : e.ownerDocument;
@@ -8386,16 +8386,16 @@ function xi(e) {
 		});
 		l = e;
 		let n = ++u;
-		if (De(), U.lifecycle.mount(), oe()) try {
-			await se(s, n);
+		if (Ee(), W.lifecycle.mount(), ae()) try {
+			await oe(s, n);
 		} catch (e) {
 			M({ persistenceWarning: e instanceof Error ? e.message : "실제 데이터 목록을 불러오지 못했습니다." });
 		}
 		if (c || l !== e || n !== u) return;
-		await Te();
+		await we();
 		let r = P();
 		if (r) try {
-			await F(r, s, n);
+			await I(r, s, n);
 		} catch {}
 		N({ enabled: !!r }), !(c || l !== e || n !== u) && (d?.disconnect(), d = new MutationObserver((e) => {
 			e.some((e) => {
@@ -8405,19 +8405,19 @@ function xi(e) {
 				return (!n || !!(r && n.contains(r))) && !(e.type === "childList" && [...e.addedNodes, ...e.removedNodes].every((e) => e instanceof Element && e.hasAttribute("data-wa-purpose-content")));
 			}) && (f && clearTimeout(f), f = setTimeout(() => {
 				if (!c && !w.busy) try {
-					De();
+					Ee();
 				} catch {
 					M({ message: "화면 변경을 확인하지 못했습니다. 다시 연결해 주세요." });
 				}
 			}, 100));
-		}), pe());
+		}), fe());
 	}
-	async function ke(e) {
+	async function Oe(e) {
 		let t = e ? r.parse(e) : null;
-		U.pipeline.cancelPendingRequests(), s++, o = t, A = null, ne = !1, I = 0, L = void 0, ae = !1, ie = void 0, z = {
+		W.pipeline.cancelPendingRequests(), s++, o = t, A = null, te = !1, L = 0, R = void 0, ie = !1, re = void 0, B = {
 			data: [],
 			actions: []
-		}, re = void 0, S = void 0, C = void 0, x = !1, v.clear(), y = void 0, b = {
+		}, ne = void 0, S = void 0, C = void 0, x = !1, v.clear(), y = void 0, b = {
 			enabled: !!(_ && o),
 			count: 0,
 			source: "none",
@@ -8426,7 +8426,7 @@ function xi(e) {
 			semanticHits: 0
 		}, N({});
 		let n = s, i = u;
-		if (R && clearTimeout(R), R = void 0, V?.restore(), U.stateManager.loadSnapshot({
+		if (z && clearTimeout(z), z = void 0, H?.restore(), W.stateManager.loadSnapshot({
 			theme: "light",
 			spacing: 1,
 			overrides: {},
@@ -8439,51 +8439,51 @@ function xi(e) {
 			message: "무엇을 하고 싶으세요?",
 			persistenceWarning: void 0
 		}), l) {
-			if (De(), oe()) {
+			if (Ee(), ae()) {
 				M({ busy: !0 });
 				try {
-					await se(n, i);
+					await oe(n, i);
 				} catch (e) {
 					n === s && i === u && M({ persistenceWarning: e instanceof Error ? e.message : "새 사용자의 데이터를 불러오지 못했습니다." });
 				} finally {
 					n === s && i === u && M({ busy: !1 });
 				}
 			}
-			n === s && i === u && !c && await Te();
+			n === s && i === u && !c && await we();
 			let e = P();
 			if (e && n === s && i === u) try {
-				await F(e, n, i);
+				await I(e, n, i);
 			} catch {}
 		}
 	}
-	function Ae() {
-		U.pipeline.cancelPendingRequests(), S = void 0, C = void 0, x = !1, B.clear(), k.clear(), u++, d?.disconnect(), f && clearTimeout(f), R && clearTimeout(R), R = void 0, ne = !1, ae = !1, V?.restore();
-		for (let [e, t] of m) ge(e, t);
-		m.clear(), p = [], l = null, U.componentRegistry.clear(), U.permissionRegistry.clear(), je(), M({
+	function ke() {
+		W.pipeline.cancelPendingRequests(), S = void 0, C = void 0, x = !1, V.clear(), k.clear(), u++, d?.disconnect(), f && clearTimeout(f), z && clearTimeout(z), z = void 0, te = !1, ie = !1, H?.restore();
+		for (let [e, t] of m) he(e, t);
+		m.clear(), p = [], l = null, W.componentRegistry.clear(), W.permissionRegistry.clear(), Ae(), M({
 			busy: !1,
 			targetCount: 0,
 			routeCount: 0,
 			compositionRun: void 0
 		});
 	}
-	function je() {
+	function Ae() {
 		for (let [e, t] of h) {
 			t.theme === null ? e.removeAttribute("data-theme") : e.setAttribute("data-theme", t.theme), e.classList.toggle("dark-theme", t.darkClass);
 			for (let [n, r] of Object.entries(t.vars)) r ? e.style.setProperty(n, r) : e.style.removeProperty(n);
 		}
 		h.clear();
 	}
-	function Me() {
-		if (U.pipeline.cancelPendingRequests(), v.clear(), !c) {
-			c = !0, s++, d?.disconnect(), f && clearTimeout(f), R && clearTimeout(R), V?.dispose(), B.clear(), k.clear(), Se(), U.destroy();
-			for (let [e, t] of m) ge(e, t);
-			je(), m.clear(), p = [], g.clear();
+	function je() {
+		if (W.pipeline.cancelPendingRequests(), v.clear(), !c) {
+			c = !0, s++, d?.disconnect(), f && clearTimeout(f), z && clearTimeout(z), H?.dispose(), V.clear(), k.clear(), xe(), W.destroy();
+			for (let [e, t] of m) he(e, t);
+			Ae(), m.clear(), p = [], g.clear();
 		}
 	}
-	function Ne(e) {
+	function Me(e) {
 		if (!l || c) throw Error("화면 도우미가 연결되지 않았습니다.");
 		return {
-			...Vn(l, p, e, new Set(B.getManagedTargets().map((e) => e.element))),
+			...Vn(l, p, e, new Set(V.getManagedTargets().map((e) => e.element))),
 			availableRoutes: T.map(({ id: e, label: t, aliases: n, title: r, description: i, actionLabel: a, steps: o }) => ({
 				id: e,
 				label: t,
@@ -8493,35 +8493,35 @@ function xi(e) {
 				actionLabel: a,
 				steps: o
 			})),
-			currentTheme: U.stateManager.getSnapshot().theme,
-			currentAccentColor: U.stateManager.getSnapshot().accentColor,
-			currentLanguage: U.stateManager.getSnapshot().language ?? V?.getSourceLanguage() ?? "ko"
+			currentTheme: W.stateManager.getSnapshot().theme,
+			currentAccentColor: W.stateManager.getSnapshot().accentColor,
+			currentLanguage: W.stateManager.getSnapshot().language ?? H?.getSourceLanguage() ?? "ko"
 		};
 	}
-	function Pe(t = "") {
-		return sr(Ne(), {
+	function Ne(t = "") {
+		return sr(Me(), {
 			...e.contextBudget,
 			utterance: t
 		});
 	}
-	function Fe(e = "") {
-		return O === "compact" ? Pe(e).modelContext : Ne();
+	function Pe(e = "") {
+		return O === "compact" ? Ne(e).modelContext : Me();
 	}
-	function Ie(e) {
+	function Fe(e) {
 		if (!["compact", "rich"].includes(e)) throw Error("Invalid model context mode");
 		if (w.busy) throw Error("화면 변경이 완료된 뒤 구조 모드를 바꿔 주세요.");
 		O = e, M({});
 	}
-	async function Le() {
-		await se(s, u), w.busy || De();
+	async function Ie() {
+		await oe(s, u), w.busy || Ee();
 	}
-	async function Re() {
+	async function Le() {
 		let e = s, t = u, n = P();
 		if (!_ || !n) return [];
 		let r = await _.list(n);
 		return e === s && t === u && n === P() ? r : [];
 	}
-	async function ze() {
+	async function Re() {
 		if (w.busy) throw Error("처리 중인 요청을 마친 뒤 캐시를 비워 주세요.");
 		let e = s, t = u, n = P();
 		_ && n && (await _.clear(n), v.clear(), e === s && t === u && n === P() && N({
@@ -8531,27 +8531,27 @@ function xi(e) {
 		}));
 	}
 	return {
-		sdk: U,
-		mount: Oe,
-		unmount: Ae,
-		refresh: De,
-		refreshStructureCatalog: Le,
+		sdk: W,
+		mount: De,
+		unmount: ke,
+		refresh: Ee,
+		refreshStructureCatalog: Ie,
 		getRecipeCacheInfo: () => ({ ...b }),
-		listRecipes: Re,
-		clearRecipes: ze,
+		listRecipes: Le,
+		clearRecipes: Re,
 		getComponentCatalog: () => structuredClone(xt),
 		getCompositionRun: () => w.compositionRun ? structuredClone(w.compositionRun) : void 0,
-		getCurrentStructure: () => B.getCurrentView(),
-		getStructureCatalog: () => structuredClone(z),
-		getFrontendContext: Ne,
-		getFrontendTree: Pe,
-		getFrontendRegions: (e = "") => ir(Pe(e)),
-		getModelContext: Fe,
-		setModelContextMode: Ie,
+		getCurrentStructure: () => V.getCurrentView(),
+		getStructureCatalog: () => structuredClone(B),
+		getFrontendContext: Me,
+		getFrontendTree: Ne,
+		getFrontendRegions: (e = "") => ir(Ne(e)),
+		getModelContext: Pe,
+		setModelContextMode: Fe,
 		getModelContextMode: () => O,
-		setSession: ke,
-		savePreferences: Ce,
-		dispose: Me,
+		setSession: Oe,
+		savePreferences: Se,
+		dispose: je,
 		getView: () => w,
 		subscribe: (e) => (g.add(e), () => g.delete(e)),
 		getRoutes: () => T.map((e) => ({ ...e })),
@@ -9240,7 +9240,7 @@ function Fi({ onPoint: e = () => {}, onState: t = () => {}, environment: n = {} 
 		};
 		return s >= 0 ? _[s] = c : _.length < 30 && _.push(c), v = [], T("calibrating", `${_.length}/9개 점을 보정했어요.`), !0;
 	}
-	function ee() {
+	function F() {
 		if (!d || !u) return {
 			ok: !1,
 			reason: "camera-off",
@@ -9249,23 +9249,23 @@ function Fi({ onPoint: e = () => {}, onState: t = () => {}, environment: n = {} 
 		let e = Mi(_), { model: t, ...n } = e;
 		return S = n, e.ok ? (y = t, b = null, T("tracking", "웹캠 시선 추정 중 · 대상을 확인한 뒤 요청하세요.", { calibration: S }), n) : (w(null), T("calibrating", "보정이 충분하지 않아요. 자세와 조명을 맞추고 다시 보정해 주세요.", { calibration: S }), n);
 	}
-	let te = () => {
+	let ee = () => {
 		d && j();
-	}, F = () => {
+	}, I = () => {
 		r.document?.visibilityState === "hidden" && k();
 	};
-	return r.addEventListener("resize", te), r.addEventListener("pagehide", k), r.document?.addEventListener("visibilitychange", F), {
+	return r.addEventListener("resize", ee), r.addEventListener("pagehide", k), r.document?.addEventListener("visibilitychange", I), {
 		start: N,
 		stop: k,
 		sampleCalibrationPoint: P,
-		finishCalibration: ee,
+		finishCalibration: F,
 		resetCalibration: j,
 		getStatus: () => ({
 			...C,
 			...S ? { calibration: { ...S } } : {}
 		}),
 		dispose() {
-			m || (m = !0, k(), r.removeEventListener("resize", te), r.removeEventListener("pagehide", k), r.document?.removeEventListener("visibilitychange", F));
+			m || (m = !0, k(), r.removeEventListener("resize", ee), r.removeEventListener("pagehide", k), r.document?.removeEventListener("visibilitychange", I));
 		}
 	};
 }
@@ -9500,14 +9500,14 @@ function na({ container: e, onCameraToggle: t, onSimulationToggle: n, onScrollTo
 	function P() {
 		N();
 	}
-	async function ee() {
+	async function F() {
 		N(), await A(i, "reset");
 	}
-	function te() {
+	function ee() {
 		if (f || g) return;
 		_ = 0;
 		let e = ++b;
-		y = u.body.style.overflow, u.body.style.overflow = "hidden", g = u.createElement("div"), g.className = "gaze-calibration", g.setAttribute("data-wa-ignore", "true"), g.setAttribute("data-wa-gaze-ui", "true"), g.setAttribute("role", "dialog"), g.setAttribute("aria-modal", "true"), g.setAttribute("aria-label", "웹캠 시선 9점 보정"), g.innerHTML = "<div class=\"gaze-calibration-help\"><strong>점을 바라본 채 클릭해 주세요</strong><p>얼굴 위치를 유지하며 각 점을 잠시 바라본 뒤 눌러 주세요.</p><span data-calibration-progress role=\"status\"></span><button type=\"button\" data-calibration-cancel>보정 취소</button></div><button type=\"button\" class=\"gaze-calibration-point\" data-calibration-point></button>", u.body.append(g), g.querySelector("[data-calibration-cancel]").addEventListener("click", () => void ee());
+		y = u.body.style.overflow, u.body.style.overflow = "hidden", g = u.createElement("div"), g.className = "gaze-calibration", g.setAttribute("data-wa-ignore", "true"), g.setAttribute("data-wa-gaze-ui", "true"), g.setAttribute("role", "dialog"), g.setAttribute("aria-modal", "true"), g.setAttribute("aria-label", "웹캠 시선 9점 보정"), g.innerHTML = "<div class=\"gaze-calibration-help\"><strong>점을 바라본 채 클릭해 주세요</strong><p>얼굴 위치를 유지하며 각 점을 잠시 바라본 뒤 눌러 주세요.</p><span data-calibration-progress role=\"status\"></span><button type=\"button\" data-calibration-cancel>보정 취소</button></div><button type=\"button\" class=\"gaze-calibration-point\" data-calibration-point></button>", u.body.append(g), g.querySelector("[data-calibration-cancel]").addEventListener("click", () => void F());
 		let t = g.querySelector("[data-calibration-point]"), n = () => {
 			let [e, n] = $i[_];
 			t.style.left = `${e * 100}%`, t.style.top = `${n * 100}%`, t.textContent = String(_ + 1), t.setAttribute("aria-label", `보정점 ${_ + 1} / 9`), g.querySelector("[data-calibration-progress]").textContent = `${_} / 9 완료`;
@@ -9523,13 +9523,13 @@ function na({ container: e, onCameraToggle: t, onSimulationToggle: n, onScrollTo
 			g && !f && e === b && (v = !1, t.disabled = !1, l === !0 ? (_++, _ === $i.length ? (N(), await A(i, "finish")) : n()) : g.querySelector("[data-calibration-progress]").textContent = "얼굴을 찾고 있어요. 점을 바라보며 잠시 후 다시 눌러 주세요.");
 		}), n(), t.focus();
 	}
-	let F = async () => {
+	let I = async () => {
 		x++, j(), N(), S.cameraState = "off", S.mode === "webcam" && (S.mode = "off"), M(), await A(t, !1);
 	};
 	T.addEventListener("click", async () => {
 		let e = typeof S.cameraState == "object" ? S.cameraState.state : S.cameraState;
 		if (e !== "off" && e !== "error") {
-			await F();
+			await I();
 			return;
 		}
 		if (d.isSecureContext === !1) {
@@ -9542,17 +9542,17 @@ function na({ container: e, onCameraToggle: t, onSimulationToggle: n, onScrollTo
 		let i = await A(t, !0);
 		!f && r === x && i === !1 && (S.cameraState = "off", S.mode = "off", M());
 	}), E.addEventListener("click", async () => {
-		S.mode === "simulation" ? (S.mode = "off", M(), await A(n, !1)) : (await F(), S.mode = "simulation", M(), await A(n, !0));
+		S.mode === "simulation" ? (S.mode = "off", M(), await A(n, !1)) : (await I(), S.mode = "simulation", M(), await A(n, !0));
 	}), C("scroll").addEventListener("click", async () => {
 		if (S.mode === "off" || S.busy) return;
 		let e = !S.scrollEnabled;
 		S.scrollEnabled = e, M(), await A(r, e);
 	}), C("stop").addEventListener("click", async () => {
-		S.mode = "off", await F(), await A(n, !1), O("카메라·음성 입력·시뮬레이션을 모두 껐어요.");
+		S.mode = "off", await I(), await A(n, !1), O("카메라·음성 입력·시뮬레이션을 모두 껐어요.");
 	}), C("calibrate").addEventListener("click", async () => {
 		j();
 		let e = x, t = await A(i, "start");
-		!f && e === x && t !== !1 && te();
+		!f && e === x && t !== !1 && ee();
 	}), C("freeze").addEventListener("click", () => void A(o, {
 		clear: !1,
 		source: "button"
@@ -9609,16 +9609,16 @@ function na({ container: e, onCameraToggle: t, onSimulationToggle: n, onScrollTo
 			j(), k(e);
 		}
 	});
-	let ne = () => {
+	let te = () => {
 		g && (N(), A(i, "reset"), O("창 크기가 바뀌었어요. 시선을 다시 보정해 주세요."));
-	}, I = () => {
+	}, L = () => {
 		f || (j(), N(), S.cameraState = "off", S.mode = "off", M(), A(t, !1), A(n, !1));
 	};
-	return d.addEventListener("resize", ne), d.addEventListener("pagehide", I), M(), Object.freeze({
+	return d.addEventListener("resize", te), d.addEventListener("pagehide", L), M(), Object.freeze({
 		update(e = {}) {
 			f || (Object.assign(S, e), e.detectorState && (S.cameraState = e.detectorState), (e.cameraState === "off" || e.cameraState?.state === "off" || e.detectorState === "off" || e.detectorState?.state === "off") && N(), M());
 		},
-		beginCalibration: te,
+		beginCalibration: ee,
 		endCalibration: P,
 		get videoElement() {
 			return C("video");
@@ -9637,7 +9637,7 @@ function na({ container: e, onCameraToggle: t, onSimulationToggle: n, onScrollTo
 		},
 		dispose() {
 			if (!f) {
-				j(), N(), d.removeEventListener("resize", ne), d.removeEventListener("pagehide", I);
+				j(), N(), d.removeEventListener("resize", te), d.removeEventListener("pagehide", L);
 				try {
 					Promise.resolve(t?.(!1)).catch(() => {});
 				} catch {}
@@ -9823,13 +9823,13 @@ function la({ container: e, window: t = window, agent: n, requestUiChange: r, af
 	function P(e) {
 		l || (++p, M.stop(), d = !1, A.reset(), u = e ? "simulation" : "off", f = { state: "off" }, k(), e || c?.stopSpeech?.(), v = e ? "마우스 시뮬레이션 ON · 실제 시선 감지가 아닙니다. 상품 카드 위에 머문 뒤 Alt+V 또는 카드 빈 곳 클릭으로 대상을 고정해요." : "카메라·음성·시뮬레이션을 껐어요. 텍스트 요청은 사용할 수 있어요.", D());
 	}
-	function ee({ clear: e = !1, source: t = "button" } = {}) {
+	function F({ clear: e = !1, source: t = "button" } = {}) {
 		if (l || E()) return null;
 		if (e) return h = null, v = "대상 고정을 해제했어요.", D(), null;
 		let n = O.freeze();
 		return n ? (h = n, v = `“${n.label}” 대상을 고정했어요. 원하는 화면 변경을 말하거나 입력하세요.`) : Xi(h) || (h = null, t !== "voice" && (v = "공개 상품 카드나 설명을 먼저 바라본 뒤 대상을 고정해 주세요.")), D(), h;
 	}
-	async function te({ text: e } = {}) {
+	async function ee({ text: e } = {}) {
 		if (l || E()) return {
 			success: !1,
 			message: "다른 화면 변경이 진행 중이에요."
@@ -9876,8 +9876,8 @@ function la({ container: e, window: t = window, agent: n, requestUiChange: r, af
 		onScrollToggle: (e) => {
 			d = !!e && u !== "off", A.reset(), v = d ? "시선 스크롤 ON · 설정 창을 닫고 가장자리로 시선을 움직여 주세요." : "시선 스크롤 OFF", D();
 		},
-		onFreeze: ee,
-		onSubmit: te,
+		onFreeze: F,
+		onSubmit: ee,
 		onCalibrate: (e) => {
 			if (e === "finish") {
 				let e = M.finishCalibration();
@@ -9894,8 +9894,8 @@ function la({ container: e, window: t = window, agent: n, requestUiChange: r, af
 			E() || (await n.sdk.reset(), h = null, v = "원래 화면으로 돌아왔어요.", D());
 		}
 	});
-	let F = S.querySelector(".gaze-panel-intro");
-	if (F && (F.textContent = "상품을 바라본 채 Alt+V로 말하면 대상이 고정됩니다. 인식 문장을 확인하고 적용하세요. Alt+G로 먼저 고정할 수도 있어요."), t.isSecureContext === !1) {
+	let I = S.querySelector(".gaze-panel-intro");
+	if (I && (I.textContent = "상품을 바라본 채 Alt+V로 말하면 대상이 고정됩니다. 인식 문장을 확인하고 적용하세요. Alt+G로 먼저 고정할 수도 있어요."), t.isSecureContext === !1) {
 		let e = s.createElement("p");
 		e.className = "storefront-gaze-localhost-help", e.textContent = "현재 HTTP 내부망 주소에서는 웹캠·음성이 차단됩니다. 같은 노트북에서 연결 실행기를 켠 뒤 ";
 		let n = new URLSearchParams(t.location.search), r = n.get("provider"), i = n.get("brand"), a = s.createElement("a"), o = new URL(t.location.pathname === "/cafe.html" ? "/cafe.html" : "/", "http://localhost:5180");
@@ -9912,7 +9912,7 @@ function la({ container: e, window: t = window, agent: n, requestUiChange: r, af
 		].includes(i) && o.searchParams.set("brand", i), a.href = o.href, a.textContent = "노트북 localhost 화면 열기", e.append(a), S.prepend(e);
 	}
 	S.querySelector("[data-gaze=\"freeze\"]")?.setAttribute("aria-keyshortcuts", "Alt+G"), S.querySelector("[data-gaze=\"voice\"]")?.setAttribute("aria-keyshortcuts", "Alt+V");
-	let ne = (e) => {
+	let te = (e) => {
 		if (!l && u === "simulation") {
 			let t = {
 				x: e.clientX,
@@ -9921,7 +9921,7 @@ function la({ container: e, window: t = window, agent: n, requestUiChange: r, af
 			};
 			O.updatePoint(t), j(t);
 		}
-	}, I = (e) => {
+	}, L = (e) => {
 		if (l || E() || u !== "simulation" || e.target?.closest("a,button,input,textarea,select,[data-wa-gaze-ui]")) return;
 		let t = Yi(s, {
 			x: e.clientX,
@@ -9931,26 +9931,26 @@ function la({ container: e, window: t = window, agent: n, requestUiChange: r, af
 			...t,
 			rect: Object.freeze({ ...t.rect })
 		}), v = `마우스로 “${t.label}” 대상을 고정했어요. 실제 시선 감지는 아닙니다.`, D());
-	}, L = (e) => {
-		l || e.repeat || !e.altKey || !["KeyG", "KeyV"].includes(e.code) || E() || (e.preventDefault(), e.code === "KeyV" ? (ee({ source: "voice" }), b.open = !0, S.querySelector("[data-gaze=\"voice\"]")?.click()) : u !== "off" && ee());
-	}, R = () => O.clear(), z = () => {
+	}, R = (e) => {
+		l || e.repeat || !e.altKey || !["KeyG", "KeyV"].includes(e.code) || E() || (e.preventDefault(), e.code === "KeyV" ? (F({ source: "voice" }), b.open = !0, S.querySelector("[data-gaze=\"voice\"]")?.click()) : u !== "off" && F());
+	}, z = () => O.clear(), B = () => {
 		A.reset(), O.clear(), g && (_ = !0), h && !ca(h) && (h = null, v = "상품 화면이 바뀌었어요. 대상을 다시 선택해 주세요."), D();
-	}, re = () => A.reset(), ie = () => {
+	}, ne = () => A.reset(), re = () => {
 		A.reset(), O.clear();
-	}, ae = () => {
+	}, ie = () => {
 		c.stopSpeech?.(), c.endCalibration?.(), N(!1), P(!1);
 	};
-	s.addEventListener("scroll", R, !0), s.addEventListener("pointermove", ne), s.addEventListener("pointerdown", I), s.addEventListener("keydown", L), b.addEventListener("toggle", re), t.addEventListener("scroll", R, { passive: !0 }), t.addEventListener("resize", ie), t.addEventListener("storefront:render", z), t.addEventListener("pagehide", ae);
-	let B = n.subscribe(D);
-	function oe() {
-		l || (l = !0, ++p, d = !1, A.reset(), M.stop(), M.dispose?.(), O.dispose(), c.dispose(), B?.(), C.remove(), s.removeEventListener("scroll", R, !0), s.removeEventListener("pointermove", ne), s.removeEventListener("pointerdown", I), s.removeEventListener("keydown", L), b.removeEventListener("toggle", re), t.removeEventListener("scroll", R), t.removeEventListener("resize", ie), t.removeEventListener("storefront:render", z), t.removeEventListener("pagehide", ae), e.replaceChildren());
+	s.addEventListener("scroll", z, !0), s.addEventListener("pointermove", te), s.addEventListener("pointerdown", L), s.addEventListener("keydown", R), b.addEventListener("toggle", ne), t.addEventListener("scroll", z, { passive: !0 }), t.addEventListener("resize", re), t.addEventListener("storefront:render", B), t.addEventListener("pagehide", ie);
+	let V = n.subscribe(D);
+	function ae() {
+		l || (l = !0, ++p, d = !1, A.reset(), M.stop(), M.dispose?.(), O.dispose(), c.dispose(), V?.(), C.remove(), s.removeEventListener("scroll", z, !0), s.removeEventListener("pointermove", te), s.removeEventListener("pointerdown", L), s.removeEventListener("keydown", R), b.removeEventListener("toggle", ne), t.removeEventListener("scroll", z), t.removeEventListener("resize", re), t.removeEventListener("storefront:render", B), t.removeEventListener("pagehide", ie), e.replaceChildren());
 	}
 	return D(), Object.freeze({
-		dispose: oe,
-		submit: te,
+		dispose: ae,
+		submit: ee,
 		setCamera: N,
 		setSimulation: P,
-		freeze: ee,
+		freeze: F,
 		getState: () => ({
 			mode: u,
 			scrollEnabled: d,
@@ -10028,24 +10028,8 @@ function pa(e, t, n = "") {
 	return h;
 }
 //#endregion
-//#region apps/demo-sites/negotiation-concierge/integration/model-status.js
-var ma = {
-	strata: "Strata · 로컬 AI",
-	gemini: "Gemini API",
-	nvidia: "NVIDIA API",
-	dllm: "dLLM · 로컬 확산형 AI",
-	openai: "OpenAI API"
-};
-function ha(e, t) {
-	if (!Object.hasOwn(ma, e)) return "선택한 AI 상태를 확인하지 못했어요.";
-	let n = t?.providers?.[e], r = e === "openai" && n?.service === "Codyssey" ? "Codyssey · OpenAI 호환" : ma[e];
-	if (!n) return `${r} 상태를 확인하지 못했어요. AI 게이트웨이 설정을 확인해 주세요.`;
-	let i = typeof n.model == "string" ? n.model.slice(0, 180) : "", a = i ? ` · ${i}` : "";
-	return n.ready === !0 ? n.verified === !0 ? `${r} 실제 추론 확인됨${a}` : `${r} ${e === "gemini" || e === "nvidia" || e === "openai" ? "설정됨" : "서버 실행 준비됨"} · 실제 추론 확인 전${a}` : `${r} 모델이 연결되지 않았어요. ${e === "gemini" || e === "nvidia" || e === "openai" ? "서버 API 키와 연결 상태" : "로컬 모델 실행 상태"}를 확인해 주세요.${a}`;
-}
-//#endregion
 //#region apps/demo-sites/negotiation-concierge/integration/cafe-public-config.js
-function ga(e, t) {
+function ma(e, t) {
 	let n = t.querySelector("meta[name=\"webagent-api-origin\"]")?.getAttribute("content")?.trim();
 	if (!n) return e.location.origin;
 	let r;
@@ -10058,14 +10042,151 @@ function ga(e, t) {
 	return r.origin;
 }
 //#endregion
+//#region apps/demo-sites/negotiation-concierge/integration/cafe-voice.js
+var ha = /시각\s*장애|저시력|실명|시력을?\s*(?:잃|상실)|\bblind\b|(?:눈|시력|시각|앞)(?:[^.!?\n]{0,30})(?:안\s*보|못\s*보|보이지\s*않|잘\s*안\s*보|보기가?\s*어렵)/iu;
+function ga(e) {
+	return ha.test(String(e || ""));
+}
+function _a(e) {
+	let t = Array.isArray(e?.menu) ? e.menu.filter((e) => typeof e?.name == "string" && Number.isSafeInteger(e.price) && e.price >= 0) : [];
+	return `네, 알겠습니다. 메뉴와 이용 방법을 안내해 드릴게요. 이 화면은 실제 주문과 결제가 되지 않는 카페 시연 화면입니다. 현재 카페의 전체 예시 메뉴는 다음과 같습니다. ${t.length ? t.map((e) => `${e.name}, 예시 가격 ${new Intl.NumberFormat("ko-KR").format(e.price)}원`).join(". ") : "현재 메뉴 정보를 확인하지 못했습니다."}. 키보드의 탭 키로 메뉴의 자세히 보기 버튼을 찾고 엔터 키를 눌러 확인할 수 있습니다. 음성으로 다른 요청을 하려면 음성 입력 버튼을 누르고, 인식된 요청을 확인한 뒤 적용 버튼을 눌러 주세요.`;
+}
+function va(e) {
+	return e.querySelector("#cafe-reading [data-wa-composition-content]")?.textContent?.replace(/\s+/g, " ").trim().slice(0, 600) || "";
+}
+function ya({ window: e = window, document: t = e.document, mount: n, goal: r, host: i, requestUiChange: a } = {}) {
+	if (!n || !r || typeof a != "function") throw Error("음성 도우미를 연결하지 못했습니다.");
+	n.innerHTML = "<div class=\"cafe-voice-controls\" role=\"group\" aria-label=\"음성 도우미\"><button type=\"button\" data-cafe-voice-input>음성 입력 시작</button><button type=\"button\" data-cafe-voice-apply disabled>인식한 요청 적용</button><button type=\"button\" data-cafe-voice-sound aria-pressed=\"false\">음성 안내 켜기</button><button type=\"button\" data-cafe-voice-stop>음성 모두 끄기</button><p data-cafe-voice-status role=\"status\" aria-live=\"polite\">음성 입력과 음성 안내는 꺼져 있습니다.</p><p>음성 입력을 시작하면 음성 안내도 켜집니다. 음성 인식은 브라우저의 외부 서비스를 사용할 수 있습니다. 인식 문장을 확인한 뒤 적용해 주세요.</p></div>";
+	let o = n.querySelector("[data-cafe-voice-input]"), s = n.querySelector("[data-cafe-voice-apply]"), c = n.querySelector("[data-cafe-voice-sound]"), l = n.querySelector("[data-cafe-voice-stop]"), u = n.querySelector("[data-cafe-voice-status]"), d = e.SpeechRecognition || e.webkitSpeechRecognition, f = null, p = !1, m = !1, h = !1, g = !1, _ = "", v = "", y = !1, b = e.speechSynthesis, x = (e) => {
+		h || (u.textContent = e);
+	};
+	function S() {
+		h || (o.textContent = p ? "음성 입력 중지" : "음성 입력 시작", c.textContent = m ? "음성 안내 끄기" : "음성 안내 켜기", c.setAttribute("aria-pressed", String(m)), s.disabled = !_ || g || p);
+	}
+	function C() {
+		try {
+			b?.cancel?.();
+		} catch {}
+		u.setAttribute("aria-live", "polite");
+	}
+	function w(t) {
+		if (!m || h) return !1;
+		if (p) return x("음성 입력을 마친 뒤 음성 안내를 들을 수 있어요."), !1;
+		if (!b || typeof e.SpeechSynthesisUtterance != "function") return x("이 브라우저는 음성 안내를 지원하지 않습니다. 화면의 안내를 확인해 주세요."), !1;
+		try {
+			C();
+			let n = new e.SpeechSynthesisUtterance(String(t).slice(0, 1800));
+			return n.lang = "ko-KR", u.setAttribute("aria-live", "off"), n.onend = () => u.setAttribute("aria-live", "polite"), n.onerror = () => {
+				u.setAttribute("aria-live", "polite"), x("스피커로 안내하지 못했어요. 소리 설정을 확인해 주세요.");
+			}, b.speak(n), !0;
+		} catch {
+			return x("스피커로 안내하지 못했어요. 소리 설정을 확인해 주세요."), !1;
+		}
+	}
+	function T(e) {
+		if (!m || h) return;
+		p && E();
+		let n = typeof e?.clarification == "string" && e.clarification.trim();
+		if (n) {
+			w(`확인이 필요합니다. ${n}`);
+			return;
+		}
+		if (!e?.success) {
+			w(`요청을 적용하지 못했습니다. ${e?.message || e?.error || "다시 시도해 주세요."}`);
+			return;
+		}
+		let r = e.plan?.operations?.some((e) => e.type === "COMPOSE_UI") ? va(t) : "";
+		w(`${e.message || "요청한 화면을 바꿨습니다."}${r ? ` ${r}` : ""}`);
+	}
+	function E() {
+		if (f) {
+			try {
+				f.abort();
+			} catch {}
+			f = null;
+		}
+		p = !1, S();
+	}
+	function D() {
+		y = !0, E(), y = !1, m = !1, _ = "", C(), S(), x("음성 입력과 음성 안내를 껐습니다.");
+	}
+	function O() {
+		if (!h) {
+			if (p) E(), x("음성 입력을 중지했습니다.");
+			else if (m = !!(b && typeof e.SpeechSynthesisUtterance == "function"), S(), !d) x("이 브라우저는 음성 입력을 지원하지 않습니다. 텍스트로 입력해 주세요."), w("이 브라우저에서는 음성 입력을 사용할 수 없습니다. 텍스트로 입력해 주세요.");
+			else {
+				C(), _ = "", v = "", S();
+				try {
+					let e = new d();
+					f = e, e.lang = "ko-KR", e.continuous = !1, e.interimResults = !1, e.onresult = (t) => {
+						if (h || f !== e) return;
+						let n = "";
+						for (let e = t.resultIndex || 0; e < t.results.length; e++) {
+							let r = t.results[e];
+							r.isFinal && r[0]?.transcript && (n += r[0].transcript);
+						}
+						_ = n.trim().slice(0, 1e3), _ && (r.value = _, x(`인식한 문장: ${_}. 확인한 후 인식한 요청 적용 버튼을 눌러 주세요.`)), S();
+					}, e.onerror = (t) => {
+						h || f !== e || (v = t.error === "not-allowed" || t.error === "service-not-allowed" ? "마이크 권한이 거부됐어요. 브라우저 권한을 확인하거나 텍스트를 입력해 주세요." : t.error === "no-speech" ? "목소리를 듣지 못했어요. 다시 시도하거나 텍스트를 입력해 주세요." : "음성 입력을 사용할 수 없어요. 다시 시도하거나 텍스트를 입력해 주세요.", x(v));
+					}, e.onend = () => {
+						h || f !== e || (f = null, p = !1, S(), _ && !y ? w(`인식한 문장입니다. ${_.slice(0, 250)}. 맞으면 인식한 요청 적용 버튼을 눌러 주세요.`) : v && !y && w(v));
+					}, p = !0, S(), x(m ? "음성 입력 중입니다. 말씀해 주세요." : "음성 입력 중입니다. 이 브라우저는 음성 안내를 지원하지 않습니다."), e.start();
+				} catch {
+					f = null, p = !1, S(), x("마이크를 시작하지 못했습니다. 브라우저 권한을 확인해 주세요."), w("마이크를 시작하지 못했습니다. 브라우저 권한을 확인해 주세요.");
+				}
+			}
+		}
+	}
+	function k(e) {
+		if (h || !ga(e)) return { handled: !1 };
+		p && E();
+		let t = _a(i);
+		return x(t), w(t), {
+			handled: !0,
+			message: t
+		};
+	}
+	async function A() {
+		if (h || g || !_) return;
+		let e = _;
+		_ = "", g = !0, S();
+		try {
+			if (k(e).handled) return;
+			x("요청을 처리하고 있습니다.");
+			let t = await a({
+				text: e,
+				source: "voice"
+			});
+			if (h) return;
+			let n = t?.clarification || t?.message || t?.error || (t?.success ? "화면을 바꿨습니다." : "요청을 처리하지 못했습니다.");
+			x(n), T(t);
+		} catch {
+			h || (x("요청을 처리하지 못했습니다. 다시 시도해 주세요."), w("요청을 처리하지 못했습니다. 다시 시도해 주세요."));
+		} finally {
+			g = !1, S();
+		}
+	}
+	function j() {
+		h || (m ? (m = !1, C(), x("음성 안내를 껐습니다.")) : !b || typeof e.SpeechSynthesisUtterance != "function" ? x("이 브라우저는 음성 안내를 지원하지 않습니다.") : (m = !0, x("음성 안내를 켰습니다."), w("음성 안내를 켰습니다.")), S());
+	}
+	return o.addEventListener("click", O), s.addEventListener("click", A), c.addEventListener("click", j), l.addEventListener("click", D), S(), Object.freeze({
+		handleAccessibilityRequest: k,
+		speakResult: T,
+		stopAll: D,
+		dispose() {
+			h || (D(), h = !0, o.removeEventListener("click", O), s.removeEventListener("click", A), c.removeEventListener("click", j), l.removeEventListener("click", D));
+		}
+	});
+}
+//#endregion
 //#region apps/demo-sites/negotiation-concierge/integration/cafe-main.js
-var _a = /* @__PURE__ */ new Set([
+var ba = /* @__PURE__ */ new Set([
 	"openai",
 	"gemini",
 	"nvidia",
 	"strata",
 	"gateway"
-]), va = /* @__PURE__ */ new Set([
+]), xa = /* @__PURE__ */ new Set([
 	"cafe.menu",
 	"cafe.cart",
 	"cafe.item",
@@ -10074,8 +10195,8 @@ var _a = /* @__PURE__ */ new Set([
 	"cafe.filter.tea",
 	"cafe.filter.drink",
 	"cafe.filter.food"
-]), ya = /[$₩￦€¥]\s*\p{Nd}|\p{Nd}[\p{Nd},.]*\s*(?:만\s*|억\s*)?(?:원|KRW|USD|EUR|JPY|GBP)|\p{Nd}[\p{Nd},.]*\s*%/iu, ba = "\nCAFE HOST: The person confirmed one public menu item. Resolve this/이거 against it. A separate actual region.storefront.gaze is available; native menus and order controls remain in place automatically. For a new reading surface use COMPOSE_UI there and NEVER require hostNode. For the exact item name and price, use productList or comparison with observed cafe.menu dataRef and the selected itemIds; those bind host data. Never put prices in generated text. Other supported theme, language and purpose operations remain available. Do not submit, purchase or navigate automatically. These are fictitious demo items, not a real order.", xa = "\nHOST_VALIDATION_ERROR: Prior RESIZE obscured or displaced a protected control and was rolled back. Replan the same user request. If a separate reading view fits, choose only COMPOSE_UI in region.storefront.gaze with no hostNode. Use only relevant registered data/actions, never invent values. Otherwise ask for clarification.", Sa = "UI integrity rejected: protected control became obscured or unclickable";
-function Ca({ window: e = window, document: t = e.document, fetchFn: n = e.fetch?.bind(e), viewFactory: r = Ei, agentFactory: i = xi, gazeFactory: a = la } = {}) {
+]), Sa = /[$₩￦€¥]\s*\p{Nd}|\p{Nd}[\p{Nd},.]*\s*(?:만\s*|억\s*)?(?:원|KRW|USD|EUR|JPY|GBP)|\p{Nd}[\p{Nd},.]*\s*%/iu, Ca = "\nCAFE HOST: The person confirmed one public menu item. Resolve this/이거 against it. A separate actual region.storefront.gaze is available; native menus and order controls remain in place automatically. For a new reading surface use COMPOSE_UI there and NEVER require hostNode. For the exact item name and price, use productList or comparison with observed cafe.menu dataRef and the selected itemIds; those bind host data. Never put prices in generated text. Other supported theme, language and purpose operations remain available. Do not submit, purchase or navigate automatically. These are fictitious demo items, not a real order.", wa = "\nHOST_VALIDATION_ERROR: Prior RESIZE obscured or displaced a protected control and was rolled back. Replan the same user request. If a separate reading view fits, choose only COMPOSE_UI in region.storefront.gaze with no hostNode. Use only relevant registered data/actions, never invent values. Otherwise ask for clarification.", Ta = "UI integrity rejected: protected control became obscured or unclickable";
+function Ea({ window: e = window, document: t = e.document, fetchFn: n = e.fetch?.bind(e), viewFactory: r = Ei, agentFactory: i = xi, gazeFactory: a = la } = {}) {
 	let o = t.getElementById("cafe-assistant"), s = t.getElementById("cafe-gaze"), c = t.getElementById("cafe-reading");
 	if (!o || !s || !c || c.getAttribute("data-wa-id") !== "region.storefront.gaze") throw Error("카페 화면과 읽기 영역을 확인하지 못했습니다.");
 	if (typeof n != "function") throw Error("AI 요청 기능을 사용할 수 없습니다.");
@@ -10092,18 +10213,21 @@ function Ca({ window: e = window, document: t = e.document, fetchFn: n = e.fetch
 		});
 	}
 	if (!u.size) throw Error("카페 시연 메뉴가 비어 있습니다.");
-	let d = new URLSearchParams(e.location.search).get("provider") || "openai", f = ga(e, t);
-	o.dataset.waIgnore = "true", o.dataset.waTranslate = "true", o.innerHTML = "<div class=\"cafe-assistant-heading\"><span>WebAgent · 화면 도우미</span><h2>어떤 화면이 편하세요?</h2><p>시연 메뉴의 크기와 색을 바꾸거나, 원하는 메뉴를 찾을 수 있어요.</p></div><p data-cafe-ai-mode role=\"status\" aria-live=\"polite\">실제 AI 연결을 확인하고 있어요.</p><form data-cafe-assistant-form><label for=\"cafe-ai-goal\">화면에 원하는 점</label><textarea id=\"cafe-ai-goal\" rows=\"2\" maxlength=\"1000\" placeholder=\"예: 메뉴 글씨를 크게 해 줘\"></textarea><button type=\"submit\">화면에 적용</button></form><div class=\"cafe-ai-examples\"><button type=\"button\" data-cafe-ai-example=\"메뉴 글씨를 크게 보여 줘\">글씨 크게</button><button type=\"button\" data-cafe-ai-example=\"화면을 어두운 파란색 테마로 바꿔 줘\">어둡게</button><button type=\"button\" data-cafe-ai-example=\"I don't know Korean. Show the interface in English.\">English</button></div><p data-cafe-ai-status data-wa-no-translate role=\"status\" aria-live=\"polite\">화면 도우미를 연결하고 있어요.</p><div class=\"cafe-ai-history\"><button type=\"button\" data-cafe-ai-undo>이전 화면</button><button type=\"button\" data-cafe-ai-reset>원래 화면</button></div>";
-	let p = o.querySelector("[data-cafe-assistant-form]"), m = o.querySelector("#cafe-ai-goal"), h = o.querySelector("[data-cafe-ai-status]"), g = o.querySelector("[data-cafe-ai-mode]"), _ = /* @__PURE__ */ new Set(), v = !1, y = !1, b = !1, x = null, S = null, C = !1, w, T, E, D = "무엇을 도와드릴까요?", O = () => !v;
-	function k() {
-		if (!O()) return;
-		let e = w?.getView?.(), t = b || !!e?.busy;
-		for (let e of o.querySelectorAll("button")) e.disabled = !y || t;
-		m.disabled = !y || t, h.textContent = t ? e?.message || "화면을 준비하고 있어요." : D + (e?.persistenceWarning ? ` ${e.persistenceWarning}` : "");
+	let d = new URLSearchParams(e.location.search).get("provider") || "openai", f = ma(e, t);
+	o.dataset.waIgnore = "true", o.dataset.waTranslate = "true", o.dataset.waGazeUi = "true", t.body.append(o), o.innerHTML = "<button type=\"button\" class=\"cafe-chat-launcher\" data-cafe-chat-toggle aria-expanded=\"false\" aria-controls=\"cafe-chat-panel\" aria-label=\"화면 도우미 열기\">💬 <span>도움이 필요해요</span></button><section id=\"cafe-chat-panel\" class=\"cafe-chat-panel\" aria-label=\"화면 도우미\" hidden><header class=\"cafe-chat-header\"><div><h2>화면 도우미</h2><p>말하거나 입력해 주세요</p></div><button type=\"button\" class=\"cafe-chat-close\" data-cafe-chat-close aria-label=\"화면 도우미 닫기\">×</button></header><div class=\"cafe-chat-body\"><p data-cafe-ai-mode class=\"cafe-chat-mode\">도우미 연결을 확인하고 있어요.</p><div class=\"cafe-chat-messages\"><p class=\"cafe-chat-bubble\">안녕하세요. 메뉴 찾기와 화면 설정을 도와드릴게요.</p><p class=\"cafe-chat-bubble cafe-chat-user\" data-cafe-user-message hidden></p><p class=\"cafe-chat-bubble\" data-cafe-ai-status data-wa-no-translate role=\"status\" aria-live=\"polite\">화면 도우미를 연결하고 있어요.</p></div><div data-cafe-voice></div><form data-cafe-assistant-form><label for=\"cafe-ai-goal\">무엇을 도와드릴까요?</label><textarea id=\"cafe-ai-goal\" rows=\"2\" maxlength=\"1000\" placeholder=\"예: 메뉴 글씨를 크게 해 줘\"></textarea><button type=\"submit\">요청 보내기</button></form><div class=\"cafe-ai-examples\" aria-label=\"요청 예시\"><button type=\"button\" data-cafe-ai-example=\"메뉴 글씨를 크게 보여 줘\">글씨 크게</button><button type=\"button\" data-cafe-ai-example=\"화면을 어두운 파란색 테마로 바꿔 줘\">어둡게</button><button type=\"button\" data-cafe-ai-example=\"I don't know Korean. Show the interface in English.\">English</button></div><div class=\"cafe-ai-history\"><button type=\"button\" data-cafe-ai-undo>이전 화면</button><button type=\"button\" data-cafe-ai-reset>원래 화면</button></div></div></section>";
+	let p = o.querySelector("[data-cafe-assistant-form]"), m = o.querySelector("#cafe-ai-goal"), h = o.querySelector("[data-cafe-ai-status]"), g = o.querySelector("[data-cafe-ai-mode]"), _ = o.querySelector("#cafe-chat-panel"), v = o.querySelector("[data-cafe-chat-toggle]"), y = o.querySelector("[data-cafe-chat-close]"), b = o.querySelector("[data-cafe-user-message]"), x = /* @__PURE__ */ new Set(), S = !1, C = !1, w = !1, T = null, E = null, D = !1, O, k, A, j, M = "무엇을 도와드릴까요?", N = () => !S, P = (e) => {
+		let t = typeof e == "string" ? e : "";
+		return /codyssey|openai|nvidia|gemini|strata|\bapi\b|gateway|https?:\/\/|authorization|bearer/i.test(t) ? "요청을 처리하지 못했어요. 잠시 후 다시 시도해 주세요." : t;
+	};
+	function F() {
+		if (!N()) return;
+		let e = O?.getView?.(), t = w || !!e?.busy;
+		for (let e of o.querySelectorAll("[data-cafe-assistant-form] button,[data-cafe-ai-example],[data-cafe-ai-undo],[data-cafe-ai-reset]")) e.disabled = !C || t;
+		m.disabled = !C || t, h.textContent = t ? P(e?.message) || "화면을 준비하고 있어요." : M + (e?.persistenceWarning ? ` ${P(e.persistenceWarning)}` : "");
 	}
-	async function A(t, r) {
+	async function ee(t, r) {
 		let i = new AbortController();
-		_.add(i);
+		x.add(i);
 		let a = e.setTimeout(() => i.abort(), 95e3);
 		try {
 			let e = await n(new URL(`/api/webagent/${t}`, f).href, {
@@ -10122,10 +10246,10 @@ function Ca({ window: e = window, document: t = e.document, fetchFn: n = e.fetch
 			if (!e.ok) throw Error(a.error?.message || a.message || `AI 요청이 실패했습니다 (${e.status}).`);
 			return a;
 		} finally {
-			e.clearTimeout(a), _.delete(i);
+			e.clearTimeout(a), x.delete(i);
 		}
 	}
-	async function j() {
+	async function I() {
 		let e = await n(new URL("/api/webagent/health", f).href, {
 			credentials: "same-origin",
 			cache: "no-store",
@@ -10134,19 +10258,19 @@ function Ca({ window: e = window, document: t = e.document, fetchFn: n = e.fetch
 		if (!e.ok) throw Error("AI 연결 상태를 확인하지 못했습니다.");
 		return e.json();
 	}
-	async function M() {
-		if (!_a.has(d)) throw Error("지원하지 않는 AI 제공자입니다. openai, gemini, nvidia, strata 또는 gateway를 선택해 주세요.");
+	async function te() {
+		if (!ba.has(d)) throw Error("화면 도우미를 사용할 수 없습니다. 설정을 확인해 주세요.");
 		if (d !== "gateway") return d;
 		let e = {
 			openai_compat: "strata",
 			gemini: "gemini",
 			nvidia: "nvidia",
 			openai: "openai"
-		}[(await j()).backend];
+		}[(await I()).backend];
 		if (!e) throw Error("기본 게이트웨이에 실제 AI 모델이 연결되지 않았습니다.");
 		return e;
 	}
-	let N = async () => {
+	let L = async () => {
 		let e = await l.getStructureCatalog();
 		if (!e || !Array.isArray(e.data) || !Array.isArray(e.actions)) throw Error("시연 메뉴 카탈로그를 확인하지 못했습니다.");
 		for (let t of e.data) {
@@ -10156,13 +10280,13 @@ function Ca({ window: e = window, document: t = e.document, fetchFn: n = e.fetch
 				if (!t || t.name !== e.name || t.price !== e.price || t.currency !== e.currency) throw Error("다른 카페의 메뉴 또는 검증되지 않은 가격이 포함되어 있습니다.");
 			}
 		}
-		for (let t of e.actions) if (!va.has(t.id)) throw Error("등록되지 않은 카페 동작입니다.");
+		for (let t of e.actions) if (!xa.has(t.id)) throw Error("등록되지 않은 카페 동작입니다.");
 		return structuredClone(e);
-	}, P = new fn({
+	}, R = new fn({
 		gatewayUrl: new URL("/api/webagent/plan", f).href,
 		fetchFn: async (e, t) => {
 			let r = new AbortController();
-			_.add(r);
+			x.add(r);
 			let i = () => r.abort();
 			t.signal?.addEventListener("abort", i, { once: !0 }), t.signal?.aborted && r.abort();
 			try {
@@ -10170,38 +10294,38 @@ function Ca({ window: e = window, document: t = e.document, fetchFn: n = e.fetch
 					...t,
 					body: JSON.stringify({
 						...JSON.parse(t.body),
-						provider: S || await M()
+						provider: E || await te()
 					}),
 					signal: r.signal,
 					credentials: "same-origin",
 					cache: "no-store"
 				});
 			} finally {
-				_.delete(r), t.signal?.removeEventListener("abort", i);
+				x.delete(r), t.signal?.removeEventListener("abort", i);
 			}
 		}
-	}), ee = {
-		name: P.name,
+	}), z = {
+		name: R.name,
 		async planTransformation(e) {
-			if (x) {
-				if (!Xi(x)) throw Error("바라본 메뉴가 바뀌었어요. 다시 선택해 주세요.");
+			if (T) {
+				if (!Xi(T)) throw Error("바라본 메뉴가 바뀌었어요. 다시 선택해 주세요.");
 				e = {
 					...e,
-					utterance: e.utterance + (C ? "" : ba),
+					utterance: e.utterance + (D ? "" : Ca),
 					context: {
 						...e.context,
 						userPreferences: {
 							...e.context.userPreferences,
-							frontendSnapshot: pa(w, x, e.utterance)
+							frontendSnapshot: pa(O, T, e.utterance)
 						}
 					}
 				};
 			}
-			if (C) {
+			if (D) {
 				if (e.utterance.length + 326 > 1e3) throw Error("원래 요청이 길어 안전하게 다시 설계하지 못했어요. 더 짧게 요청해 주세요.");
 				e = {
 					...e,
-					utterance: e.utterance + xa,
+					utterance: e.utterance + wa,
 					context: {
 						...e.context,
 						userPreferences: {
@@ -10211,12 +10335,12 @@ function Ca({ window: e = window, document: t = e.document, fetchFn: n = e.fetch
 					}
 				};
 			}
-			let t = await P.planTransformation(e), n = () => x && !C && t.operations.some((e) => e.type === "COMPOSE_UI" && e.params.constraints?.requiredTypes?.includes("hostNode"));
-			if (n() && (t = await P.planTransformation({
+			let t = await R.planTransformation(e), n = () => T && !D && t.operations.some((e) => e.type === "COMPOSE_UI" && e.params.constraints?.requiredTypes?.includes("hostNode"));
+			if (n() && (t = await R.planTransformation({
 				...e,
 				utterance: e.utterance + "\nHOST_VALIDATION_ERROR: hostNode is unavailable in the independent reading surface. Replan the same request without moving the original menus or controls. Use a registered productList or comparison for the selected item and its data-bound price."
 			}), n())) throw Error("AI가 원래 메뉴를 이동하는 구성을 제안했어요. 별도 읽기 화면으로 다시 요청해 주세요.");
-			if (C && !t.clarification && (t.operations.length !== 1 || t.operations[0].type !== "COMPOSE_UI" || t.operations[0].params.constraints?.requiredTypes?.includes("hostNode"))) throw Error("AI가 보호된 기능을 유지할 수 있는 별도 읽기 화면을 제안하지 못했어요.");
+			if (D && !t.clarification && (t.operations.length !== 1 || t.operations[0].type !== "COMPOSE_UI" || t.operations[0].params.constraints?.requiredTypes?.includes("hostNode"))) throw Error("AI가 보호된 기능을 유지할 수 있는 별도 읽기 화면을 제안하지 못했어요.");
 			return {
 				...t,
 				operations: t.operations.map((t) => t.type === "THEME" && !t.params.theme && (t.params.color || t.params.accentColor) ? {
@@ -10229,8 +10353,8 @@ function Ca({ window: e = window, document: t = e.document, fetchFn: n = e.fetch
 			};
 		}
 	};
-	function te(e) {
-		let t = w.getFrontendContext(), n = sr(t, {
+	function B(e) {
+		let t = O.getFrontendContext(), n = sr(t, {
 			utterance: e,
 			maxBytes: 6e3,
 			maxNodes: 32
@@ -10256,7 +10380,7 @@ function Ca({ window: e = window, document: t = e.document, fetchFn: n = e.fetch
 		if ([...a].some((e) => !c.nodes.some((t) => t.id === e))) throw Error("읽기 영역을 화면 정보 예산 안에 담지 못했어요.");
 		return c;
 	}
-	w = i({
+	O = i({
 		siteId: `cafe-demo-${l.brand.id}`,
 		session: {
 			userId: `cafe-demo-${l.brand.id}`,
@@ -10264,7 +10388,7 @@ function Ca({ window: e = window, document: t = e.document, fetchFn: n = e.fetch
 		},
 		routes: l.getRoutes(),
 		discoverRoutes: !1,
-		aiProvider: ee,
+		aiProvider: z,
 		sourceLanguage: "ko",
 		modelContextMode: "compact",
 		contextBudget: {
@@ -10273,20 +10397,20 @@ function Ca({ window: e = window, document: t = e.document, fetchFn: n = e.fetch
 		},
 		protectedSelectors: ["#cafe-header", "[data-cafe-protected]"],
 		purposeHost: t.querySelector(".cafe-page"),
-		getStructureCatalog: N,
+		getStructureCatalog: L,
 		composeView: async ({ goal: e, frontendSnapshot: t, catalog: n, constraints: r, validationFeedback: i }) => {
-			if (x) {
-				if (!Xi(x)) throw Error("선택한 메뉴가 바뀌었어요. 다시 선택해 주세요.");
-				t = pa(w, x, e);
-				let n = x.element.getAttribute("data-cafe-item-id"), r = n ? u.get(n) : null;
-				i = `Destination region.storefront.gaze only; no hostNode. ${r ? `Confirmed cafe.menu itemIds [${JSON.stringify(r.id)}]; read_data cafe.menu, then use productList with dataRef cafe.menu and that exact itemId for original name/price. Never generate a price in text. ` : ""}Public target ${JSON.stringify(x.label.slice(0, 65))}. ${i || ""}`.slice(0, 400);
-			} else C && (t = te(e), i = `Destination region.storefront.gaze only; no hostNode. Use only registered data and actions relevant to the original request; never invent values. ${i || ""}`.slice(0, 400));
+			if (T) {
+				if (!Xi(T)) throw Error("선택한 메뉴가 바뀌었어요. 다시 선택해 주세요.");
+				t = pa(O, T, e);
+				let n = T.element.getAttribute("data-cafe-item-id"), r = n ? u.get(n) : null;
+				i = `Destination region.storefront.gaze only; no hostNode. ${r ? `Confirmed cafe.menu itemIds [${JSON.stringify(r.id)}]; read_data cafe.menu, then use productList with dataRef cafe.menu and that exact itemId for original name/price. Never generate a price in text. ` : ""}Public target ${JSON.stringify(T.label.slice(0, 65))}. ${i || ""}`.slice(0, 400);
+			} else D && (t = B(e), i = `Destination region.storefront.gaze only; no hostNode. Use only registered data and actions relevant to the original request; never invent values. ${i || ""}`.slice(0, 400));
 			for (let e of n.data || []) for (let t of e.items || []) {
 				let e = u.get(t.id);
 				if (!e || e.name !== t.name || e.price !== t.price || e.currency !== t.currency) throw Error("다른 카페의 메뉴 또는 검증되지 않은 가격입니다.");
 			}
-			let a = await A("compose", {
-				provider: S || await M(),
+			let a = await ee("compose", {
+				provider: E || await te(),
 				goal: e,
 				frontendSnapshot: t,
 				catalog: n,
@@ -10294,153 +10418,170 @@ function Ca({ window: e = window, document: t = e.document, fetchFn: n = e.fetch
 				...i ? { validationFeedback: i } : {}
 			});
 			if (!a.view || !Array.isArray(a.view.nodes)) throw Error("AI가 검증 가능한 화면 구성을 반환하지 않았습니다.");
-			if ((x || C) && (a.view.regionId !== "region.storefront.gaze" || a.view.nodes.some((e) => e.type === "hostNode"))) throw Error("원래 버튼을 유지한 별도 읽기 영역에 구성해야 합니다.");
+			if ((T || D) && (a.view.regionId !== "region.storefront.gaze" || a.view.nodes.some((e) => e.type === "hostNode"))) throw Error("원래 버튼을 유지한 별도 읽기 영역에 구성해야 합니다.");
 			for (let e of a.view.nodes) {
 				if (e.itemIds?.some((e) => !u.has(e))) throw Error("다른 카페의 메뉴는 이 화면에 표시할 수 없습니다.");
-				if (typeof e.text == "string" && ya.test(e.text)) throw Error("금액은 생성 문구가 아닌 시연 메뉴 데이터에서 표시해야 합니다.");
+				if (typeof e.text == "string" && Sa.test(e.text)) throw Error("금액은 생성 문구가 아닌 시연 메뉴 데이터에서 표시해야 합니다.");
 			}
 			return a.view;
 		},
-		translateBatch: async (e, t, n) => A("translate", {
-			provider: S || await M(),
+		translateBatch: async (e, t, n) => ee("translate", {
+			provider: E || await te(),
 			language: t,
 			sourceLanguage: n,
 			items: e
 		}),
 		onStructureAction: async (e, t) => {
-			if (!va.has(e) || (e === "cafe.item" ? !u.has(t) : t !== void 0)) throw Error("현재 카페에 등록된 메뉴 동작만 선택할 수 있습니다.");
+			if (!xa.has(e) || (e === "cafe.item" ? !u.has(t) : t !== void 0)) throw Error("현재 카페에 등록된 메뉴 동작만 선택할 수 있습니다.");
 			return l.onStructureAction(e, t);
 		}
 	});
-	async function F({ text: e, target: t = null } = {}) {
-		if (!y || v) return {
+	async function ne({ text: e, target: t = null, source: n = "text" } = {}) {
+		if (!C || S) return {
 			success: !1,
 			message: "카페 화면을 연결하고 있어요."
 		};
-		if (b || w.getView().busy) return {
+		if (w || O.getView().busy) return {
 			success: !1,
 			message: "앞선 화면 변경이 진행 중입니다."
 		};
-		let n;
+		h.setAttribute("aria-live", n === "voice" ? "off" : "polite");
+		let r;
 		try {
-			n = fa(e, t);
+			r = fa(e, t);
 		} catch (e) {
-			return D = e.message, k(), {
+			return M = P(e.message), F(), {
 				success: !1,
-				message: D,
-				error: D
+				message: M,
+				error: M
 			};
 		}
-		let r = s.querySelector(".storefront-gaze-drawer"), i = !!r?.open;
-		i && (r.open = !1), b = !0, x = t, D = "선택한 메뉴와 요청을 실제 AI에 전달하고 있어요.", k();
+		b.textContent = e, b.hidden = !String(e || "").trim();
+		let i = s.querySelector(".storefront-gaze-drawer"), a = !!i?.open;
+		a && (i.open = !1), w = !0, T = t, M = "선택한 메뉴와 요청을 실제 AI에 전달하고 있어요.", F();
 		try {
-			if (S = await M(), v) return {
+			if (E = await te(), S) return {
 				success: !1,
 				message: "화면을 떠나 요청을 종료했어요."
 			};
-			let e = await w.sdk.process(n);
-			if (v) return {
+			let e = await O.sdk.process(r);
+			if (S) return {
 				success: !1,
 				message: "화면을 떠나 요청을 종료했어요."
 			};
 			let t = e.plan?.operations;
-			if (!e.success && e.rollbackApplied && e.error === Sa && t?.length > 0 && t.every((e) => e.type === "RESIZE") && (C = !0, D = "기존 버튼을 보존하는 읽기 화면으로 다시 설계하고 있어요.", k(), e = await w.sdk.process(n), v)) return {
+			if (!e.success && e.rollbackApplied && e.error === Ta && t?.length > 0 && t.every((e) => e.type === "RESIZE") && (D = !0, M = "기존 버튼을 보존하는 읽기 화면으로 다시 설계하고 있어요.", F(), e = await O.sdk.process(r), S)) return {
 				success: !1,
 				message: "화면을 떠나 요청을 종료했어요."
 			};
-			let a = e.plan?.clarification;
-			return D = a || e.error || w.getView().message || (e.success ? "화면을 바꿨습니다." : "화면 변경에 실패했습니다."), i && (!e.success || a) && (r.open = !0), e.success && !a && e.plan?.operations?.some((e) => e.type === "COMPOSE_UI") && c.querySelector("[data-wa-composition-content]")?.scrollIntoView?.({
+			let n = e.plan?.clarification;
+			return M = P(n || e.error || O.getView().message) || (e.success ? "화면을 바꿨습니다." : "화면 변경에 실패했습니다."), a && (!e.success || n) && (i.open = !0), e.success && !n && e.plan?.operations?.some((e) => e.type === "COMPOSE_UI") && c.querySelector("[data-wa-composition-content]")?.scrollIntoView?.({
 				block: "center",
 				behavior: "smooth"
-			}), e.success && !a && ne(), {
+			}), e.success && !n && re(), {
 				...e,
-				clarification: a,
-				message: D
+				clarification: n && P(n),
+				...e.success ? {} : { error: M },
+				message: M
 			};
 		} catch (e) {
-			return i && O() && (r.open = !0), D = e?.message || "AI 연결을 확인해 주세요. 예시 응답으로 자동 전환하지 않습니다.", {
+			return a && N() && (i.open = !0), M = P(e?.message) || "요청을 처리하지 못했어요. 잠시 후 다시 시도해 주세요.", {
 				success: !1,
-				error: D,
-				message: D
+				error: M,
+				message: M
 			};
 		} finally {
-			S = null, x = null, C = !1, b = !1, k();
+			E = null, T = null, D = !1, w = !1, F();
 		}
 	}
-	async function ne() {
+	async function re() {
 		try {
-			let e = await j();
-			if (!O()) return;
+			let e = await I();
+			if (!N()) return;
 			let t = d === "gateway" ? {
 				openai_compat: "strata",
 				gemini: "gemini",
 				nvidia: "nvidia",
 				openai: "openai"
 			}[e.backend] : d;
-			g.textContent = _a.has(t) ? ha(t, e) : "선택한 실제 AI 모델을 확인해 주세요.";
+			g.textContent = e?.providers?.[t]?.ready === !0 ? "도우미가 준비됐어요." : "도우미 연결을 확인하지 못했어요.";
 		} catch {
-			O() && (g.textContent = "실제 AI 연결을 확인하지 못했습니다. 응답을 임의로 대체하지 않습니다.");
+			N() && (g.textContent = "도우미 연결을 확인하지 못했어요. 잠시 후 다시 시도해 주세요.");
 		}
 	}
-	let I = (e) => {
-		e.preventDefault(), F({ text: m.value });
-	}, L = (e) => {
+	function ie(e, { restoreFocus: t = !1 } = {}) {
+		e || A?.stopAll(), _.hidden = !e, v.setAttribute("aria-expanded", String(e)), v.setAttribute("aria-label", e ? "화면 도우미 접기" : "화면 도우미 열기"), t && v.focus();
+	}
+	let V = () => ie(_.hidden), ae = () => ie(!1, { restoreFocus: !0 }), oe = (e) => {
+		e.key === "Escape" && !_.hidden && (e.preventDefault(), ae());
+	}, se = (e) => {
+		e.preventDefault();
+		let t = m.value, n = A?.handleAccessibilityRequest(t);
+		n?.handled ? (b.textContent = t, b.hidden = !t.trim(), M = n.message, h.setAttribute("aria-live", "off"), F()) : ne({ text: t }).then((e) => A?.speakResult(e));
+	}, ce = (e) => {
 		let t = e.target.closest("[data-cafe-ai-example]");
 		t && (m.value = t.dataset.cafeAiExample, m.focus());
-	}, R = async () => {
-		b || w.getView().busy || (await w.sdk.undo(), D = "이전 화면으로 되돌렸어요.", k());
-	}, z = async () => {
-		b || w.getView().busy || (await w.sdk.reset(), D = "원래 화면으로 돌아왔어요.", k());
-	}, re = () => {
-		y && !b && !w.getView().busy && w.refresh();
-	}, ie = () => B();
-	async function ae() {
-		if (v) throw Error("카페 화면이 종료되었습니다.");
-		if (t.body.classList.add("wa-shopping-enabled"), p.addEventListener("submit", I), o.addEventListener("click", L), o.querySelector("[data-cafe-ai-undo]").addEventListener("click", R), o.querySelector("[data-cafe-ai-reset]").addEventListener("click", z), e.addEventListener("storefront:render", re), e.addEventListener("pagehide", ie), !t.querySelector(".cafe-page")) throw Error("키오스크 화면을 확인하지 못했습니다.");
-		if (E = w.subscribe(k), await w.mount(t.body), v) return oe;
-		y = !0, T = a({
+	}, H = async () => {
+		w || O.getView().busy || (await O.sdk.undo(), M = "이전 화면으로 되돌렸어요.", F());
+	}, le = async () => {
+		w || O.getView().busy || (await O.sdk.reset(), M = "원래 화면으로 돌아왔어요.", F());
+	}, ue = () => {
+		C && !w && !O.getView().busy && O.refresh();
+	}, U = () => fe();
+	async function de() {
+		if (S) throw Error("카페 화면이 종료되었습니다.");
+		if (t.body.classList.add("wa-shopping-enabled"), p.addEventListener("submit", se), o.addEventListener("click", ce), o.addEventListener("keydown", oe), v.addEventListener("click", V), y.addEventListener("click", ae), o.querySelector("[data-cafe-ai-undo]").addEventListener("click", H), o.querySelector("[data-cafe-ai-reset]").addEventListener("click", le), e.addEventListener("storefront:render", ue), e.addEventListener("pagehide", U), !t.querySelector(".cafe-page")) throw Error("키오스크 화면을 확인하지 못했습니다.");
+		if (j = O.subscribe(F), await O.mount(t.body), S) return pe;
+		C = !0, k = a({
 			container: s,
 			window: e,
-			agent: w,
-			requestUiChange: F
+			agent: O,
+			requestUiChange: ne
+		}), A = ya({
+			window: e,
+			document: t,
+			mount: o.querySelector("[data-cafe-voice]"),
+			goal: m,
+			host: l,
+			requestUiChange: ne
 		});
 		let n = s.querySelector(".storefront-gaze-localhost-help a");
 		if (n) {
 			let e = new URL("http://localhost:5180/cafe.html");
-			e.searchParams.set("brand", l.brand.id), _a.has(d) && e.searchParams.set("provider", d), n.href = e.href;
+			e.searchParams.set("brand", l.brand.id), ba.has(d) && e.searchParams.set("provider", d), n.href = e.href;
 		}
-		return _a.has(d) ? ne() : (g.textContent = "지원하지 않는 AI 제공자입니다. 실제 모델로 자동 대체하지 않습니다.", D = "지원하는 실제 AI 제공자를 선택해 주세요."), k(), oe;
+		return ba.has(d) ? re() : (g.textContent = "도우미 연결을 확인하지 못했어요.", M = "도우미 설정을 확인해 주세요."), F(), pe;
 	}
-	function B() {
-		if (!v) {
-			v = !0, y = !1;
-			for (let e of _) e.abort();
-			_.clear(), p.removeEventListener("submit", I), o.removeEventListener("click", L), o.querySelector("[data-cafe-ai-undo]")?.removeEventListener("click", R), o.querySelector("[data-cafe-ai-reset]")?.removeEventListener("click", z), e.removeEventListener("storefront:render", re), e.removeEventListener("pagehide", ie), T?.dispose(), E?.(), w.dispose(), l.destroy?.();
+	function fe() {
+		if (!S) {
+			S = !0, C = !1;
+			for (let e of x) e.abort();
+			x.clear(), p.removeEventListener("submit", se), o.removeEventListener("click", ce), o.removeEventListener("keydown", oe), v.removeEventListener("click", V), y.removeEventListener("click", ae), o.querySelector("[data-cafe-ai-undo]")?.removeEventListener("click", H), o.querySelector("[data-cafe-ai-reset]")?.removeEventListener("click", le), e.removeEventListener("storefront:render", ue), e.removeEventListener("pagehide", U), A?.dispose(), k?.dispose(), j?.(), O.dispose(), l.destroy?.();
 		}
 	}
-	let oe = Object.freeze({
-		mount: ae,
-		dispose: B,
-		requestUiChange: F,
-		agent: w,
+	let pe = Object.freeze({
+		mount: de,
+		dispose: fe,
+		requestUiChange: ne,
+		agent: O,
 		host: l,
 		get gaze() {
-			return T;
+			return k;
 		},
 		get provider() {
 			return d;
 		},
 		getState: () => ({
-			ready: y,
-			busy: b || !!w.getView().busy,
+			ready: C,
+			busy: w || !!O.getView().busy,
 			brand: l.brand.id,
-			message: D
+			message: M
 		})
 	});
-	return k(), oe;
+	return F(), pe;
 }
 if (typeof window < "u" && document.getElementById("cafe-app") && document.getElementById("cafe-assistant")) try {
-	let e = Ca();
+	let e = Ea();
 	window.WebAgentCafe = e, e.mount().catch((t) => {
 		let n = document.getElementById("cafe-assistant");
 		n && (n.textContent = `카페 화면 연결 실패: ${t.message}`), e.dispose();
@@ -10450,4 +10591,4 @@ if (typeof window < "u" && document.getElementById("cafe-app") && document.getEl
 	t && (t.textContent = `카페 화면 연결 실패: ${e.message}`);
 }
 //#endregion
-export { Ca as createCafeDemo };
+export { Ea as createCafeDemo };
