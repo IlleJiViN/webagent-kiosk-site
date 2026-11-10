@@ -2,6 +2,8 @@
 
 `workbook/`은 HTML·CSS·JavaScript 주문서다. 기존 키오스크 스튜디오와 구분된 화면으로, 워크북의 필드·메뉴·가격 규칙을 그대로 사용한다.
 
+배포 주소: [바이브 카페](https://vibe-cafe-workbook.vercel.app/). Supabase 프로젝트 `vzhzvlhkgcivwioadjwb`의 서울 리전을 사용한다. 정적 코드에 포함된 키는 공개 publishable 키이며 관리자 키가 아니다.
+
 주문은 Supabase `public.cafe_menu03`에 저장한다. 저장 응답을 확인한 뒤에만 `주문이 접수되었습니다!`를 표시한다. 방문객에게는 INSERT만 허용하며 주문 목록 읽기·수정·삭제는 허용하지 않는다. DB가 가격을 다시 계산하고 입력값을 검증한다.
 
 ## 연결과 배포
@@ -18,5 +20,7 @@
 - 실제 주문 제출 후 접수 완료 화면과 Supabase Table Editor의 동일 주문 ID·금액을 대조한다.
 - `supabase/verify.sql`은 DB의 입력 검증·권한·중복 ID를 점검하고 테스트 데이터를 롤백한다.
 - 계정 연결·마이그레이션 적용·실제 주문 저장·배포를 확인하기 전에는 완료된 연동으로 보고하지 않는다.
+
+2026년 11월 10일 검증에서 원격 SQL 검증과 테스트 데이터 롤백이 성공했다. 배포된 브라우저 앱으로 카페모카 L·시럽 추가 1잔을 제출한 뒤 접수 화면과 Table Editor의 5,800원을 대조했다. 공개 역할의 권한은 INSERT만 허용하며 SELECT·UPDATE·DELETE는 허용하지 않음을 확인했다. 로컬 자동 테스트 9개도 통과했다.
 
 공식 문서: [Supabase RLS](https://supabase.com/docs/guides/database/postgres/row-level-security), [Vercel 정적 설정](https://vercel.com/docs/project-configuration/vercel-json).
