@@ -149,6 +149,21 @@ CREATE POLICY cafe_menu03_insert_only
 ON public.cafe_menu03
 FOR INSERT
 TO anon, authenticated
-WITH CHECK (true);
+WITH CHECK (
+  customer_name IS NOT NULL
+  AND pg_catalog.char_length(pg_catalog.btrim(customer_name)) BETWEEN 1 AND 60
+  AND quantity BETWEEN 1 AND 20
+  AND total_price > 0
+);
+
+-- Supabase's optional automatic-RLS event trigger runs as its owner. Its
+-- SECURITY DEFINER helper must not be a public RPC callable by visitors.
+DO $automatic_rls_permissions$
+BEGIN
+  IF pg_catalog.to_regprocedure('public.rls_auto_enable()') IS NOT NULL THEN
+    REVOKE ALL ON FUNCTION public.rls_auto_enable() FROM PUBLIC, anon, authenticated;
+  END IF;
+END;
+$automatic_rls_permissions$;
 
 COMMIT;

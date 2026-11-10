@@ -22,6 +22,10 @@ BEGIN
        OR pg_catalog.has_table_privilege(v_role, 'public.cafe_menu03', 'TRIGGER') THEN
       RAISE EXCEPTION '% must have INSERT only', v_role;
     END IF;
+    IF pg_catalog.to_regprocedure('public.rls_auto_enable()') IS NOT NULL
+       AND pg_catalog.has_function_privilege(v_role, 'public.rls_auto_enable()', 'EXECUTE') THEN
+      RAISE EXCEPTION '% must not execute the automatic RLS management helper', v_role;
+    END IF;
   END LOOP;
   IF (SELECT count(*) FROM pg_catalog.pg_policies
       WHERE schemaname = 'public' AND tablename = 'cafe_menu03'
@@ -31,6 +35,12 @@ BEGIN
   IF EXISTS (SELECT 1 FROM pg_catalog.pg_policies
       WHERE schemaname = 'public' AND tablename = 'cafe_menu03' AND cmd <> 'INSERT') THEN
     RAISE EXCEPTION 'unexpected read/update/delete policy';
+  END IF;
+  IF EXISTS (SELECT 1 FROM pg_catalog.pg_policy
+      WHERE polrelid = 'public.cafe_menu03'::regclass
+        AND polname = 'cafe_menu03_insert_only'
+        AND pg_catalog.pg_get_expr(polwithcheck, polrelid) IN ('true', '(true)')) THEN
+    RAISE EXCEPTION 'the INSERT policy must include the order input conditions';
   END IF;
 END;
 $permissions$;
