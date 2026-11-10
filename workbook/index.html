@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>바이브 카페 - 메뉴 주문</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./config.js"></script>
+  <script type="module" src="./script.js"></script>
+</head>
+<body>
+  <div class="cafe-container">
+    <header class="cafe-header">
+      <div class="back-link-wrapper">
+        <a href="https://illejivin.github.io/webagent-kiosk-site/studio/" class="back-link">← 스튜디오로 돌아가기</a>
+      </div>
+      <div class="header-content">
+        <h1 class="header-title">바이브 카페</h1>
+        <p class="header-intro">정성을 담아 내리는 특별한 한 잔, 원하시는 메뉴와 옵션을 편안하게 선택해주세요.</p>
+      </div>
+    </header>
+
+    <div id="configNotice" class="config-notice" style="display: none;" role="status">
+      주문 접수 준비 중입니다.
+    </div>
+
+    <main>
+      <div class="order-card" id="formCard">
+        <form id="orderForm" novalidate>
+          <div class="form-group">
+            <label for="customerName" class="field-label">주문자 이름 <span class="required">*</span></label>
+            <input type="text" id="customerName" name="customerName" class="input-text" maxlength="60" placeholder="성함 또는 닉네임을 입력해주세요" required>
+          </div>
+
+          <div class="form-group">
+            <label for="drink" class="field-label">음료 선택 <span class="required">*</span></label>
+            <select id="drink" name="drink" class="select-box" required>
+              <option value="">음료를 선택해주세요</option>
+              <option value="아메리카노">아메리카노 (3,500원)</option>
+              <option value="카페라떼">카페라떼 (4,000원)</option>
+              <option value="카페모카">카페모카 (4,500원)</option>
+              <option value="바닐라라떼">바닐라라떼 (4,500원)</option>
+              <option value="녹차라떼">녹차라떼 (4,500원)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <span class="field-label">사이즈 선택 <span class="required">*</span></span>
+            <div class="size-flex-group" role="radiogroup" aria-label="사이즈 선택">
+              <label class="size-option-label" for="sizeS">
+                <input type="radio" id="sizeS" name="size" value="S"> S (+0원)
+              </label>
+              <label class="size-option-label" for="sizeM">
+                <input type="radio" id="sizeM" name="size" value="M" checked> M (+500원)
+              </label>
+              <label class="size-option-label" for="sizeL">
+                <input type="radio" id="sizeL" name="size" value="L"> L (+1,000원)
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <span class="field-label">추가 옵션</span>
+            <div class="checkbox-grid">
+              <label class="checkbox-option-label" for="optShot">
+                <input type="checkbox" id="optShot" name="options" value="샷 추가"> 샷 추가 (+500원)
+              </label>
+              <label class="checkbox-option-label" for="optCream">
+                <input type="checkbox" id="optCream" name="options" value="크림 추가"> 크림 추가 (+500원)
+              </label>
+              <label class="checkbox-option-label" for="optSyrup">
+                <input type="checkbox" id="optSyrup" name="options" value="시럽 추가"> 시럽 추가 (+300원)
+              </label>
+              <label class="checkbox-option-label" for="optDecaf">
+                <input type="checkbox" id="optDecaf" name="options" value="디카페인"> 디카페인 (+0원)
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="quantity" class="field-label">수량 <span class="required">*</span></label>
+            <input type="number" id="quantity" name="quantity" class="input-text" min="1" max="20" value="1" required>
+          </div>
+
+          <div class="form-group">
+            <label for="requests" class="field-label">요청사항</label>
+            <textarea id="requests" name="requests" class="textarea-box" maxlength="500" placeholder="기타 요청사항이 있으시면 적어주세요 (최대 500자)"></textarea>
+          </div>
+
+          <div class="price-section">
+            <span class="price-title">예상 금액</span>
+            <span id="totalPrice" class="total-price-value">0원</span>
+          </div>
+
+          <div id="submitError" class="submit-error" style="display: none;" role="alert"></div>
+
+          <button type="submit" id="submitBtn" class="submit-btn">주문하기</button>
+        </form>
+      </div>
+
+      <section id="receiptArea" class="receipt-area" aria-live="polite" role="status" style="display: none;"></section>
+    </main>
+  </div>
+</body>
+</html>
